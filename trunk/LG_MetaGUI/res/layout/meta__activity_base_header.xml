@@ -128,9 +128,9 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <View
+    <!-- <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:background="@color/meta__color_title_splitter_meta" />
+        android:background="@color/meta__color_title_splitter_meta" /> -->
 
 </LinearLayout>
