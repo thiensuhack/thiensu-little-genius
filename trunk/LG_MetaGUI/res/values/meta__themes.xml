@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Meta theme  -->
+	<style name="Meta.Theme" parent="android:Theme.NoTitleBar">
+	    <item name="activityTitleVisibility">@style/activityTitleEnable_meta</item>
+        <item name="activityTitleBackground">@style/activityTitleBackground_meta</item>
+        <item name="activityTitleColor">@style/activityTitleColor_meta</item>
+    </style>
+    
+	<style name="Meta.Theme.FullScreen" parent="android:Theme.NoTitleBar.Fullscreen">
+	    <item name="activityTitleVisibility">@style/activityTitleDisable_meta</item>
+        <item name="activityTitleBackground">@style/activityTitleBackground_meta</item>
+        <item name="activityTitleColor">@style/activityTitleColor_meta</item>
+    </style>
+</resources>

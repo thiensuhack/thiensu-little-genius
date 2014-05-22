@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/meta__activity_base_header" 
+        style="?attr/activityTitleVisibility" />	
+    <LinearLayout
+        android:id="@+id/meta__activity_base_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

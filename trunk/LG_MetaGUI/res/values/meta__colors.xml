@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="meta__color_title_background_meta">#00AFCD</color>
+    <color name="meta__color_title_splitter_meta">#005694</color>
+    <color name="meta__color_title_text_meta">#FFFFFF</color>
+    
+    <!-- Dialog -->
+    <color name="meta__color_title_background_dialog_meta">#FFFFFF</color>
+    <color name="meta__color_title_text_dialog_meta">#000000</color>
+</resources>
