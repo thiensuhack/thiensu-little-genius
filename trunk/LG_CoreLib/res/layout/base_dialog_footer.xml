@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#FFFFFF" />
+
+    <LinearLayout
+        android:id="@+id/up_dialog_base_2_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal" >
+        
+        <TextView
+            android:id="@+id/up_dialog_base_positive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/core_button_blue_gradient"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:text="Positive"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/up_dialog_base_negative"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/core_button_report"
+            android:clickable="true"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:text="Negative"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/up_dialog_base_1_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="#FFFFFF" >
+
+        <TextView
+            android:id="@+id/up_dialog_base_default"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/core_button_blue_gradient"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:text="Negative"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

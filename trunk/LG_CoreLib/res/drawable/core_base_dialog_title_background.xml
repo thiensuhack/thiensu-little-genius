@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <!-- <solid android:color="@color/my_points_background" /> -->
+
+
+    <!--
+         <corners
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp"
+        android:topLeftRadius="10dp"
+        android:topRightRadius="10dp" />
+    -->
+    <corners android:topRightRadius="20dp" />
+
+    <padding
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp" />
+
+    <gradient
+        android:angle="270"
+        android:endColor="#037fee"
+        android:startColor="#20BBD0" />
+
+</shape>
