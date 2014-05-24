@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,11 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pn.littlegenius.utils.CommonUtils;
-import com.pn.littlegenius.utils.CustomArrayAdapter;
 import com.pn.littlegenius.utils.CustomData;
-import com.pn.littlegenius.utils.HorizontalListView;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	private LinearLayout Bg_Home;
 	private Button btn_about;
@@ -33,6 +33,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button btn_Preview;
 	private TextView Schedule_text;
 
+	private ViewPager mViewPager;
+	
 	Timer _timer = null;
 	int timeDelay = 2000;
 	void startTimer()
@@ -76,36 +78,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-//		add linner layout hold text and button
-		Bg_Home = (LinearLayout)findViewById(R.id.bg_home);
-		Bg_Home.setBackgroundColor(Color.parseColor("#1fc0e9"));
-		Bg_Home.invalidate();
-//	   	add textview
-		Schedule_text = (TextView)findViewById(R.id.home_text);
-		Schedule_text.setTextColor(Color.WHITE);
+		initView();
 
-//		add linner layout image viewer
-		//btn_Image_Viewer = (LinearLayout)findViewById(R.id.bt_image_view);
-//		add button about us
-		btn_about = (Button)findViewById(R.id.btn_about);
-		btn_about.setOnClickListener(this);
-// 		add program button		
-		btn_Program = (Button)findViewById(R.id.btn_program);
 		btn_Program.setOnClickListener(this);
-//		add media button
-		btn_Media = (Button)findViewById(R.id.btn_media);
-		btn_Media.setOnClickListener(this);
-//		add testimonial button
-		btn_Testimonial = (Button)findViewById(R.id.btn_testimonial);
 		btn_Testimonial.setOnClickListener(this);
-		
-		btn_Kms = (Button)findViewById(R.id.btn_kms);
+		btn_Media.setOnClickListener(this);
 		btn_Kms.setOnClickListener(this);
-		
-		btn_Contact = (Button)findViewById(R.id.btn_contact);
 		btn_Contact.setOnClickListener(this);
-		
-		btn_Preview = (Button)findViewById(R.id.btn_preview);
+		btn_about.setOnClickListener(this);
 		btn_Preview.setOnClickListener(this);
 
 		String url_select = CommonUtils.URL_SCHEDULE;
@@ -130,6 +110,31 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 		}, 0 , 2000);
 		
+	}
+
+	private void initView() {
+		//		add linner layout hold text and button
+				Bg_Home = (LinearLayout)findViewById(R.id.bg_home);
+				Bg_Home.setBackgroundColor(Color.parseColor("#1fc0e9"));
+				Bg_Home.invalidate();
+		//	   	add textview
+				Schedule_text = (TextView)findViewById(R.id.home_text);
+				Schedule_text.setTextColor(Color.WHITE);
+		
+		//		add linner layout image viewer
+				//btn_Image_Viewer = (LinearLayout)findViewById(R.id.bt_image_view);
+		//		add button about us
+				btn_about = (Button)findViewById(R.id.btn_about);
+				
+		// 		add program button		
+				btn_Program = (Button)findViewById(R.id.btn_program);
+		//		add media button
+				btn_Media = (Button)findViewById(R.id.btn_media);
+		//		add testimonial button
+				btn_Testimonial = (Button)findViewById(R.id.btn_testimonial);
+				btn_Kms = (Button)findViewById(R.id.btn_kms);
+				btn_Contact = (Button)findViewById(R.id.btn_contact);
+				btn_Preview = (Button)findViewById(R.id.btn_preview);
 	}
 
 	class HTTPRequest extends AsyncTask<String, Void, String> {
