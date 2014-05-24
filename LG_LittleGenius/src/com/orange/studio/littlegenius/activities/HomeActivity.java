@@ -12,5 +12,4 @@ public class HomeActivity extends MetaFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setMetaContentView(R.layout.activity_home_layout);
 	}
-
 }
