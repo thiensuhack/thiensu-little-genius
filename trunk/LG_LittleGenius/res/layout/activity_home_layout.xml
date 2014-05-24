@@ -6,7 +6,10 @@
     android:background="@color/home_background"
     android:orientation="vertical" >
 
-    <include layout="@layout/home_title_bar_layout" />
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/home_title_bar_layout" />
 
     <LinearLayout
         android:id="@+id/slideContainer"
