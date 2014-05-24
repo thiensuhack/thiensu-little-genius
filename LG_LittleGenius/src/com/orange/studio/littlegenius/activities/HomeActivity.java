@@ -1,6 +1,9 @@
 package com.orange.studio.littlegenius.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.meta.gui.activity.MetaFragmentActivity;
 import com.orange.studio.littlegenius.R;
@@ -8,6 +11,8 @@ import com.slidingmenu.lib.SlidingMenu;
 
 public class HomeActivity extends MetaFragmentActivity {
 	protected SlidingMenu sm = null;
+	private View mAboutBtn=null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,5 +24,20 @@ public class HomeActivity extends MetaFragmentActivity {
 //		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
 //		enableDrawerButton(true);
 		setMetaContentView(R.layout.activity_home_layout);
+		mAboutBtn=(LinearLayout)findViewById(R.id.aboutBtn);
+		mAboutBtn.setOnClickListener(this);
+	}
+	@Override
+	public void onClick(View v) {
+		int id=v.getId();
+		switch (id) {
+		case R.id.aboutBtn:
+			Intent intent=new Intent(getApplicationContext(), KMSActivity.class);
+			startActivity(intent);
+			break;
+		default:
+			super.onClick(v);
+			break;
+		}				
 	}
 }
