@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /** An array adapter that knows how to render views when given CustomData classes */
-public class CustomArrayAdapter extends ArrayAdapter<CustomData> {
+public class CustomArrayAdapter extends ArrayAdapter<SlideItemData> {
     private LayoutInflater mInflater;
 
-    public CustomArrayAdapter(Context context, CustomData[] values) {
+    public CustomArrayAdapter(Context context, SlideItemData[] values) {
         super(context, R.layout.custom_data_view, values);
         mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
