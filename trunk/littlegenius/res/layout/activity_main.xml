@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#1fc0e9"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="right"
+        android:background="@drawable/banner"
+        android:gravity="center_vertical|right"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn_about"
+            android:layout_width="@dimen/widthOfBtAbout"
+            android:layout_height="@dimen/heightOfBtAbout"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/home_03_06" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:orientation="vertical" >
+        <android.support.v4.view.ViewPager
+            android:id="@+id/slideViewPager"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/home_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="5dp" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        layout="@layout/menu" />
+
+</LinearLayout>

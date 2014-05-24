@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/banner"
+    android:orientation="horizontal"
+    android:gravity="center_vertical|right">
+<Button 
+     android:layout_width="@dimen/widthOfBtHome"
+     android:layout_height="@dimen/heightOfBtHome"
+     android:background="@drawable/home"
+     android:id="@+id/btn_home" />
+<Button 
+	 android:layout_marginLeft="10dp"
+     android:layout_width="@dimen/widthOfBtSetting"
+     android:layout_height="@dimen/heightOfBtSetting"
+     android:background="@drawable/menu"
+     android:id="@+id/btn_setting"
+     android:layout_marginRight="5dp"
+      />
+</LinearLayout>

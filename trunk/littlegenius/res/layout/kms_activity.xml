@@ -1,0 +1,99 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#1fc0e9" 
+    android:orientation="vertical">
+<include
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/heightofheader"
+    android:layout_gravity="bottom"
+    layout="@layout/header"/>
+<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/txt_content1"
+	    android:padding="5dp"
+  	    android:textSize="11pt"
+	    android:textStyle="bold" />
+<LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+<ImageView 
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:background="@drawable/logo" />
+</LinearLayout>
+<TextView 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/txt_content"
+	    android:padding ="5dp" />
+<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:layout_marginLeft="5dp">
+	    	<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+	   		android:orientation="horizontal"
+			>
+	    	    	    <TextView 
+	        			android:layout_width="100dp"
+	        			android:layout_height="wrap_content"
+	     				android:id="@+id/txt_user"
+				        android:text="@string/txt_user"
+						android:textSize="8pt"
+	    			    android:textStyle="bold"
+	    			    android:textColor="@android:color/black"
+			        	/>
+					<EditText 
+	        			android:layout_width="fill_parent"
+	        			android:layout_height="wrap_content"
+	        			android:id="@+id/str_user"
+	        			android:layout_marginLeft="10dp"
+					    />	    	    	    
+ 	    </LinearLayout>		
+ 	    
+	    	<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+	   		android:orientation="horizontal"
+	   		android:layout_marginTop="10dp"
+			>
+	    	    	    <TextView 
+	        			android:layout_width="100dp"
+	        			android:layout_height="wrap_content"
+	     				android:id="@+id/txt_pass"
+				        android:text="@string/txt_pass"
+	        			android:textSize="8pt"
+	    			    android:textStyle="bold"
+	    			    android:textColor="@android:color/black"
+			        	/>
+					<EditText 
+	        			android:layout_width="fill_parent"
+	        			android:layout_height="wrap_content"
+	        			android:id="@+id/str_pass"
+	        			android:layout_marginLeft="10dp"
+					    />	    	    	    
+ 	    </LinearLayout>		
+ 	      	<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+	   		android:orientation="horizontal"
+	   		android:layout_marginTop="10dp"
+	   		android:gravity="center_horizontal"
+			>
+			<Button 
+			    android:layout_width="100dp"
+			    android:layout_height="wrap_content"
+			    android:id="@+id/btn_login"
+			    android:text="@string/str_login"
+			    />    	    	    
+ 	    </LinearLayout>		
+	    	
+	</LinearLayout>
+</LinearLayout>

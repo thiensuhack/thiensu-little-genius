@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent"
+    android:orientation="vertical"
+    android:id="@+id/bg_home">
+<LinearLayout
+     android:layout_width="fill_parent"
+     android:layout_height="@dimen/itemheightoffooter"
+     android:gravity="center_horizontal"
+     android:orientation="horizontal" >
+     <Button
+         android:id="@+id/btn_program"
+         android:layout_width="match_parent"
+         android:layout_weight="0.3"
+         android:layout_height="match_parent"
+         android:background="@drawable/ico_program" />
+
+     <Button
+         android:id="@+id/btn_media"
+         android:layout_width="match_parent"
+         android:layout_weight="0.3"
+         android:layout_height="match_parent"
+         android:background="@drawable/ico_media" />
+
+     <Button
+         android:id="@+id/btn_testimonial"
+         android:layout_width="match_parent"
+         android:layout_weight="0.3"
+         android:layout_height="match_parent"
+         android:background="@drawable/ico_testim" />
+</LinearLayout>
+
+<LinearLayout
+     android:layout_width="fill_parent"
+     android:layout_height="@dimen/itemheightoffooter"
+     android:layout_gravity="bottom"
+     android:gravity="center_horizontal"
+     android:orientation="horizontal" >
+
+     <Button
+         android:id="@+id/btn_kms"
+         android:layout_width="match_parent"
+         android:layout_weight="0.3"
+         android:layout_height="match_parent"
+         android:background="@drawable/ico_kms" />
+
+     <Button
+         android:id="@+id/btn_contact"
+         android:layout_width="match_parent"
+         android:layout_weight="0.3"
+         android:layout_height="match_parent"
+         android:background="@drawable/ico_contact" />
+
+     <Button
+         android:id="@+id/btn_preview"
+         android:layout_width="match_parent"
+         android:layout_weight="0.3"
+         android:layout_height="match_parent"
+         android:background="@drawable/ico_preview" />
+ </LinearLayout>
+</LinearLayout>
