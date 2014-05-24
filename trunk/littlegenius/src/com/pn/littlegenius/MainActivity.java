@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -19,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pn.littlegenius.utils.CommonUtils;
-import com.pn.littlegenius.utils.CustomData;
+import com.pn.littlegenius.utils.SlideItemData;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 
@@ -32,8 +31,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private Button btn_Contact;
 	private Button btn_Preview;
 	private TextView Schedule_text;
+	
+	private  ViewPager mViewPager=null;
+	
 
-	private ViewPager mViewPager;
+	public interface DoAction{
+		public void DissmissDialog();
+	}
+	private DoAction doAction = null;
 	
 	Timer _timer = null;
 	int timeDelay = 2000;
@@ -67,11 +72,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		});
 	}
 	
-	private CustomData[] mCustomData = new CustomData[] {
-            new CustomData(R.drawable.easing_slider_4, ""),
-            new CustomData(R.drawable.easing_slider_3, ""),
-            new CustomData(R.drawable.easing_slider_21, ""),
-            new CustomData(R.drawable.easing_slider_dimensions_1, "")
+	private SlideItemData[] mCustomData = new SlideItemData[] {
+            new SlideItemData(R.drawable.easing_slider_4, ""),
+            new SlideItemData(R.drawable.easing_slider_3, ""),
+            new SlideItemData(R.drawable.easing_slider_21, ""),
+            new SlideItemData(R.drawable.easing_slider_dimensions_1, "")
     };
 
 	@Override
@@ -79,21 +84,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		initView();
-
-		btn_Program.setOnClickListener(this);
-		btn_Testimonial.setOnClickListener(this);
-		btn_Media.setOnClickListener(this);
-		btn_Kms.setOnClickListener(this);
-		btn_Contact.setOnClickListener(this);
-		btn_about.setOnClickListener(this);
-		btn_Preview.setOnClickListener(this);
-
+		initListener();
 		String url_select = CommonUtils.URL_SCHEDULE;
 		HTTPRequest request = new HTTPRequest();
 		request.execute(url_select);
-		
 		Schedule_text.setVerticalScrollBarEnabled(true);
-		
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			
@@ -113,6 +108,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	private void initView() {
+		mViewPager=(ViewPager)findViewById(R.id.slideViewPager);
 		//		add linner layout hold text and button
 				Bg_Home = (LinearLayout)findViewById(R.id.bg_home);
 				Bg_Home.setBackgroundColor(Color.parseColor("#1fc0e9"));
@@ -136,7 +132,15 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				btn_Contact = (Button)findViewById(R.id.btn_contact);
 				btn_Preview = (Button)findViewById(R.id.btn_preview);
 	}
-
+	private void initListener() {
+		btn_Program.setOnClickListener(this);
+		btn_Testimonial.setOnClickListener(this);
+		btn_Media.setOnClickListener(this);
+		btn_Kms.setOnClickListener(this);
+		btn_Contact.setOnClickListener(this);
+		btn_about.setOnClickListener(this);
+		btn_Preview.setOnClickListener(this);
+	}
 	class HTTPRequest extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... arg0) {
