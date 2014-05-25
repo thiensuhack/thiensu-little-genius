@@ -33,21 +33,8 @@ public class ContactActivity extends BaseSlidingActivity implements OnClickListe
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_home:
-		{
-			Intent intent = new Intent(this,MainActivity.class);
-			startActivity(intent);
-			finish();
-			break;
-		}
-		case R.id.btn_setting:
-		{
-			Intent intent = new Intent(this,SettingActivity.class);
-			startActivity(intent);
-			finish();
-			break;
-		}
 		default:
+			super.onClick(v);
 			break;
 		}
 	}

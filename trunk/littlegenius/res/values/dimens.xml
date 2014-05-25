@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<dimen name="heightofheader">50dp</dimen>
+<dimen name="heightofheader">45dp</dimen>
 <dimen name="itemheightoffooter">70dp</dimen>
 <dimen name="heightOfBtHome">35dp</dimen>
 <dimen name="heightOfBtSetting">35dp</dimen>

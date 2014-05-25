@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pn.littlegenius.utils.CommonUtils;
@@ -24,7 +25,7 @@ public class PreviewActivity extends BaseSlidingActivity implements OnClickListe
 	private EditText strEmail;
 	private EditText strPhone;
 	private EditText strBirthday;
-	private Button btnLogin;
+	private View mSendDataBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,8 @@ public class PreviewActivity extends BaseSlidingActivity implements OnClickListe
 		strPhone = (EditText)findViewById(R.id.str_phone);
 		strBirthday   =(EditText)findViewById(R.id.str_birthday);
 
-		btnLogin = (Button)findViewById(R.id.btn_login);
-		btnLogin.setOnClickListener(this);
+		mSendDataBtn = (LinearLayout)findViewById(R.id.sendDataBtn);
+		mSendDataBtn.setOnClickListener(this);
 		
 		String url_select = CommonUtils.URL_PREVIEW;
 
@@ -70,7 +71,7 @@ public class PreviewActivity extends BaseSlidingActivity implements OnClickListe
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {		
-		case R.id.btn_login:
+		case R.id.sendDataBtn:
 		{
 			break;
 		}

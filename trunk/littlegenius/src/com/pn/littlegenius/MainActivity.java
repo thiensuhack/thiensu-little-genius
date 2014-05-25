@@ -196,7 +196,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		case R.id.aboutBtn:
 			Intent intent = new Intent(this,AboutActivity.class);
 			startActivity(intent);
-			finish();
+			//finish();
 			break;
 		case R.id.programBtn:
 			Intent intent1 = new Intent(this,ProgramActivity.class);

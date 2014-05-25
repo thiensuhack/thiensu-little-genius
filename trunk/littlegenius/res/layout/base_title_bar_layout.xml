@@ -6,16 +6,18 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:background="@drawable/header_background" >
 
         <ImageView
             android:id="@+id/homeSlidingBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/info" />
+            android:background="@drawable/ic_navigation_rawer"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="5dp" />
 
         <ImageView
             android:layout_width="70dp"
@@ -30,28 +32,17 @@
             android:layout_centerInParent="true"
             android:text="Title"
             android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-        <LinearLayout
+        <ImageView
             android:id="@+id/homeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/menu_title_background"
-            android:clickable="true" >
-
-            <ImageView
-                android:id="@+id/homeSlidingBtn"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/home" />
-        </LinearLayout>
+            android:background="@drawable/ic_menu_home"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp" />
     </RelativeLayout>
 
 </LinearLayout>
