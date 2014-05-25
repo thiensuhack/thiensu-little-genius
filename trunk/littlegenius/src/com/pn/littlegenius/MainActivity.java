@@ -1,6 +1,7 @@
 package com.pn.littlegenius;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,28 +14,31 @@ import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.pn.littlegenius.adapters.MyFragmentAdapter;
 import com.pn.littlegenius.utils.CommonUtils;
 import com.pn.littlegenius.utils.SlideItemData;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 
-	private LinearLayout Bg_Home;
-	private Button btn_about;
-	private Button btn_Program;
-	private Button btn_Media;
-	private Button btn_Testimonial;
-	private Button btn_Kms;
-	private Button btn_Contact;
-	private Button btn_Preview;
-	private TextView Schedule_text;
+	private View mAboutBtn;
+	private View mProgramBtn;
+	private View mMediaBtn;
+	private View mTestimonialBtn;
+	private View mKmsBtn;
+	private View mContactBtn;
+	private View mPreviewBtn;
+	private TextView mScheduleTxt;
 	
 	private  ViewPager mViewPager=null;
+	private MyFragmentAdapter mSlideAdapter=null;
+	private List<SlideItemData> mData=null;
+	private View mPreviousBtn=null;
+	private View mNextBtn=null;
 	
-
 	public interface DoAction{
 		public void DissmissDialog();
 	}
@@ -72,13 +76,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		});
 	}
 	
-	private SlideItemData[] mCustomData = new SlideItemData[] {
-            new SlideItemData(R.drawable.easing_slider_4, ""),
-            new SlideItemData(R.drawable.easing_slider_3, ""),
-            new SlideItemData(R.drawable.easing_slider_21, ""),
-            new SlideItemData(R.drawable.easing_slider_dimensions_1, "")
-    };
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -88,7 +85,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		String url_select = CommonUtils.URL_SCHEDULE;
 		HTTPRequest request = new HTTPRequest();
 		request.execute(url_select);
-		Schedule_text.setVerticalScrollBarEnabled(true);
+		mScheduleTxt.setVerticalScrollBarEnabled(true);
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			
@@ -108,38 +105,55 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	private void initView() {
-		mViewPager=(ViewPager)findViewById(R.id.slideViewPager);
-		//		add linner layout hold text and button
-				Bg_Home = (LinearLayout)findViewById(R.id.bg_home);
-				Bg_Home.setBackgroundColor(Color.parseColor("#1fc0e9"));
-				Bg_Home.invalidate();
-		//	   	add textview
-				Schedule_text = (TextView)findViewById(R.id.home_text);
-				Schedule_text.setTextColor(Color.WHITE);
+		mData=new ArrayList<SlideItemData>();
+		mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
+		mData.add(new SlideItemData(R.drawable.easing_slider_3, ""));
+		mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
+		mData.add(new SlideItemData(R.drawable.easing_slider_21, ""));
 		
+		doAction=new DoAction() {
+			@Override
+			public void DissmissDialog() {
+			}
+		};
+		
+		mViewPager=(ViewPager)findViewById(R.id.slideViewPager);
+		mSlideAdapter=new MyFragmentAdapter(getSupportFragmentManager(), mData, doAction);
+		mViewPager.setAdapter(mSlideAdapter);
+		
+		mPreviousBtn=(ImageView)findViewById(R.id.previousBtn);
+		mNextBtn=(ImageView)findViewById(R.id.nextBtn);
+
+		//	   	add textview
+		mScheduleTxt = (TextView)findViewById(R.id.home_text);
+		mScheduleTxt.setTextColor(Color.WHITE);
+
 		//		add linner layout image viewer
 				//btn_Image_Viewer = (LinearLayout)findViewById(R.id.bt_image_view);
 		//		add button about us
-				btn_about = (Button)findViewById(R.id.btn_about);
+		mAboutBtn = (LinearLayout)findViewById(R.id.aboutBtn);
 				
 		// 		add program button		
-				btn_Program = (Button)findViewById(R.id.btn_program);
+		mProgramBtn = (LinearLayout)findViewById(R.id.programBtn);
 		//		add media button
-				btn_Media = (Button)findViewById(R.id.btn_media);
+		//mMediaBtn = (LinearLayout)findViewById(R.id.menu_settings);
 		//		add testimonial button
-				btn_Testimonial = (Button)findViewById(R.id.btn_testimonial);
-				btn_Kms = (Button)findViewById(R.id.btn_kms);
-				btn_Contact = (Button)findViewById(R.id.btn_contact);
-				btn_Preview = (Button)findViewById(R.id.btn_preview);
+		mTestimonialBtn = (LinearLayout)findViewById(R.id.testimonialsBtn);
+		mKmsBtn = (LinearLayout)findViewById(R.id.kmsBtn);
+		mContactBtn = (LinearLayout)findViewById(R.id.contactBtn);
+		mPreviewBtn = (LinearLayout)findViewById(R.id.previewBtn);
 	}
 	private void initListener() {
-		btn_Program.setOnClickListener(this);
-		btn_Testimonial.setOnClickListener(this);
-		btn_Media.setOnClickListener(this);
-		btn_Kms.setOnClickListener(this);
-		btn_Contact.setOnClickListener(this);
-		btn_about.setOnClickListener(this);
-		btn_Preview.setOnClickListener(this);
+		mProgramBtn.setOnClickListener(this);
+		mTestimonialBtn.setOnClickListener(this);
+		//mMediaBtn.setOnClickListener(this);
+		mKmsBtn.setOnClickListener(this);
+		mContactBtn.setOnClickListener(this);
+		mAboutBtn.setOnClickListener(this);
+		mPreviewBtn.setOnClickListener(this);
+		
+		mPreviousBtn.setOnClickListener(this);
+		mNextBtn.setOnClickListener(this);
 	}
 	class HTTPRequest extends AsyncTask<String, Void, String> {
 		@Override
@@ -155,12 +169,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 			if ( content != null )
 			{
-				String str_content ="<b>Class Schedule : </b><br><ul>";
+				String str_content ="<b><font color=\"#0181D8\" size=\"35px\">Class Schedule : </font></b><br><ul>";
 				for (int i = 0; i < content.size(); i++) {
-					str_content +=  "<li>" + content.get(i) + "</li><br>";
+					str_content +=  "<li><font color=\"#0181D8\" size=\"30px\">" + content.get(i) + "</font></li><br>";
 				}
-				str_content += "</ul>Classes are available from Thurdays to Sundays.";
-				Schedule_text.setText(Html.fromHtml(str_content));
+				str_content += "</ul><font color=\"#0181D8\" size=\"30px\">Classes are available from Thurdays to Sundays.</font>";
+				mScheduleTxt.setText(Html.fromHtml(str_content));
 			}
 		}
 	}
@@ -168,14 +182,24 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	@Override
 	public void onClick(View gId) {		
 		switch (gId.getId()) {
-		case R.id.btn_about:
+		case R.id.previousBtn:
+			int prev=mViewPager.getCurrentItem()-1;
+			prev=(prev<0?mViewPager.getAdapter().getCount()-1:prev);
+			mViewPager.setCurrentItem(prev, true);
+			break;
+		case R.id.nextBtn:
+			int next=mViewPager.getCurrentItem()+1;
+			next=(next>mViewPager.getAdapter().getCount()-1?0: next);
+			mViewPager.setCurrentItem(next, true);
+			break;
+		case R.id.aboutBtn:
 		{
 			Intent intent = new Intent(this,AboutActivity.class);
 			startActivity(intent);
 			finish();
 			break;
 		}
-		case R.id.btn_program:
+		case R.id.programBtn:
 		{	
 			Intent intent = new Intent(this,ProgramActivity.class);
 			intent.putExtra(CommonUtils.PROGRAM_PARAM, CommonUtils.URL_PROGRAM);
@@ -190,28 +214,28 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			finish();
 			break;			
 		}
-		case R.id.btn_testimonial:
+		case R.id.testimonialsBtn:
 		{	
 			Intent intent = new Intent(this,TestimonialActivity.class);
 			startActivity(intent);
 			finish();
 			break;			
 		}
-		case R.id.btn_kms:
+		case R.id.kmsBtn:
 		{	
 			Intent intent = new Intent(this,KmsActivity.class);
 			startActivity(intent);
 			finish();
 			break;			
 		}
-		case R.id.btn_contact:
+		case R.id.contactBtn:
 		{	
 			Intent intent = new Intent(this,ContactActivity.class);
 			startActivity(intent);
 			finish();
 			break;			
 		}
-		case R.id.btn_preview:
+		case R.id.previewBtn:
 		{	
 			Intent intent = new Intent(this,PreviewActivity.class);
 			startActivity(intent);
