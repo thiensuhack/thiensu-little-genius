@@ -18,6 +18,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.pn.littlegenius.R;
+import com.pn.littlegenius.R.drawable;
+import com.pn.littlegenius.R.id;
+import com.pn.littlegenius.R.layout;
 import com.pn.littlegenius.adapters.MyFragmentAdapter;
 import com.pn.littlegenius.dialogs.LoginDialog;
 import com.pn.littlegenius.utils.CommonUtils;

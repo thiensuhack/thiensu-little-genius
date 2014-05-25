@@ -6,33 +6,64 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="16" />
-	<uses-permission android:name="android.permission.INTERNET"/>
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
-	    android:icon="@drawable/logo"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Black.NoTitleBar" >
         <activity
-            android:name="com.pn.littlegenius.MainActivity"
+            android:name="com.pn.littlegenius.SplashActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ProgramActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".MediaActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".TestimonialActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".KmsActivity" android:screenOrientation="portrait"></activity>
-		<activity android:name=".ContactActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".PreviewActivity" android:screenOrientation="portrait"></activity>
-		<activity android:name=".SettingActivity" android:screenOrientation="portrait"></activity>
-        </application>
+        <activity
+            android:name="com.pn.littlegenius.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ProgramActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Meta.Theme.FullScreen" >
+        </activity>
+        <activity
+            android:name=".MediaActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".TestimonialActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".KmsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ContactActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".PreviewActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SettingActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
 
 </manifest>
