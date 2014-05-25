@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pn.littlegenius.adapters.MyFragmentAdapter;
+import com.pn.littlegenius.dialogs.LoginDialog;
 import com.pn.littlegenius.utils.CommonUtils;
 import com.pn.littlegenius.utils.SlideItemData;
 
@@ -193,7 +194,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			mViewPager.setCurrentItem(next, true);
 			break;
 		case R.id.aboutBtn:
-		{
+		{			
 			Intent intent = new Intent(this,AboutActivity.class);
 			startActivity(intent);
 			finish();
@@ -223,9 +224,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		}
 		case R.id.kmsBtn:
 		{	
-			Intent intent = new Intent(this,KmsActivity.class);
-			startActivity(intent);
-			finish();
+			LoginDialog mLoginDialog=new LoginDialog(MainActivity.this);
+			mLoginDialog.show();
+//			Intent intent = new Intent(this,KmsActivity.class);
+//			startActivity(intent);
+//			finish();
 			break;			
 		}
 		case R.id.contactBtn:

@@ -10,4 +10,6 @@
 	<color name="superDarkBlue">#055485</color>
 	<color name="black">#000000</color>
 	<color name="home_background">#FDEA52</color>
+	
+	<color name="dialog_login_text_color">#F06D39</color>
 </resources>
