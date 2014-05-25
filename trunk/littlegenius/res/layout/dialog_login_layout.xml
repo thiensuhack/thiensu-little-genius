@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@android:color/transparent" >
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -31,7 +31,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/dialog_login_edittext_background" />
+                android:background="@drawable/dialog_login_edittext_background"
+                android:hint="@string/username_hint"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:singleLine="true" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,7 +56,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/dialog_login_edittext_background" />
+                android:background="@drawable/dialog_login_edittext_background"
+                android:hint="@string/password_hint"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:singleLine="true" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,7 +139,7 @@
         android:id="@+id/exitDialog"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/layout_03"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:background="@drawable/layout_03" />
 
 </RelativeLayout>

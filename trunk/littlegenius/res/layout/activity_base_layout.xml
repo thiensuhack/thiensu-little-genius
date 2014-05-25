@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightofheader"
+        layout="@layout/base_title_bar_layout" />
+
+    <LinearLayout
+        android:id="@+id/activity_base_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>
