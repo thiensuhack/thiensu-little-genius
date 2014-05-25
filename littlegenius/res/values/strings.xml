@@ -8,16 +8,18 @@
     <string name="login_title">Login</string>
     <string name="username_label">User name:</string>
     <string name="password_label">Password:</string>
+    <string name="username_hint">Input user name</string>
+    <string name="password_hint">Your passwords</string>
     <string name="login_btn">Login</string>
     <string name="register_btn">Register</string>
     
     <string name="txt_user">Họ tên</string>
     <string name="txt_pass">Mật khẩu</string>
     <string name="str_login">Đăng nhập</string>
-    <string name="str_username">Họ tên</string>
-    <string name="str_email">Email</string>
-    <string name="str_phone">Điện thoại</string>
-    <string name="str_birthday">Ngày sinh</string>
+    <string name="str_username">Name(*)</string>
+    <string name="str_email">Email(*)</string>
+    <string name="str_phone">Mobile(*)</string>
+    <string name="str_birthday">Date of birthday(*)</string>
     <string name="str_send">Gửi</string>
     
     <string name="kms_menu_camera_btn">Camera</string>

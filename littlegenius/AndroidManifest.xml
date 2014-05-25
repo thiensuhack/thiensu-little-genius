@@ -33,7 +33,8 @@
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Meta.Theme.FullScreen" >
         </activity>
         <activity
             android:name=".ProgramActivity"
@@ -50,15 +51,18 @@
         </activity>
         <activity
             android:name=".KmsActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Meta.Theme.FullScreen"  >
         </activity>
         <activity
             android:name=".ContactActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait" 
+            android:theme="@style/Meta.Theme.FullScreen" >
         </activity>
         <activity
             android:name=".PreviewActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@style/Meta.Theme.FullScreen"  >
         </activity>
         <activity
             android:name=".SettingActivity"

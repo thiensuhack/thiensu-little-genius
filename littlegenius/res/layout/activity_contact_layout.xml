@@ -4,13 +4,6 @@
     android:layout_height="fill_parent"
     android:background="#1fc0e9"
     android:orientation="vertical" >
-
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/heightofheader"
-        android:layout_gravity="bottom"
-        layout="@layout/header" />
-
     <TextView
         android:id="@+id/txt_content1"
         android:layout_width="match_parent"

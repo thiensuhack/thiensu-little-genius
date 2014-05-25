@@ -18,10 +18,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.pn.littlegenius.R;
-import com.pn.littlegenius.R.drawable;
-import com.pn.littlegenius.R.id;
-import com.pn.littlegenius.R.layout;
 import com.pn.littlegenius.adapters.MyFragmentAdapter;
 import com.pn.littlegenius.dialogs.LoginDialog;
 import com.pn.littlegenius.utils.CommonUtils;
@@ -198,57 +194,38 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			mViewPager.setCurrentItem(next, true);
 			break;
 		case R.id.aboutBtn:
-		{			
 			Intent intent = new Intent(this,AboutActivity.class);
 			startActivity(intent);
 			finish();
 			break;
-		}
 		case R.id.programBtn:
-		{	
-			Intent intent = new Intent(this,ProgramActivity.class);
-			intent.putExtra(CommonUtils.PROGRAM_PARAM, CommonUtils.URL_PROGRAM);
-			startActivity(intent);
-			finish();
+			Intent intent1 = new Intent(this,ProgramActivity.class);
+			intent1.putExtra(CommonUtils.PROGRAM_PARAM, CommonUtils.URL_PROGRAM);
+			startActivity(intent1);
 			break;			
-		}
 		case R.id.btn_media:
-		{	
-			Intent intent = new Intent(this,MediaActivity.class);
-			startActivity(intent);
-			finish();
+			Intent intent2 = new Intent(this,MediaActivity.class);
+			startActivity(intent2);
 			break;			
-		}
 		case R.id.testimonialsBtn:
-		{	
-			Intent intent = new Intent(this,TestimonialActivity.class);
-			startActivity(intent);
-			finish();
+			Intent intent3 = new Intent(this,TestimonialActivity.class);
+			startActivity(intent3);
 			break;			
-		}
 		case R.id.kmsBtn:
-		{	
 			LoginDialog mLoginDialog=new LoginDialog(MainActivity.this);
 			mLoginDialog.show();
 //			Intent intent = new Intent(this,KmsActivity.class);
 //			startActivity(intent);
 //			finish();
 			break;			
-		}
 		case R.id.contactBtn:
-		{	
-			Intent intent = new Intent(this,ContactActivity.class);
-			startActivity(intent);
-			finish();
+			Intent intent4 = new Intent(this,ContactActivity.class);
+			startActivity(intent4);
 			break;			
-		}
 		case R.id.previewBtn:
-		{	
-			Intent intent = new Intent(this,PreviewActivity.class);
-			startActivity(intent);
-			finish();
+			Intent intent5 = new Intent(this,PreviewActivity.class);
+			startActivity(intent5);
 			break;			
-		}
 		default:
 			break;
 		}

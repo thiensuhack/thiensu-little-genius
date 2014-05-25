@@ -15,7 +15,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,8 +23,6 @@ import com.pn.littlegenius.utils.CommonUtils;
 public class ProgramActivity extends BaseSlidingActivity implements OnClickListener, OnTouchListener {
 	private TextView txt_content1;
 	private TextView txt_content;
-	private View mHomeBtn;
-	private View mSettingBtn;
 	private WebView webView;
 	private WebViewClient client;
 	private LinearLayout ll_Title;
@@ -34,17 +31,13 @@ public class ProgramActivity extends BaseSlidingActivity implements OnClickListe
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setMetaContentView(R.layout.activity_program_layout);
+		setMainContentView(R.layout.activity_program_layout);
 		initView();
 		initListener();
 	}
 	private void initView() {
 		txt_content1 = (TextView)findViewById(R.id.txt_content1);
 		txt_content1.setTextColor(Color.BLACK);
-
-		mHomeBtn = (LinearLayout)findViewById(R.id.homeBtn);
-		
-		mSettingBtn = (ImageView)findViewById(R.id.homeSlidingBtn);
 		
 		webView = (WebView)findViewById(R.id.wb_webview);
 		webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
@@ -74,8 +67,7 @@ public class ProgramActivity extends BaseSlidingActivity implements OnClickListe
 		}
 	}
 	private void initListener() {
-		mSettingBtn.setOnClickListener(this);
-		mHomeBtn.setOnClickListener(this);
+		
 		webView.setOnTouchListener(this);
 		client = new WebViewClient(){ 
 			@Override public boolean shouldOverrideUrlLoading(WebView view, String url) { 
@@ -108,17 +100,8 @@ public class ProgramActivity extends BaseSlidingActivity implements OnClickListe
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.homeBtn:
-//			Intent intent = new Intent(this,MainActivity.class);
-//			startActivity(intent);
-			finish();
-			break;
-		case R.id.btn_setting:
-//			Intent intent = new Intent(this,SettingActivity.class);
-//			startActivity(intent);
-//			finish();
-			break;
 		default:
+			super.onClick(v);
 			break;
 		}
 	}
