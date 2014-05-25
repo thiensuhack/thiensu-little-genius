@@ -33,7 +33,7 @@ public class BaseSlidingActivity extends MetaSlidingFragmentActivity {
 
 	private void initBaseView() {
 		mContentLayout = (LinearLayout) findViewById(R.id.activity_base_content);
-		mHomeBtn = (LinearLayout) findViewById(R.id.homeBtn);
+		mHomeBtn = (ImageView) findViewById(R.id.homeBtn);
 		mSettingBtn = (ImageView) findViewById(R.id.homeSlidingBtn);
 	}
 	private void initBaseListener(){
@@ -51,7 +51,8 @@ public class BaseSlidingActivity extends MetaSlidingFragmentActivity {
 //			startActivity(intent);
 			finish();
 			break;
-		case R.id.btn_setting:
+		case R.id.homeSlidingBtn:
+			showMenu();
 //			Intent intent = new Intent(this,SettingActivity.class);
 //			startActivity(intent);
 //			finish();
