@@ -16,8 +16,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.array;
-import android.os.AsyncTask;
 import android.util.Log;
 
 public class CommonUtils{
@@ -60,10 +58,10 @@ public class CommonUtils{
 		            Log.e("IOException", e4.toString());
 		            e4.printStackTrace();
 		        } catch (ParseException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 		}
@@ -100,10 +98,10 @@ public class CommonUtils{
 		            Log.e("IOException", e4.toString());
 		            e4.printStackTrace();
 		        } catch (ParseException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 		}

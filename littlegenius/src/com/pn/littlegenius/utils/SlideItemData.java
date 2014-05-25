@@ -1,17 +1,16 @@
 package com.pn.littlegenius.utils;
 
-/** This is just a simple class for holding data that is used to render our custom view */
 public class SlideItemData {
-    private int mBackgroundColor;
-    private String mText;
+    public int mImage;
+    public String mText;
 
     public SlideItemData(int backgroundColor, String text) {
-        mBackgroundColor = backgroundColor;
+        mImage = backgroundColor;
         mText = text;
     }
 
     public int getBackgroundColor() {
-        return mBackgroundColor;
+        return mImage;
     }
 
     public String getText() {
