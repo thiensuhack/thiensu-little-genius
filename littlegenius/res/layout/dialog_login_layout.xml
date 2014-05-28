@@ -74,7 +74,7 @@
             android:paddingRight="5dp" >
 
             <LinearLayout
-                android:id="@+id/programBtn"
+                android:id="@+id/loginBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -97,7 +97,7 @@
                 android:layout_height="match_parent" />
 
             <LinearLayout
-                android:id="@+id/programBtn"
+                android:id="@+id/registerBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
