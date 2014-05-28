@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.pn.littlegenius.adapters.MyFragmentAdapter;
 import com.pn.littlegenius.dialogs.LoginDialog;
+import com.pn.littlegenius.dialogs.RegisterDialog;
 import com.pn.littlegenius.utils.CommonUtils;
 import com.pn.littlegenius.utils.SlideItemData;
 
@@ -43,7 +44,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	public interface DoAction{
 		public void DissmissDialog();
 	}
-	private DoAction doAction = null;
+	private DoAction mDoAction = null;
 	
 	Timer _timer = null;
 	int timeDelay = 2000;
@@ -112,14 +113,15 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
 		mData.add(new SlideItemData(R.drawable.easing_slider_21, ""));
 		
-		doAction=new DoAction() {
+		mDoAction=new DoAction() {
 			@Override
 			public void DissmissDialog() {
+				showRegisterDialog();
 			}
 		};
 		
 		mViewPager=(ViewPager)findViewById(R.id.slideViewPager);
-		mSlideAdapter=new MyFragmentAdapter(getSupportFragmentManager(), mData, doAction);
+		mSlideAdapter=new MyFragmentAdapter(getSupportFragmentManager(), mData, mDoAction);
 		mViewPager.setAdapter(mSlideAdapter);
 		
 		mPreviousBtn=(ImageView)findViewById(R.id.previousBtn);
@@ -212,8 +214,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			startActivity(intent3);
 			break;			
 		case R.id.kmsBtn:
-			LoginDialog mLoginDialog=new LoginDialog(MainActivity.this);
-			mLoginDialog.show();
+			showLoginDialog();
 //			Intent intent = new Intent(this,KmsActivity.class);
 //			startActivity(intent);
 //			finish();
@@ -229,5 +230,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		default:
 			break;
 		}
+	}
+
+	private void showLoginDialog() {
+		LoginDialog mLoginDialog=new LoginDialog(MainActivity.this,mDoAction);
+		mLoginDialog.show();
+	}
+	private void showRegisterDialog(){
+		RegisterDialog mRegisterDialog=new RegisterDialog(MainActivity.this);
+		mRegisterDialog.show();
 	}
 }
