@@ -5,20 +5,45 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <!-- kms menu -->
+    <string name="login_title">Login</string>
+    <string name="register_title">Register</string>
+    <string name="username_label">User name:</string>
+    <string name="password_label">Password:</string>
+    <string name="username_hint">Input user name</string>
+    <string name="password_hint">Your passwords</string>
+    <string name="login_btn">Login</string>
+    <string name="register_btn">Register</string>
+    
+    <string name="name_label">Name:</string>
+    <string name="name_hint">Input your name</string>
+    <string name="email_label">Email:</string>
+    <string name="email_hint">Input your email:</string>
+    <string name="phone_label">Phone:</string>
+    <string name="phone_hint">Input your phone:</string>
+    <string name="address_label">Address:</string>
+    <string name="address_hint">Input your address</string>
+    
+    <string name="txt_user">Họ tên</string>
+    <string name="txt_pass">Mật khẩu</string>
+    <string name="str_login">Đăng nhập</string>
+    <string name="str_username">Name(*)</string>
+    <string name="str_email">Email(*)</string>
+    <string name="str_phone">Mobile(*)</string>
+    <string name="str_birthday">Date of birthday(*)</string>
+    <string name="str_send">Gửi</string>
+    
     <string name="kms_menu_camera_btn">Camera</string>
     <string name="kms_menu_video_btn">Video</string>
     <string name="kms_menu_courses_btn">Courses</string>
     <string name="kms_menu_info_btn">Info</string>
-    
     <string name="versionNameLabel">Phiên bản</string>
     <string name="home_menu_program_btn">PROGRAM</string>
     <string name="home_menu_testimonials_btn">TESTIMONIALS</string>
     <string name="home_menu_preview_btn">PREVIEW</string>
     <string name="home_menu_kms_btn">KMS</string>
-    <string name="home_menu_contact_btn">CONTACT</string>  
-    
-    
+    <string name="home_menu_contact_btn">CONTACT</string>
+
     <!-- menu home bar -->
-    <string name="home_menu_about_btn">About</string>
+    <string name="home_menu_about_btn">ABOUT US</string>
+
 </resources>
