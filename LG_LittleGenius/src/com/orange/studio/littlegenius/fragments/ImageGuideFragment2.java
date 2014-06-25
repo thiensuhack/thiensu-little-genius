@@ -44,7 +44,7 @@ public class ImageGuideFragment2 extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		try {
-			doAction.DissmissDialog();
+			//doAction.DissmissDialog();
 		} catch (Exception e) {
 		}
 	}

@@ -20,7 +20,10 @@ import com.orange.studio.littlegenius.fragments.AboutFragment;
 import com.orange.studio.littlegenius.fragments.HomeFragment;
 import com.orange.studio.littlegenius.fragments.KMSFragment;
 import com.orange.studio.littlegenius.fragments.PreviewFragment;
+import com.orange.studio.littlegenius.fragments.ProgramFragment;
+import com.orange.studio.littlegenius.fragments.TestimonialFragment;
 import com.orange.studio.littlegenius.objects.SlidingMenuItem;
+import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemClickListener{
@@ -45,7 +48,7 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		setMetaContentView(R.layout.activity_base_layout);
 		initView();
 		initListener();
-		selectItem(0);
+		selectItem(0,false);
 		
 	}
 	private void initView(){
@@ -82,7 +85,7 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		mListViewMenu.setAdapter(mMenuAdapter);
 		mMenuAdapter.updateFriendList(mListItem);		
 	}
-	public void selectItem(int position) {
+	public void selectItem(int position, boolean isToggleMenu) {
 		Fragment fragment = null;
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		String title="";
@@ -91,6 +94,16 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			title="HOME";
 			fragment = HomeFragment.instantiate(getApplicationContext(),
 					HomeFragment.class.getName());
+			break;
+		case 1:
+			title="PROGRAM";
+			fragment = ProgramFragment.instantiate(getApplicationContext(),
+					ProgramFragment.class.getName());
+			break;
+		case 2:
+			title="TESTIMONIALS";
+			fragment = TestimonialFragment.instantiate(getApplicationContext(),
+					TestimonialFragment.class.getName());
 			break;
 		case 3:
 			title="PREVIEW";
@@ -112,7 +125,9 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		}
 		setViewTitle(title);
 		if (fragment != null) {
-			toggle();
+			if(isToggleMenu){
+				toggle();
+			}
 			fragmentManager.beginTransaction()
 					.replace(R.id.mainFrameLayout, fragment).commit();
 		}
@@ -136,25 +151,26 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		if(item!=null){
 			switch (item.id) {
 			case 111:
-				selectItem(0);
+				selectItem(0,true);
 				break;
 			case 112:
-				selectItem(1);
+				getIntent().putExtra(LG_CommonUtils.PROGRAM_PARAM, LG_CommonUtils.URL_PROGRAM);
+				selectItem(1,true);
 				break;
 			case 113:
-				selectItem(2);
+				selectItem(2,true);
 				break;
 			case 114:
-				selectItem(3);
+				selectItem(3,true);
 				break;
 			case 115:
-				selectItem(4);
+				selectItem(4,true);
 				break;
 			case 116:
-				selectItem(5);
+				selectItem(5,true);
 				break;
 			case 117:
-				selectItem(6);
+				selectItem(6,true);
 				break;
 			default:
 				break;

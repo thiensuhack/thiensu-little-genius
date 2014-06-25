@@ -98,24 +98,26 @@ public class HomeFragment extends BaseFragment {
 			next=(next>mViewPager.getAdapter().getCount()-1?0: next);
 			mViewPager.setCurrentItem(next, true);
 			break;
-		case R.id.aboutBtn:
-			mActivity.selectItem(6);
-			break;
+		
 		case R.id.programBtn:
-			mActivity.selectItem(1);
+			getActivity().getIntent().putExtra(LG_CommonUtils.PROGRAM_PARAM, LG_CommonUtils.URL_PROGRAM);
+			mActivity.selectItem(1,false);
 			break;			
 		case R.id.testimonialsBtn:
-			mActivity.selectItem(2);
-			break;			
+			mActivity.selectItem(2,false);
+			break;		
+		case R.id.previewBtn:
+			mActivity.selectItem(3,false);
+			break;
 		case R.id.kmsBtn:
 			showLoginDialog();
 			break;			
 		case R.id.contactBtn:
-			mActivity.selectItem(5);
+			mActivity.selectItem(5,false);
 			break;			
-		case R.id.previewBtn:
-			mActivity.selectItem(3);
-			break;			
+		case R.id.aboutBtn:
+			mActivity.selectItem(6,false);
+			break;
 		default:
 			break;
 		}

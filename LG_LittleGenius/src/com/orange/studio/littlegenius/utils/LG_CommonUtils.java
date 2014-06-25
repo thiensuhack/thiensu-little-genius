@@ -26,7 +26,7 @@ import android.util.Log;
 
 public class LG_CommonUtils {
 	public static String Title = "";
-	  public static String Content = "";
+	public static String Content = "";
 	  public static String Data = "";
 	  public static ArrayList<String> listData;
 	  
