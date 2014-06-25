@@ -14,7 +14,7 @@
         android:orientation="horizontal" >
 
         <LinearLayout
-            android:id="@+id/programBtn"
+            android:id="@+id/cameraBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,7 +33,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/testimonialsBtn"
+            android:id="@+id/videoBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -52,7 +52,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/previewBtn"
+            android:id="@+id/courseBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -71,7 +71,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/previewBtn"
+            android:id="@+id/infoBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
