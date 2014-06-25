@@ -16,4 +16,14 @@
         android:layout_height="wrap_content"
         layout="@layout/kms_menu_footer_layout" />
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:background="@drawable/kms_columns_footer" />
+    </LinearLayout>
+
 </LinearLayout>

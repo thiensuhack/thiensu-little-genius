@@ -6,6 +6,8 @@
 	<color name="brightGray">#f1f1f1</color>
 	<color name="darkGray">#2D2D2D</color>
 	<color name="orange">#ff931f</color>
+	<color name="bright_orange">#FB8733</color>
+	<color name="dark_orange">#EE6300</color>
 	<color name="blue">#0181D8</color>
 	<color name="darkBlue">#086A91</color>
 	<color name="superDarkBlue">#055485</color>
