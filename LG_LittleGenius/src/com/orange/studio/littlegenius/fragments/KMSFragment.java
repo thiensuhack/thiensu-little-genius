@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 
 import com.orange.studio.littlegenius.R;
 
-public class HomeFragment extends BaseFragment {
+public class KMSFragment extends BaseFragment {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
-		
     	if (mView == null) {
-			mView = inflater.inflate(R.layout.fragment_home_layout, container,
+			mView = inflater.inflate(R.layout.fragment_kms_layout, container,
 					false);
 			initView();
 			initListener();
@@ -23,20 +22,10 @@ public class HomeFragment extends BaseFragment {
 		return mView;
     }
 	@Override
-	public void onClick(View v) {
-		int id=v.getId();
-		switch (id) {
-		case R.id.aboutBtn:
-			break;
-		default:
-			super.onClick(v);
-			break;
-		}				
-	}
-	@Override
 	public void initView() {
 		
 	}
+
 	@Override
 	public void initListener() {
 		

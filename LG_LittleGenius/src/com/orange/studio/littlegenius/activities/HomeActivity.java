@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 import com.meta.gui.activity.MetaFragmentActivity;
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.fragments.KMSFragment;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class HomeActivity extends MetaFragmentActivity {
@@ -23,7 +24,7 @@ public class HomeActivity extends MetaFragmentActivity {
 //		sm.setFadeDegree(0.35f);
 //		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
 //		enableDrawerButton(true);
-		setMetaContentView(R.layout.activity_home_layout);
+		setMetaContentView(R.layout.fragment_home_layout);
 		mAboutBtn=(LinearLayout)findViewById(R.id.aboutBtn);
 		mAboutBtn.setOnClickListener(this);
 	}
@@ -32,7 +33,7 @@ public class HomeActivity extends MetaFragmentActivity {
 		int id=v.getId();
 		switch (id) {
 		case R.id.aboutBtn:
-			Intent intent=new Intent(getApplicationContext(), KMSActivity.class);
+			Intent intent=new Intent(getApplicationContext(), KMSFragment.class);
 			startActivity(intent);
 			break;
 		default:
