@@ -23,10 +23,10 @@
 
             <ImageView
                 android:id="@+id/menuIcon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:minHeight="30sp"
-                android:paddingLeft="10dp"
+                android:layout_margin="5dp"
                 android:src="@drawable/ic_launcher" />
 
             <TextView
@@ -35,7 +35,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="12sp" />
+                android:textSize="17sp"
+                android:text="HOME"
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 

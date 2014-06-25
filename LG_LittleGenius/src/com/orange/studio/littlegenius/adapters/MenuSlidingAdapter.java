@@ -49,7 +49,7 @@ public class MenuSlidingAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int arg0) {
+	public SlidingMenuItem getItem(int arg0) {
 		if (mData != null) {
 			return mData.get(arg0);
 		}
