@@ -34,6 +34,8 @@ public class HomeFragment extends BaseFragment {
 	private View mContactBtn;
 	private View mPreviewBtn;
 	private TextView mScheduleTxt;
+	private TextView mScheduleTxt1;
+	private TextView mScheduleTxt2;
 	
 	private  ViewPager mViewPager=null;
 	private MyFragmentAdapter mSlideAdapter=null;
@@ -74,11 +76,29 @@ public class HomeFragment extends BaseFragment {
 
 			if ( content != null )
 			{
-				String str_content ="<b><font color=\"#0181D8\" size=\"35px\">Class Schedule : </font></b><br><ul>";
-				for (int i = 0; i < content.size(); i++) {
-					str_content +=  "<li><font color=\"#0181D8\" size=\"30px\">" + content.get(i) + "</font></li><br>";
+//				String str_content ="<b><font color=\"#0181D8\" size=\"35px\">Class Schedule : </font></b><br><ul>";
+//				for (int i = 0; i < content.size(); i++) {
+//					str_content +=  "<li><font color=\"#0181D8\" size=\"30px\">" + content.get(i) + "</font></li><br>";
+//				}
+//				str_content += "</ul><font color=\"#0181D8\" size=\"30px\">Classes are available from Thurdays to Sundays.</font>";
+				
+				String str_content1 ="<b><font color=\"#0181D8\" size=\"35px\">Class Schedule : </font></b><br>";
+				for (int i = 0; i < (content.size()/2); i++) {
+					str_content1 +=  "<font color=\"#0181D8\" size=\"30px\">" + content.get(i) + "</font>";
 				}
-				str_content += "</ul><font color=\"#0181D8\" size=\"30px\">Classes are available from Thurdays to Sundays.</font>";
+				str_content1 += "";
+				
+				mScheduleTxt1.setText(Html.fromHtml(str_content1));
+				
+				
+				String str_content2 ="";
+				for (int i = (content.size()/2); i < content.size(); i++) {
+					str_content2 +=  "<font color=\"#0181D8\" size=\"30px\">" + content.get(i) + "</font>";
+				}
+				str_content2 += "";
+				mScheduleTxt2.setText(Html.fromHtml(str_content2));
+				
+				String str_content="<font color=\"#0181D8\" size=\"30px\">Classes are available from Thurdays to Sundays.</font>";
 				mScheduleTxt.setText(Html.fromHtml(str_content));
 			}
 		}
@@ -148,6 +168,11 @@ public class HomeFragment extends BaseFragment {
 		mScheduleTxt = (TextView)mView.findViewById(R.id.home_text);
 		mScheduleTxt.setTextColor(Color.WHITE);
 
+		mScheduleTxt1 = (TextView)mView.findViewById(R.id.homeTxtCol1);
+		mScheduleTxt1.setTextColor(Color.WHITE);
+		mScheduleTxt2 = (TextView)mView.findViewById(R.id.homeTxtCol2);
+		mScheduleTxt2.setTextColor(Color.WHITE);
+		
 		mAboutBtn = (LinearLayout)mView.findViewById(R.id.aboutBtn);	
 		mProgramBtn = (LinearLayout)mView.findViewById(R.id.programBtn);
 		mTestimonialBtn = (LinearLayout)mView.findViewById(R.id.testimonialsBtn);

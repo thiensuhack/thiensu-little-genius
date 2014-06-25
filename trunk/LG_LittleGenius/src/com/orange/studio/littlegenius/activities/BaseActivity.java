@@ -17,6 +17,7 @@ import com.meta.gui.activity.MetaSlidingFragmentActivity;
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.MenuSlidingAdapter;
 import com.orange.studio.littlegenius.fragments.AboutFragment;
+import com.orange.studio.littlegenius.fragments.ContactFragment;
 import com.orange.studio.littlegenius.fragments.HomeFragment;
 import com.orange.studio.littlegenius.fragments.KMSFragment;
 import com.orange.studio.littlegenius.fragments.PreviewFragment;
@@ -114,7 +115,12 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			title="KMS";
 			fragment = KMSFragment.instantiate(getApplicationContext(),
 					KMSFragment.class.getName());
-			break;		
+			break;
+		case 5:
+			title="CONTACT";
+			fragment = ContactFragment.instantiate(getApplicationContext(),
+					ContactFragment.class.getName());
+			break;
 		case 6:
 			title="ABOUT";
 			fragment = AboutFragment.instantiate(getApplicationContext(),
@@ -123,7 +129,9 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		default:
 			break;
 		}
-		setViewTitle(title);
+		if(title!=null && title.trim().length()>0){
+			setViewTitle(title);
+		}
 		if (fragment != null) {
 			if(isToggleMenu){
 				toggle();
