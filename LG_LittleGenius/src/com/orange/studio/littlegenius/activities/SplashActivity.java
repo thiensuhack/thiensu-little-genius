@@ -41,7 +41,7 @@ public class SplashActivity extends Activity {
 		}
 	}
 	private void go2HomePage(){
-		Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
+		Intent intent=new Intent(getApplicationContext(),BaseActivity.class);
 		startActivity(intent);
 		finish();
 	}
