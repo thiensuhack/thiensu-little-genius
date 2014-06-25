@@ -36,7 +36,7 @@
             android:theme="@style/Meta.Theme.FullScreen" >
         </activity>
         <activity
-            android:name="com.orange.studio.littlegenius.activities.KMSActivity"
+            android:name="com.orange.studio.littlegenius.fragments.KMSFragment"
             android:label="@string/app_name"
             android:theme="@style/Meta.Theme.FullScreen" >
         </activity>
