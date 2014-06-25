@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.orange.studio.littlegenius.adapters.MenuSlidingAdapter;
 import com.orange.studio.littlegenius.fragments.AboutFragment;
 import com.orange.studio.littlegenius.fragments.HomeFragment;
 import com.orange.studio.littlegenius.fragments.KMSFragment;
+import com.orange.studio.littlegenius.fragments.PreviewFragment;
 import com.orange.studio.littlegenius.objects.SlidingMenuItem;
 import com.slidingmenu.lib.SlidingMenu;
 
@@ -27,7 +29,7 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 	private ListView mListViewMenu = null;
 	private MenuSlidingAdapter mMenuAdapter=null;
 	private TextView mViewTitle=null;
-	
+	private ImageView mHomeMenuDrawer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,9 +49,11 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		
 	}
 	private void initView(){
+		mHomeMenuDrawer=(ImageView)findViewById(R.id.homeSlidingBtn);
 		mViewTitle=(TextView)findViewById(R.id.viewTitle);
 	}
 	private void initListener(){
+		mHomeMenuDrawer.setOnClickListener(this);
 		mListViewMenu.setOnItemClickListener(this);
 	}
 	private void setViewTitle(String title){
@@ -93,8 +97,13 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			fragment = KMSFragment.instantiate(getApplicationContext(),
 					KMSFragment.class.getName());
 			break;
+		case 3:
+			title="PREVIEW";
+			fragment = PreviewFragment.instantiate(getApplicationContext(),
+					PreviewFragment.class.getName());
+			break;
 		case 6:
-			title="KMS";
+			title="ABOUT";
 			fragment = AboutFragment.instantiate(getApplicationContext(),
 					AboutFragment.class.getName());
 			break;
@@ -106,6 +115,19 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			toggle();
 			fragmentManager.beginTransaction()
 					.replace(R.id.mainFrameLayout, fragment).commit();
+		}
+	}
+	@Override
+	public void onClick(View v) {
+		int id=v.getId();
+		switch (id) {
+		case R.id.homeSlidingBtn:
+			toggle();
+			break;
+
+		default:
+			super.onClick(v);
+			break;
 		}
 	}
 	@Override
