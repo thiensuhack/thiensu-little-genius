@@ -6,9 +6,7 @@
     android:orientation="vertical" >
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="220dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" >
+        android:layout_height="220dp">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/slideViewPager"
@@ -18,7 +16,7 @@
         <ImageView
             android:id="@+id/previousBtn"
             android:layout_width="15dp"
-            android:layout_height="25dp"
+            android:layout_height="35dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
@@ -27,7 +25,7 @@
         <ImageView
             android:id="@+id/nextBtn"
             android:layout_width="15dp"
-            android:layout_height="25dp"
+            android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"

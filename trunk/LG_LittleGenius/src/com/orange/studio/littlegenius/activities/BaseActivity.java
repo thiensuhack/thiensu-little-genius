@@ -82,7 +82,7 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		mListViewMenu.setAdapter(mMenuAdapter);
 		mMenuAdapter.updateFriendList(mListItem);		
 	}
-	private void selectItem(int position) {
+	public void selectItem(int position) {
 		Fragment fragment = null;
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		String title="";
@@ -92,16 +92,16 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			fragment = HomeFragment.instantiate(getApplicationContext(),
 					HomeFragment.class.getName());
 			break;
-		case 4:
-			title="KMS";
-			fragment = KMSFragment.instantiate(getApplicationContext(),
-					KMSFragment.class.getName());
-			break;
 		case 3:
 			title="PREVIEW";
 			fragment = PreviewFragment.instantiate(getApplicationContext(),
 					PreviewFragment.class.getName());
 			break;
+		case 4:
+			title="KMS";
+			fragment = KMSFragment.instantiate(getApplicationContext(),
+					KMSFragment.class.getName());
+			break;		
 		case 6:
 			title="ABOUT";
 			fragment = AboutFragment.instantiate(getApplicationContext(),
