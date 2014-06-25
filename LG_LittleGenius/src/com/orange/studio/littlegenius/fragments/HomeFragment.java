@@ -85,7 +85,8 @@ public class HomeFragment extends BaseFragment {
 	}
 
 	@Override
-	public void onClick(View gId) {		
+	public void onClick(View gId) {	
+		BaseActivity mActivity=(BaseActivity)getActivity();
 		switch (gId.getId()) {
 		case R.id.previousBtn:
 			int prev=mViewPager.getCurrentItem()-1;
@@ -98,17 +99,22 @@ public class HomeFragment extends BaseFragment {
 			mViewPager.setCurrentItem(next, true);
 			break;
 		case R.id.aboutBtn:
+			mActivity.selectItem(6);
 			break;
 		case R.id.programBtn:
+			mActivity.selectItem(1);
 			break;			
 		case R.id.testimonialsBtn:
+			mActivity.selectItem(2);
 			break;			
 		case R.id.kmsBtn:
 			showLoginDialog();
 			break;			
 		case R.id.contactBtn:
+			mActivity.selectItem(5);
 			break;			
 		case R.id.previewBtn:
+			mActivity.selectItem(3);
 			break;			
 		default:
 			break;
@@ -137,7 +143,6 @@ public class HomeFragment extends BaseFragment {
 		mPreviousBtn=(ImageView)mView.findViewById(R.id.previousBtn);
 		mNextBtn=(ImageView)mView.findViewById(R.id.nextBtn);
 
-		//	   	add textview
 		mScheduleTxt = (TextView)mView.findViewById(R.id.home_text);
 		mScheduleTxt.setTextColor(Color.WHITE);
 
