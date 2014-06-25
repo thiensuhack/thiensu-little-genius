@@ -6,7 +6,9 @@
     android:orientation="vertical" >
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="220dp" >
+        android:layout_height="220dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" >
 
         <android.support.v4.view.ViewPager
             android:id="@+id/slideViewPager"
@@ -15,19 +17,19 @@
 
         <ImageView
             android:id="@+id/previousBtn"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/ic_launcher" />
+            android:background="@drawable/ic_left" />
 
         <ImageView
             android:id="@+id/nextBtn"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/ic_launcher" />
+            android:background="@drawable/ic_right" />
     </RelativeLayout>
 
     <ScrollView
@@ -47,6 +49,7 @@
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/menu_home_footer_layout" />
+        layout="@layout/menu_home_footer_layout"
+        android:layout_marginBottom="10dp" />
 
 </LinearLayout>

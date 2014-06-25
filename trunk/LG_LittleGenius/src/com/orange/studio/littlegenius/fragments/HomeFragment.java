@@ -131,7 +131,7 @@ public class HomeFragment extends BaseFragment {
 		};
 		
 		mViewPager=(ViewPager)mView.findViewById(R.id.slideViewPager);
-		mSlideAdapter=new MyFragmentAdapter(((BaseActivity)getActivity()).getSupportFragmentManager(), mData, mDoAction);
+		mSlideAdapter=new MyFragmentAdapter(getChildFragmentManager(), mData, mDoAction);
 		mViewPager.setAdapter(mSlideAdapter);
 		
 		mPreviousBtn=(ImageView)mView.findViewById(R.id.previousBtn);
