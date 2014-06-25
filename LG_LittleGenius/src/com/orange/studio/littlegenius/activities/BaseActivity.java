@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.meta.gui.activity.MetaSlidingFragmentActivity;
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.MenuSlidingAdapter;
+import com.orange.studio.littlegenius.fragments.AboutFragment;
 import com.orange.studio.littlegenius.fragments.HomeFragment;
 import com.orange.studio.littlegenius.fragments.KMSFragment;
 import com.orange.studio.littlegenius.objects.SlidingMenuItem;
@@ -92,11 +93,17 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			fragment = KMSFragment.instantiate(getApplicationContext(),
 					KMSFragment.class.getName());
 			break;
+		case 6:
+			title="KMS";
+			fragment = AboutFragment.instantiate(getApplicationContext(),
+					AboutFragment.class.getName());
+			break;
 		default:
 			break;
 		}
 		setViewTitle(title);
 		if (fragment != null) {
+			toggle();
 			fragmentManager.beginTransaction()
 					.replace(R.id.mainFrameLayout, fragment).commit();
 		}
