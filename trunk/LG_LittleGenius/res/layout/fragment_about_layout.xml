@@ -10,11 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:textSize="11pt"
-        android:textStyle="bold" />
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/brightRed" />
 
     <WebView
-        android:id="@+id/wb_webview"
+        android:id="@+id/webViewMainContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

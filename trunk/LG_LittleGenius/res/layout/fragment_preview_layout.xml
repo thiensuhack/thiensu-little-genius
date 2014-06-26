@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        android:textColor="@color/brightRed"
         android:textSize="11pt"
         android:textStyle="bold" />
 
@@ -23,118 +24,235 @@
             android:orientation="vertical" >
 
             <WebView
-                android:id="@+id/wb_webview"
+                android:id="@+id/webViewMainContent"
                 android:layout_width="fill_parent"
-                android:background="@color/home_background"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
-                android:layout_marginLeft="5dp" 
-                android:layout_marginRight="5dp" >                
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="3dp" >
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/blue"
+                    android:gravity="center"
+                    android:padding="10dp" >
 
                     <TextView
-                        android:id="@+id/txt_user"
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/str_username"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/str_user"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="7dp"
-                        android:background="@drawable/dialog_login_edittext_background" />
+                        android:text="@string/contact_infomation_label"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="3dp" >
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical" >
 
-                    <TextView
-                        android:layout_width="120dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/str_email"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/str_email"
-                        android:layout_width="fill_parent"
+                        <TextView
+                            android:id="@+id/txt_user"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_username"
+                            android:textColor="@color/brightRed"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/str_user"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:background="@drawable/dialog_login_edittext_background" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="7dp"
-                        android:background="@drawable/dialog_login_edittext_background" />
-                </LinearLayout>
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal" >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="3dp" >
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_email"
+                            android:textColor="@color/brightRed"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="120dp"
+                        <EditText
+                            android:id="@+id/str_email"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:background="@drawable/dialog_login_edittext_background" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/str_phone"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/str_phone"
-                        android:layout_width="fill_parent"
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_phone"
+                            android:textColor="@color/brightRed"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/str_phone"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:background="@drawable/dialog_login_edittext_background" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="7dp"
-                        android:background="@drawable/dialog_login_edittext_background" />
-                </LinearLayout>
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal" >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="3dp" >
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_birthday"
+                            android:textColor="@color/brightRed"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="120dp"
+                        <EditText
+                            android:id="@+id/str_birthday"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:background="@drawable/dialog_login_edittext_background" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/str_birthday"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/str_birthday"
-                        android:layout_width="fill_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_preferred_outlet"
+                            android:textColor="@color/brightRed"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="@string/str_hougang"
+                            android:textColor="@color/brightRed" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="7dp"
-                        android:background="@drawable/dialog_login_edittext_background" />
+                        android:layout_margin="3dp"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_preferred_timing"
+                            android:textColor="@color/brightRed"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/groupTimer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" >
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text=" 8:30 am"
+                                android:textColor="@color/brightRed" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text=" 10:00 am"
+                                android:textColor="@color/brightRed" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text=" 11:30 am"
+                                android:textColor="@color/brightRed" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text=" 13:30 am"
+                                android:textColor="@color/brightRed" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text=" 15:00 am"
+                                android:textColor="@color/brightRed" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text=" 16:30 am"
+                                android:textColor="@color/brightRed" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text=" 18:00 am"
+                                android:textColor="@color/brightRed" />
+                        </RadioGroup>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/sendDataBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
+                    android:background="@drawable/base_button_blue"
                     android:orientation="horizontal"
-                    android:background="@drawable/base_button_blue" >
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp" >
 
-                    <TextView                        
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/str_send"

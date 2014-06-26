@@ -52,8 +52,8 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 		txt_content1 = (TextView) mView.findViewById(R.id.txt_content1);
 		txt_content1.setTextColor(Color.BLACK);
 
-		webView = (WebView) mView.findViewById(R.id.wb_webview);
-		//webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
+		webView = (WebView) mView.findViewById(R.id.webViewMainContent);
+		webView.setBackgroundColor(Color.parseColor(getActivity().getString(R.color.home_background)));
 		handler = new Handler();
 		ll_Title = (LinearLayout) mView.findViewById(R.id.ll_title);
 		String url_select = getActivity().getIntent().getStringExtra(
@@ -112,7 +112,7 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 			txt_content1.setText(Html.fromHtml(title));
 			txt_content1.setTextColor(Color.WHITE);
 			webView.loadData(
-					"<div style=\'background-color:transparent;padding: 5px ;color:#ffffff'>"
+					"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"
 							+ content + "</div>", "text/html; charset=UTF-8",
 					null);
 		}

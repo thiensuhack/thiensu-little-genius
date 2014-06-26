@@ -9,11 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:textSize="11pt"
-        android:textStyle="bold" />
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/brightRed" 
+        android:text=""/>
 
     <WebView
-        android:id="@+id/wb_webview"
+        android:id="@+id/webViewMainContent"
         android:layout_width="fill_parent"
         android:background="@color/home_background"
         android:layout_height="0dp"

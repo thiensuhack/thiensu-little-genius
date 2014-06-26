@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AD_LittleGenius</string>
+    <string name="app_name">LittleGenius</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
@@ -23,6 +23,7 @@
     <string name="address_label">Address:</string>
     <string name="address_hint">Input your address</string>
     
+    <string name="contact_infomation_label">Contact Information</string>
     <string name="txt_user">Họ tên</string>
     <string name="txt_pass">Mật khẩu</string>
     <string name="str_login">Đăng nhập</string>
@@ -30,6 +31,9 @@
     <string name="str_email">Email(*)</string>
     <string name="str_phone">Mobile(*)</string>
     <string name="str_birthday">Date of birth(*)</string>
+    <string name="str_preferred_outlet">Preferred outlet :</string>
+    <string name="str_hougang">Hougang</string>
+    <string name="str_preferred_timing">Preferred Timing :</string>
     <string name="str_send">Gửi</string>
     
     <string name="kms_menu_camera_btn">Camera</string>
