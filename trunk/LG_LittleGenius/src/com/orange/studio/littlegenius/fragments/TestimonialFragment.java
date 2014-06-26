@@ -38,7 +38,7 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 		txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
 		txt_content1.setTextColor(Color.BLACK);
 		webView = (WebView)mView.findViewById(R.id.wb_webview);
-		webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
+		//webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
 		
 		String url_select = LG_CommonUtils.URL_TESTIMO;
 		HTTPRequest request = new HTTPRequest();

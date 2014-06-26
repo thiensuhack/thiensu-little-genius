@@ -16,21 +16,21 @@
 
         <ImageView
             android:id="@+id/previousBtn"
-            android:layout_width="15dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="65dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/ic_left" />
+            android:background="@drawable/br_pre"/>
 
         <ImageView
             android:id="@+id/nextBtn"
-            android:layout_width="15dp"
-            android:layout_height="35dp"
+            android:layout_width="50dp"
+            android:layout_height="65dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:background="@drawable/ic_right" />
+            android:background="@drawable/br_next" />
     </RelativeLayout>
 
     <ScrollView

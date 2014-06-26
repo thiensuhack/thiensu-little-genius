@@ -53,7 +53,7 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 		txt_content1.setTextColor(Color.BLACK);
 
 		webView = (WebView) mView.findViewById(R.id.wb_webview);
-		webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
+		//webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
 		handler = new Handler();
 		ll_Title = (LinearLayout) mView.findViewById(R.id.ll_title);
 		String url_select = getActivity().getIntent().getStringExtra(

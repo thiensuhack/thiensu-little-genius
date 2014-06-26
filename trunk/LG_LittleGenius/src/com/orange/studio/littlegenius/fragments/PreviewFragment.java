@@ -45,7 +45,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener{
 		txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
 		txt_content1.setTextColor(Color.BLACK);
 		webView = (WebView)mView.findViewById(R.id.wb_webview);
-		webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
+		//webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
 		
 		strUser = (EditText)mView.findViewById(R.id.str_user);
 		strEmail = (EditText)mView.findViewById(R.id.str_email);
