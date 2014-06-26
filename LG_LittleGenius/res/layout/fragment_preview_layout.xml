@@ -162,7 +162,7 @@
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
-                        <RadioButton
+                        <RadioButton android:id="@+id/radioHougang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="false"
@@ -214,28 +214,28 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="false"
-                                android:text=" 13:30 am"
+                                android:text=" 13:30 pm"
                                 android:textColor="@color/brightRed" />
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="false"
-                                android:text=" 15:00 am"
+                                android:text=" 15:00 pm"
                                 android:textColor="@color/brightRed" />
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="false"
-                                android:text=" 16:30 am"
+                                android:text=" 16:30 pm"
                                 android:textColor="@color/brightRed" />
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="false"
-                                android:text=" 18:00 am"
+                                android:text=" 18:00 pm"
                                 android:textColor="@color/brightRed" />
                         </RadioGroup>
                     </LinearLayout>
