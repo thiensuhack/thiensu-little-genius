@@ -69,7 +69,6 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 			String title = LG_CommonUtils.getTitle();
 			txt_content1.setText(Html.fromHtml(title));		
 			//txt_content1.setTextColor(Color.WHITE);
-			
 			webView.loadData("<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"+content+"</div>","text/html; charset=UTF-8", null);
 		}
 	}	
