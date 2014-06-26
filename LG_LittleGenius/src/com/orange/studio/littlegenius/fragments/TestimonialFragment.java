@@ -36,9 +36,9 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 	@Override
 	public void initView() {
 		txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
-		txt_content1.setTextColor(Color.BLACK);
-		webView = (WebView)mView.findViewById(R.id.wb_webview);
-		//webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
+		//txt_content1.setTextColor(Color.BLACK);
+		webView = (WebView)mView.findViewById(R.id.webViewMainContent);
+		webView.setBackgroundColor(Color.parseColor(getActivity().getString(R.color.home_background)));
 		
 		String url_select = LG_CommonUtils.URL_TESTIMO;
 		HTTPRequest request = new HTTPRequest();
@@ -59,8 +59,8 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 			String content = LG_CommonUtils.getContent();
 			String title = LG_CommonUtils.getTitle();
 			txt_content1.setText(Html.fromHtml(title));		
-			txt_content1.setTextColor(Color.WHITE);
-			webView.loadData("<div style=\'background-color:transparent;padding: 5px ;color:#ffffff'>"+content+"</div>","text/html; charset=UTF-8", null);
+			//txt_content1.setTextColor(Color.WHITE);
+			webView.loadData("<div style=\'background-color:transparent; color:#EF5535'>"+content+"</div>","text/html; charset=UTF-8", null);
 		}
 	}
 

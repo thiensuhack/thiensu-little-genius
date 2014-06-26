@@ -34,7 +34,7 @@ public class ContactFragment extends BaseFragment implements OnClickListener{
 	@Override
 	public void initView() {
 		txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
-		txt_content1.setTextColor(Color.BLACK);
+		//txt_content1.setTextColor(Color.BLACK);
 		txt_content1.setText(Html.fromHtml("<b>Liên hệ<b>"));
 		
 		txt_content = (TextView)mView.findViewById(R.id.txt_content);
