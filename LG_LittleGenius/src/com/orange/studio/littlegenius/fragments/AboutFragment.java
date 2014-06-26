@@ -46,7 +46,7 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 		txt_content1.setTextColor(Color.BLACK);
 		
 		webView = (WebView)mView.findViewById(R.id.wb_webview);
-		webView.setBackgroundColor(Color.parseColor("#1fc0e9"));
+		//webView.setBackgroundResource(R.color.home_background);
 		
 		String url_select = LG_CommonUtils.URL_ABOUT;
 		HTTPRequest request = new HTTPRequest();

@@ -66,13 +66,13 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
  	private void createMenuLeft(){
 		mListViewMenu=(ListView)sm.findViewById(R.id.menuList);
 		List<SlidingMenuItem> mListItem=new ArrayList<SlidingMenuItem>();
-		SlidingMenuItem menuHome=new SlidingMenuItem(111,"HOME");
-		SlidingMenuItem menuProgram=new SlidingMenuItem(112,"PROGRAM");
-		SlidingMenuItem menuTestimonials=new SlidingMenuItem(113,"TESTIMONIALS");
-		SlidingMenuItem menuPreview=new SlidingMenuItem(114,"PREVIEW");
+		SlidingMenuItem menuHome=new SlidingMenuItem(111,"Home");
+		SlidingMenuItem menuProgram=new SlidingMenuItem(112,"Program");
+		SlidingMenuItem menuTestimonials=new SlidingMenuItem(113,"Testimonials");
+		SlidingMenuItem menuPreview=new SlidingMenuItem(114,"Preview");
 		SlidingMenuItem menuKms=new SlidingMenuItem(115,"KMS");
-		SlidingMenuItem menuContact=new SlidingMenuItem(116,"CONTACT");
-		SlidingMenuItem menuAbout=new SlidingMenuItem(117,"ABOUT");
+		SlidingMenuItem menuContact=new SlidingMenuItem(116,"Contact");
+		SlidingMenuItem menuAbout=new SlidingMenuItem(117,"About");
 		
 		mListItem.add(menuHome);
 		mListItem.add(menuProgram);
