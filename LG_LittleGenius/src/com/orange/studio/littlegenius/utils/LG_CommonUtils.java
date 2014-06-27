@@ -6,20 +6,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,7 +30,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.orange.studio.littlegenius.objects.ResultData;
@@ -53,6 +51,22 @@ public class LG_CommonUtils {
 	  public static String URL_COURSE_PROGRAM = "http://mylittlegenius.com.vn/home/course-background/?api";
 	  public static String PROGRAM_PARAM = "program";
 	  
+	  public static boolean validateEmail(String email) {
+			Pattern pattern;
+			Matcher matcher;
+			String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+					+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+			pattern = Pattern.compile(EMAIL_PATTERN);
+			matcher = pattern.matcher(email);
+			return matcher.matches();
+
+		}
+	  public static boolean validatePhoneNumber(String phone){
+			if (phone == null || phone.equals("")|| phone.length()<10 || phone.length()>11 || !phone.matches("-?\\d+(\\.\\d+)?")) {
+				return false;
+			}
+			return true;
+	  }
 	  public static void loadData(String url)
 		{
 			String url_select = url;
@@ -152,9 +166,9 @@ public class LG_CommonUtils {
 			}
 			return result;
 		}	
-	  public static ResultData postDataServer(String url,Bundle params){
+	  public static ResultData postDataServer(String url,String _data){
 		  ResultData result=null;		
-			String data=postServer(url,params);
+			String data=postServer(url,_data);
 			if(data!=null && data.length()>0){
 				try {
 					JSONObject jb=new JSONObject(data);
@@ -168,24 +182,25 @@ public class LG_CommonUtils {
 			}
 			return result;
 		}	
-	  public static String postServer(String url,Bundle params) {
+	  public static String postServer(String url,String data) {
 			StringBuilder builder = new StringBuilder();
 			HttpClient client = new DefaultHttpClient();
 			HttpPost httpPost = new HttpPost(url);		
 						
 			try {
-				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-				List<String> listKey = new ArrayList<String>();
-
-				for (String key : params.keySet()) {
-					listKey.add(key);
-				}
-				for (String key : listKey) {
-					String value = params.getString(key);
-					nameValuePairs.add(new BasicNameValuePair(key, value));
-				}						   
-				UrlEncodedFormEntity form=new UrlEncodedFormEntity(nameValuePairs,"UTF-8");
-	            httpPost.setEntity(form);            
+//				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+//				List<String> listKey = new ArrayList<String>();
+//
+//				for (String key : params.keySet()) {
+//					listKey.add(key);
+//				}
+//				for (String key : listKey) {
+//					String value = params.getString(key);
+//					nameValuePairs.add(new BasicNameValuePair(key, value));
+//				}						   
+//				UrlEncodedFormEntity form=new UrlEncodedFormEntity(nameValuePairs,"UTF-8");
+//	            httpPost.setEntity(form);
+				httpPost.setEntity(new StringEntity(data));
 				HttpResponse response = client.execute(httpPost);
 				StatusLine statusLine = response.getStatusLine();
 				int statusCode = statusLine.getStatusCode();
