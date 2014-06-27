@@ -11,9 +11,12 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class PreviewFragment extends BaseFragment implements OnClickListener{
@@ -25,6 +28,9 @@ public class PreviewFragment extends BaseFragment implements OnClickListener{
 	private EditText strEmail;
 	private EditText strPhone;
 	private EditText strBirthday;
+	private RadioButton mHougang;
+	private RadioGroup mOptionGroup;
+	
 	private View mSendDataBtn;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,7 +57,9 @@ public class PreviewFragment extends BaseFragment implements OnClickListener{
 		strEmail = (EditText)mView.findViewById(R.id.str_email);
 		strPhone = (EditText)mView.findViewById(R.id.str_phone);
 		strBirthday   =(EditText)mView.findViewById(R.id.str_birthday);
-
+		mHougang=(RadioButton)mView.findViewById(R.id.radioHougang);
+		mOptionGroup=(RadioGroup)mView.findViewById(R.id.groupTimer);
+		
 		mSendDataBtn = (LinearLayout)mView.findViewById(R.id.sendDataBtn);
 		
 		String url_select = LG_CommonUtils.URL_PREVIEW;
@@ -93,5 +101,13 @@ public class PreviewFragment extends BaseFragment implements OnClickListener{
 			break;
 		}
 	}	
+	private class SendContactTask extends AsyncTask<Void, Void, ResultData>{
+		
+		@Override
+		protected ResultData doInBackground(Void... params) {
+			return null;
+		}
+		
+	}
 }
 
