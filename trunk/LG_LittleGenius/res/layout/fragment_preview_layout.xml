@@ -101,6 +101,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="7dp"
+                            android:inputType="textEmailAddress"
                             android:background="@drawable/dialog_login_edittext_background" />
                     </LinearLayout>
 
@@ -123,6 +124,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="7dp"
+                            android:inputType="phone"
                             android:background="@drawable/dialog_login_edittext_background" />
                     </LinearLayout>
 
@@ -145,6 +147,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="7dp"
+                            android:inputType="date"
                             android:background="@drawable/dialog_login_edittext_background" />
                     </LinearLayout>
 
