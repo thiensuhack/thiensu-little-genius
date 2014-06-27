@@ -18,6 +18,8 @@ import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -51,6 +53,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	private ListView mListTimer;
 	private ListRadioButtonAdapter mAdapter;
 	private LoadListTimerTask mLoadListTimerTask=null;
+	private boolean isHougangChecked=false;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
