@@ -7,8 +7,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
+import android.widget.Toast;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
 
 import com.orange.studio.littlegenius.R;
@@ -41,7 +45,16 @@ public class ListRadioButtonAdapter extends BaseAdapter {
 			notifyDataSetChanged();
 		}
 	}
-
+	public void updateCheckedList(int id){
+		for (int i = 0; i < mData.size(); i++) {
+			if(id == mData.get(i).id){
+				mData.get(i).isChecked=true;
+			}else{
+				mData.get(i).isChecked=false;
+			}
+		}
+		notifyDataSetChanged();
+	}
 	@Override
 	public int getCount() {
 		return mData.size();
@@ -65,21 +78,30 @@ public class ListRadioButtonAdapter extends BaseAdapter {
 		MenuViewHolder viewHolder;
 		if (convertView == null) {
 			convertView = mInflater.inflate(
-					R.layout.sliding_menu_item, parent, false);
+					R.layout.radio_button_item_row, parent, false);
 			viewHolder = new MenuViewHolder();
-			viewHolder.mName = (RadioButton) convertView
-					.findViewById(R.id.menuName);
+			viewHolder.mRadioBtn = (RadioButton) convertView
+					.findViewById(R.id.radioButton);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (MenuViewHolder) convertView.getTag();
 		}
 		RadioButtonItem item=mData.get(position);
-		viewHolder.mName.setText(item.name);
-		viewHolder.mName.setTag(item.id);
+		
+		viewHolder.mRadioBtn.setChecked(item.isChecked);
+		viewHolder.mRadioBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int id=(int)v.getTag();
+				updateCheckedList(id);
+			}
+		});
+		viewHolder.mRadioBtn.setText(item.name);
+		viewHolder.mRadioBtn.setTag(item.id);
 		return convertView;
 	}
 
 	public class MenuViewHolder {
-		public RadioButton mName;
+		public RadioButton mRadioBtn;
 	}
 }

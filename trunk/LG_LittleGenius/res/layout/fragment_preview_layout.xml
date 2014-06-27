@@ -189,11 +189,11 @@
                             android:textStyle="bold" />
 
                         <ListView
-                            android:id="@+id/menuListRadio"
+                            android:id="@+id/listViewRadio"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="250dp"
                             android:layout_gravity="start"
-                            android:background="@color/darkGray"
+                            android:background="@color/home_background"
                             android:choiceMode="singleChoice"
                             android:divider="@android:color/transparent"
                             android:dividerHeight="0dp" />
