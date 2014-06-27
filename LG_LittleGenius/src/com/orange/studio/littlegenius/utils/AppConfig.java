@@ -1,8 +1,12 @@
 package com.orange.studio.littlegenius.utils;
 
+import com.orange.studio.littlegenius.objects.UserDTO;
+
 public class AppConfig {
-	public static int DBVERSION=1;
 	
+	public static UserDTO mUser=null;
+	
+	public static int DBVERSION=1;
 	public class Cache{		
 		public static final String COMMON_NAME="Common";
 		public static final int COMMON_NUMBER=50;		

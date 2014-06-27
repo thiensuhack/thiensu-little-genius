@@ -22,6 +22,7 @@ import com.orange.studio.littlegenius.adapters.MyFragmentAdapter;
 import com.orange.studio.littlegenius.dialogs.LoginDialog;
 import com.orange.studio.littlegenius.dialogs.RegisterDialog;
 import com.orange.studio.littlegenius.objects.SlideItemData;
+import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 
@@ -130,7 +131,9 @@ public class HomeFragment extends BaseFragment {
 			mActivity.selectItem(3,false);
 			break;
 		case R.id.kmsBtn:
-			showLoginDialog();
+			if(AppConfig.mUser==null){
+				showLoginDialog();
+			}
 			break;			
 		case R.id.contactBtn:
 			mActivity.selectItem(5,false);
