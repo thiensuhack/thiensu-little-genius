@@ -5,5 +5,4 @@ public class UserDTO {
 	public String user_login;
 	public String user_email;
 	public String user_nicename;
-	public String user_password;
 }

@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.orange.studio.littlegenius.fragments.HomeFragment.DoAction;
+import com.orange.studio.littlegenius.activities.BaseActivity.DoAction;
 import com.orange.studio.littlegenius.fragments.ImageGuideFragment2;
 import com.orange.studio.littlegenius.objects.SlideItemData;
 
