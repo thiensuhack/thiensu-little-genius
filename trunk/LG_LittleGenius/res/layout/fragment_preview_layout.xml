@@ -188,74 +188,15 @@
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
-                        <RadioGroup
-                            android:id="@+id/groupTimer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" >
-
-                            <RadioButton
-                                android:id="@+id/am830"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="false"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" 8:30 am"
-                                android:textColor="@color/brightRed" />
-
-                            <RadioButton
-                                android:id="@+id/am1000"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="false"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" 10:00 am"
-                                android:textColor="@color/brightRed" />
-
-                            <RadioButton
-                                android:id="@+id/am1130"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="false"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" 11:30 am"
-                                android:textColor="@color/brightRed" />
-
-                            <RadioButton
-                                android:id="@+id/pm1330"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="false"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" 13:30 pm"
-                                android:textColor="@color/brightRed" />
-
-                            <RadioButton
-                                android:id="@+id/pm1500"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="false"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" 15:00 pm"
-                                android:textColor="@color/brightRed" />
-
-                            <RadioButton
-                                android:id="@+id/pm1630"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="false"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" 16:30 pm"
-                                android:textColor="@color/brightRed" />
-
-                            <RadioButton
-                                android:id="@+id/pm1800"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:checked="false"
-                                android:onClick="onRadioButtonClicked"
-                                android:text=" 18:00 pm"
-                                android:textColor="@color/brightRed" />
-                        </RadioGroup>
+                        <ListView
+                            android:id="@+id/menuListRadio"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start"
+                            android:background="@color/darkGray"
+                            android:choiceMode="singleChoice"
+                            android:divider="@android:color/transparent"
+                            android:dividerHeight="0dp" />
                     </LinearLayout>
                 </LinearLayout>
 
