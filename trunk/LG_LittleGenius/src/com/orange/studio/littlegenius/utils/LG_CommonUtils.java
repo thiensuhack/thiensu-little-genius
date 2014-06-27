@@ -157,8 +157,9 @@ public class LG_CommonUtils {
 				try {
 					JSONObject jb=new JSONObject(data);
 					result=new ResultData();
-					result.result=jb.getInt("result");
-					result.msg=jb.getString("msg");
+					result.result=jb.optInt("result");
+					result.msg=jb.optString("msg");
+					result.data=jb.optString("data");
 				} catch (JSONException e) {
 					e.printStackTrace();
 					return null;
@@ -173,8 +174,9 @@ public class LG_CommonUtils {
 				try {
 					JSONObject jb=new JSONObject(data);
 					result=new ResultData();
-					result.result=jb.getInt("result");
-					result.msg=jb.getString("msg");
+					result.result=jb.optInt("result");
+					result.msg=jb.optString("msg");
+					result.data=jb.optString("data");
 				} catch (JSONException e) {
 					e.printStackTrace();
 					return null;
