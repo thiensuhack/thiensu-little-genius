@@ -46,10 +46,11 @@ public class HomeFragment extends BaseFragment {
 	
 	private LoadDataTask mLoadDataTask=null;
 	
-	public interface DoAction{
-		public void DissmissDialog();
-	}
-	private DoAction mDoAction = null;
+//	public interface DoAction{
+//		public void DissmissDialog();
+//		public void Go2KMS();
+//	}
+//	private DoAction mDoAction = null;
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
@@ -132,7 +133,9 @@ public class HomeFragment extends BaseFragment {
 			break;
 		case R.id.kmsBtn:
 			if(AppConfig.mUser==null){
-				showLoginDialog();
+				getBaseActivity().showLoginDialog();
+			}else{
+				getBaseActivity().mDoAction.Go2KMS();
 			}
 			break;			
 		case R.id.contactBtn:
@@ -145,7 +148,9 @@ public class HomeFragment extends BaseFragment {
 			break;
 		}
 	}
-
+	private BaseActivity getBaseActivity(){
+		return (BaseActivity)getActivity();
+	}
 	@Override
 	public void initView() {
 		mData=new ArrayList<SlideItemData>();
@@ -154,15 +159,20 @@ public class HomeFragment extends BaseFragment {
 		mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
 		mData.add(new SlideItemData(R.drawable.easing_slider_21, ""));
 		
-		mDoAction=new DoAction() {
-			@Override
-			public void DissmissDialog() {
-				showRegisterDialog();
-			}
-		};
+//		mDoAction=new DoAction() {
+//			@Override
+//			public void DissmissDialog() {
+//				showRegisterDialog();
+//			}
+//
+//			@Override
+//			public void Go2KMS() {
+//				((BaseActivity)getActivity()).selectItem(4, false);
+//			}
+//		};
 		
 		mViewPager=(ViewPager)mView.findViewById(R.id.slideViewPager);
-		mSlideAdapter=new MyFragmentAdapter(getChildFragmentManager(), mData, mDoAction);
+		mSlideAdapter=new MyFragmentAdapter(getChildFragmentManager(), mData, getBaseActivity().mDoAction);
 		mViewPager.setAdapter(mSlideAdapter);
 		
 		mPreviousBtn=(ImageView)mView.findViewById(R.id.previousBtn);
@@ -196,14 +206,14 @@ public class HomeFragment extends BaseFragment {
 		mPreviousBtn.setOnClickListener(this);
 		mNextBtn.setOnClickListener(this);
 	}
-	private void showLoginDialog() {
-		LoginDialog mLoginDialog=new LoginDialog(getActivity(),mDoAction);
-		mLoginDialog.show();
-	}
-	private void showRegisterDialog(){
-		RegisterDialog mRegisterDialog=new RegisterDialog(getActivity());
-		mRegisterDialog.show();
-	}
+//	private void showLoginDialog() {
+//		LoginDialog mLoginDialog=new LoginDialog(getActivity(),getBaseActivity().mDoAction);
+//		mLoginDialog.show();
+//	}
+//	private void showRegisterDialog(){
+//		RegisterDialog mRegisterDialog=new RegisterDialog(getActivity());
+//		mRegisterDialog.show();
+//	}
 	@Override
 	public void onResume() {
 		super.onResume();

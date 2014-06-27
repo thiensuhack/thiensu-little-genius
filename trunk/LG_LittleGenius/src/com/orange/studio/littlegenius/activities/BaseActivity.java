@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.meta.gui.activity.MetaSlidingFragmentActivity;
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.MenuSlidingAdapter;
+import com.orange.studio.littlegenius.dialogs.LoginDialog;
+import com.orange.studio.littlegenius.dialogs.RegisterDialog;
 import com.orange.studio.littlegenius.fragments.AboutFragment;
 import com.orange.studio.littlegenius.fragments.ContactFragment;
 import com.orange.studio.littlegenius.fragments.HomeFragment;
@@ -24,6 +26,7 @@ import com.orange.studio.littlegenius.fragments.PreviewFragment;
 import com.orange.studio.littlegenius.fragments.ProgramFragment;
 import com.orange.studio.littlegenius.fragments.TestimonialFragment;
 import com.orange.studio.littlegenius.objects.SlidingMenuItem;
+import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.slidingmenu.lib.SlidingMenu;
 
@@ -34,6 +37,13 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 	private MenuSlidingAdapter mMenuAdapter=null;
 	private TextView mViewTitle=null;
 	private ImageView mHomeMenuDrawer;
+	
+	public interface DoAction{
+		public void DissmissDialog();
+		public void Go2KMS();
+	}
+	public DoAction mDoAction = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,6 +65,18 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 	private void initView(){
 		mHomeMenuDrawer=(ImageView)findViewById(R.id.homeSlidingBtn);
 		mViewTitle=(TextView)findViewById(R.id.viewTitle);
+		
+		mDoAction=new DoAction() {
+			@Override
+			public void DissmissDialog() {
+				showRegisterDialog();
+			}
+
+			@Override
+			public void Go2KMS() {
+				selectItem(4, false);
+			}
+		};
 	}
 	private void initListener(){
 		mHomeMenuDrawer.setOnClickListener(this);
@@ -112,9 +134,17 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 					PreviewFragment.class.getName());
 			break;
 		case 4:
-			title="KMS";
-			fragment = KMSFragment.instantiate(getApplicationContext(),
-					KMSFragment.class.getName());
+			if(AppConfig.mUser==null){
+				if(isToggleMenu){
+					toggle();
+				}
+				showLoginDialog();
+			}else{
+				title="KMS";
+				fragment = KMSFragment.instantiate(getApplicationContext(),
+						KMSFragment.class.getName());
+			}
+			
 			break;
 		case 5:
 			title="CONTACT";
@@ -139,6 +169,15 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			fragmentManager.beginTransaction()
 					.replace(R.id.mainFrameLayout, fragment).commit();
 		}
+	}
+
+	public void showLoginDialog() {
+		LoginDialog mLoginDialog=new LoginDialog(this,mDoAction);
+		mLoginDialog.show();
+	}
+	public void showRegisterDialog(){
+		RegisterDialog mRegisterDialog=new RegisterDialog(this);
+		mRegisterDialog.show();
 	}
 	@Override
 	public void onClick(View v) {

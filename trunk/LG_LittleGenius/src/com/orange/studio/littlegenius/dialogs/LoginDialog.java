@@ -1,17 +1,26 @@
 package com.orange.studio.littlegenius.dialogs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.AsyncTask.Status;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.orange.studio.littlegenius.R;
-import com.orange.studio.littlegenius.fragments.HomeFragment.DoAction;
+import com.orange.studio.littlegenius.activities.BaseActivity.DoAction;
 import com.orange.studio.littlegenius.objects.LoginDTO;
 import com.orange.studio.littlegenius.objects.ResultData;
+import com.orange.studio.littlegenius.objects.UserDTO;
+import com.orange.studio.littlegenius.utils.AppConfig;
+import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
+import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class LoginDialog extends BaseDialog {
 
@@ -23,6 +32,8 @@ public class LoginDialog extends BaseDialog {
 	
 	private DoAction mDoAction=null;
 	private Context mContext;
+	private LoginTask mLoginTask=null;
+	
 	public LoginDialog(Context context,DoAction _mDoAction) {
 	    super(context);
 	    mContext=context;
@@ -55,23 +66,30 @@ public class LoginDialog extends BaseDialog {
 		switch (id) {
 		case R.id.loginBtn:
 			String userName=mUserName.getText().toString();
-			String password=mUserName.getText().toString();
+			String password=mPassword.getText().toString();
 			if(userName==null || userName.trim().length()<1 || password==null || password.trim().length()<1){
 				Toast.makeText(mContext, mContext.getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
 				return;
 			}
+			DoLogin();
 			break;
 		case R.id.registerBtn:
 			this.dismiss();
 			mDoAction.DissmissDialog();
 			break;
 		case R.id.exitDialog:
-			this.dismiss();
+			dismiss();
 			break;
 		default:
 			super.onClick(v);
 			break;
 		}					
+	}
+	private void DoLogin(){
+		if(mLoginTask==null || mLoginTask.getStatus()==Status.FINISHED){
+			mLoginTask=new LoginTask();
+			mLoginTask.execute();
+		}
 	}
 	private class LoginTask extends AsyncTask<Void, Void, ResultData>{
 
@@ -79,10 +97,13 @@ public class LoginDialog extends BaseDialog {
 		protected ResultData doInBackground(Void... params) {
 			try {
 				String userName=mUserName.getText().toString();
-				String password=mUserName.getText().toString();
+				String password=mPassword.getText().toString();
 				LoginDTO mData=new LoginDTO();
 				mData.user_login=userName;
 				mData.user_password=password;
+				Gson gs=new Gson();
+				String data=gs.toJson(mData);
+				return LG_CommonUtils.postDataServer(URLRequest.LOGIN_URL, data);
 				
 			} catch (Exception e) {
 			}
@@ -91,6 +112,31 @@ public class LoginDialog extends BaseDialog {
 		@Override
 		protected void onPostExecute(ResultData result) {
 			super.onPostExecute(result);
+			if(result!=null){
+				if(result.result == 1){
+					try {
+						JSONObject jb=new JSONObject(result.data);
+						UserDTO mUser=new UserDTO();
+						mUser.user_email=jb.optString("user_email");
+						mUser.user_login=jb.optString("user_login");
+						mUser.user_nicename=jb.optString("user_nicename");
+						AppConfig.mUser=mUser;
+						LoginDialog.this.dismiss();
+						mDoAction.Go2KMS();
+						Toast.makeText(mContext, mContext.getString(R.string.login_success_message), Toast.LENGTH_LONG).show();
+					} catch (JSONException e) {
+						e.printStackTrace();
+						Toast.makeText(mContext, mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
+						return;
+					}
+				}else{
+					Toast.makeText(mContext, (result.msg!=null && result.msg.trim().length()>0)?result.msg:mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
+					return;
+				}
+			}else{
+				Toast.makeText(mContext, mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
+				return;
+			}
 		}
 	}
 }

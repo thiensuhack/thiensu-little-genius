@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.orange.studio.littlegenius.R;
-import com.orange.studio.littlegenius.fragments.HomeFragment.DoAction;
+import com.orange.studio.littlegenius.activities.BaseActivity.DoAction;
 
 public class ImageGuideFragment2 extends Fragment implements OnClickListener {
 	public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
