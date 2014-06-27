@@ -1,11 +1,14 @@
 package com.orange.studio.littlegenius.fragments;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.AsyncTask.Status;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -18,14 +21,17 @@ import android.webkit.WebView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.adapters.ListRadioButtonAdapter;
 import com.orange.studio.littlegenius.dialogs.LG_DatePickerFragment;
 import com.orange.studio.littlegenius.objects.ContactDTO;
+import com.orange.studio.littlegenius.objects.RadioButtonItem;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
@@ -42,7 +48,10 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	private RadioGroup mOptionGroup;
 	
 	private View mSendDataBtn;
-
+	private ListView mListTimer;
+	private ListRadioButtonAdapter mAdapter;
+	private LoadListTimerTask mLoadListTimerTask=null;
+	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
 		
@@ -58,6 +67,10 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
     }
 	@Override
 	public void initView() {
+		mListTimer=(ListView)mView.findViewById(R.id.listViewRadio);
+		mAdapter=new ListRadioButtonAdapter(getActivity());
+		mListTimer.setAdapter(mAdapter);
+		
 		txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
 		//txt_content1.setTextColor(Color.BLACK);
 		mMainContent = (WebView)mView.findViewById(R.id.webViewMainContent);
@@ -92,6 +105,34 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	            	break;
 		    }
 	    }
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		loadListTimer();
+	}
+	private void loadListTimer(){
+		if(mLoadListTimerTask==null || mLoadListTimerTask.getStatus()==Status.FINISHED){
+			mLoadListTimerTask=new LoadListTimerTask();
+			mLoadListTimerTask.execute();
+		}
+	}
+	private class LoadListTimerTask extends AsyncTask<Void, Void, ResultData>{
+
+		@Override
+		protected ResultData doInBackground(Void... params) {
+			return null;
+		}
+		@Override
+		protected void onPostExecute(ResultData result) {
+			super.onPostExecute(result);
+			List<RadioButtonItem> mList=new ArrayList<RadioButtonItem>();
+			mList.add(new RadioButtonItem(1, "8:30 am"));
+			mList.add(new RadioButtonItem(2, "10:00 am"));
+			mList.add(new RadioButtonItem(3, "11:30 am"));
+			mList.add(new RadioButtonItem(4, "13:00 pm"));
+			mAdapter.updateFriendList(mList);			
+		}
 	}
 	class HTTPRequest extends AsyncTask<String, Void, String> {
 		@Override
