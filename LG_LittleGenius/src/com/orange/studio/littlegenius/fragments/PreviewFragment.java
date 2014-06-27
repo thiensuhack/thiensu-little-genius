@@ -68,7 +68,6 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		strPhone = (EditText)mView.findViewById(R.id.str_phone);
 		strBirthday   =(EditText)mView.findViewById(R.id.str_birthday);
 		mHougang=(RadioButton)mView.findViewById(R.id.radioHougang);
-		mOptionGroup=(RadioGroup)mView.findViewById(R.id.groupTimer);
 		
 		mSendDataBtn = (LinearLayout)mView.findViewById(R.id.sendDataBtn);
 		
@@ -88,20 +87,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	    boolean checked = ((RadioButton) view).isChecked();
 	    if(checked){
 		    	switch(view.getId()) {
-		        case R.id.am830:
-		            break;
-		        case R.id.am1000:
-		            break;
-		        case R.id.am1130:
-		            break;
-		        case R.id.pm1330:
-		            break;
-		        case R.id.pm1500:
-		            break;
-		        case R.id.pm1630:
-		            break;
-		        case R.id.pm1800:
-		            break;
+		        
 	            default:
 	            	break;
 		    }
@@ -139,12 +125,16 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 				Toast.makeText(getActivity(), getActivity().getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
 				return;
 			}
-			if(LG_CommonUtils.validateEmail(email)){
+			if(!LG_CommonUtils.validateEmail(email)){
 				Toast.makeText(getActivity(), getActivity().getString(R.string.email_warning), Toast.LENGTH_LONG).show();
 				return;
 			}
-			if(LG_CommonUtils.validatePhoneNumber(phone)){
+			if(!LG_CommonUtils.validatePhoneNumber(phone)){
 				Toast.makeText(getActivity(), getActivity().getString(R.string.phone_warning), Toast.LENGTH_LONG).show();
+				return;
+			}
+			if(birthday.trim().length()<1){
+				Toast.makeText(getActivity(), getActivity().getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
 				return;
 			}
 			ContactDTO mContact=new ContactDTO();

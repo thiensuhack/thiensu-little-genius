@@ -62,7 +62,7 @@ public class LG_CommonUtils {
 
 		}
 	  public static boolean validatePhoneNumber(String phone){
-			if (phone == null || phone.equals("")|| phone.length()<10 || phone.length()>11 || !phone.matches("-?\\d+(\\.\\d+)?")) {
+			if (phone == null || phone.trim().length()<10 || phone.trim().length()>11 || !phone.matches("-?\\d+(\\.\\d+)?")) {
 				return false;
 			}
 			return true;
