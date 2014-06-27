@@ -1,5 +1,9 @@
 package com.orange.studio.littlegenius.fragments;
 
+import java.util.Calendar;
+
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -7,19 +11,25 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.dialogs.LG_DatePickerFragment;
+import com.orange.studio.littlegenius.objects.ContactDTO;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
-public class PreviewFragment extends BaseFragment implements OnClickListener{
+public class PreviewFragment extends BaseFragment implements OnClickListener, OnFocusChangeListener{
 
 	private TextView txt_content1;
 	private TextView txt_content;
@@ -70,8 +80,33 @@ public class PreviewFragment extends BaseFragment implements OnClickListener{
 	@Override
 	public void initListener() {
 		mSendDataBtn.setOnClickListener(this);
+		strBirthday.setOnClickListener(this);
+		strBirthday.setKeyListener(null);
+		strBirthday.setOnFocusChangeListener(this);
 	}
-
+	public void onRadioButtonClicked(View view) {
+	    boolean checked = ((RadioButton) view).isChecked();
+	    if(checked){
+		    	switch(view.getId()) {
+		        case R.id.am830:
+		            break;
+		        case R.id.am1000:
+		            break;
+		        case R.id.am1130:
+		            break;
+		        case R.id.pm1330:
+		            break;
+		        case R.id.pm1500:
+		            break;
+		        case R.id.pm1630:
+		            break;
+		        case R.id.pm1800:
+		            break;
+	            default:
+	            	break;
+		    }
+	    }
+	}
 	class HTTPRequest extends AsyncTask<String, Void, String> {
 		@Override
 		protected String doInBackground(String... arg0) {
@@ -94,17 +129,121 @@ public class PreviewFragment extends BaseFragment implements OnClickListener{
 		switch (v.getId()) {		
 		case R.id.sendDataBtn:
 		{
+			String name=strUser.getText().toString();
+			String email=strEmail.getText().toString();
+			String phone=strPhone.getText().toString();
+			String birthday=strBirthday.getText().toString();
+			boolean isHougang=mHougang.isSelected();
+			
+			if(name==null || name.trim().length()<1){
+				Toast.makeText(getActivity(), getActivity().getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
+				return;
+			}
+			if(LG_CommonUtils.validateEmail(email)){
+				Toast.makeText(getActivity(), getActivity().getString(R.string.email_warning), Toast.LENGTH_LONG).show();
+				return;
+			}
+			if(LG_CommonUtils.validatePhoneNumber(phone)){
+				Toast.makeText(getActivity(), getActivity().getString(R.string.phone_warning), Toast.LENGTH_LONG).show();
+				return;
+			}
+			ContactDTO mContact=new ContactDTO();
+			mContact.first_name=name;
+			mContact.last_name=name;
+			mContact.email=email;
+			mContact.telephone=phone;
+			
 			break;
 		}
+		case R.id.str_birthday:
+			selectBirthday();
+			break;
 		default:
 			super.onClick(v);
 			break;
 		}
 	}	
+	private Calendar getBirthDay(String strBirthday) {
+		Calendar birthday = Calendar.getInstance();
+		try {
+			if (strBirthday != null && strBirthday.length() > 0) {
+				String[] myBirthDay = strBirthday.split("/");
+				if (myBirthDay.length > 2) {
+					birthday.set(Integer.parseInt(myBirthDay[2]),
+							(Integer.parseInt(myBirthDay[1]) - 1),
+							Integer.parseInt(myBirthDay[0]));
+				}
+			}
+			return birthday;
+		} catch (Exception e) {
+			return Calendar.getInstance();
+		}
+	}
+	public void selectBirthday() {
+
+		String birthday = strBirthday.getText().toString().trim();
+
+		Calendar calender = getBirthDay(birthday);
+
+		int mYear = calender.get(Calendar.YEAR);
+		int mMonth = calender.get(Calendar.MONTH);
+		int mDay = calender.get(Calendar.DAY_OF_MONTH);
+
+		LG_DatePickerFragment date = new LG_DatePickerFragment();
+		Bundle args = new Bundle();
+		args.putInt("year", mYear);
+		args.putInt("month", mMonth);
+		args.putInt("day", mDay);
+		date.setArguments(args);
+		date.setCallBack(onDateBirthday);
+		date.show(getChildFragmentManager(), getActivity()
+				.getString(R.string.dialogTitleSelectDate));
+	}
+
+	OnDateSetListener onDateBirthday = new OnDateSetListener() {
+		@Override
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			String strDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+			strBirthday.setText(strDate);
+		}
+	};
+	
+	protected void hideSoftKeyBoard(EditText myEditText) {
+		try {
+			InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(myEditText.getWindowToken(), 0);
+		} catch (Exception e) {
+		}
+	}
+	private void hideSoftKeyBoard() {
+		hideSoftKeyBoard(strUser);
+		hideSoftKeyBoard(strEmail);
+		hideSoftKeyBoard(strPhone);
+	}
+	@Override
+	public void onFocusChange(View v, boolean isFocus) {
+		if (isFocus) {
+			int viewID = v.getId();
+			switch (viewID) {
+			case R.id.str_birthday: {
+				hideSoftKeyBoard();
+				selectBirthday();
+				break;
+			}
+				default:
+					break;
+			}
+		}
+	}
 	private class SendContactTask extends AsyncTask<Void, Void, ResultData>{
-		
+		private ContactDTO data=null;
+		public SendContactTask(ContactDTO _data){
+			data=_data;
+		}
 		@Override
 		protected ResultData doInBackground(Void... params) {
+			
 			return null;
 		}
 		
