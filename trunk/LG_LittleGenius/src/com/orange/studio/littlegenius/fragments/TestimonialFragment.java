@@ -1,24 +1,35 @@
 package com.orange.studio.littlegenius.fragments;
 
-import android.graphics.Color;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.os.AsyncTask;
+import android.os.AsyncTask.Status;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.adapters.TestimonialAdapter;
+import com.orange.studio.littlegenius.objects.RadioButtonItem;
+import com.orange.studio.littlegenius.objects.ResultData;
+import com.orange.studio.littlegenius.objects.TestimonialDTO;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
+import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
 
 public class TestimonialFragment extends BaseFragment implements OnClickListener{
 
-	private TextView txt_content1;
-	private TextView txt_content;
-	private WebView webView;
+	private ListView mListView;
+	private TestimonialAdapter mAdapter;
+	private LoadTestimonialTask mLoadTestimonialTask=null;
+	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
@@ -35,35 +46,14 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
     }
 	@Override
 	public void initView() {
-		txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
-		//txt_content1.setTextColor(Color.BLACK);
-		webView = (WebView)mView.findViewById(R.id.webViewMainContent);
-		webView.setBackgroundColor(Color.parseColor(getActivity().getString(R.color.home_background)));
-		
-		String url_select = LG_CommonUtils.URL_TESTIMO;
-		HTTPRequest request = new HTTPRequest();
-		request.execute(url_select);
+		mAdapter=new TestimonialAdapter(getActivity());
+		mListView=(ListView)mView.findViewById(R.id.listViewTestimonial);	
+		mListView.setAdapter(mAdapter);
 	}
 	@Override
 	public void initListener() {
 	}
-	class HTTPRequest extends AsyncTask<String, Void, String> {
-		@Override
-		protected String doInBackground(String... arg0) {
-			LG_CommonUtils.loadData(arg0[0]);
-			return null;
-		}
-		   
-		@Override
-	    protected void onPostExecute(String valus) {             
-			String content = LG_CommonUtils.getContent();
-			String title = LG_CommonUtils.getTitle();
-			txt_content1.setText(Html.fromHtml(title));		
-			//txt_content1.setTextColor(Color.WHITE);
-			webView.loadData("<div style=\'background-color:transparent; color:#EF5535'>"+content+"</div>","text/html; charset=UTF-8", null);
-		}
-	}
-
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -71,5 +61,44 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 			super.onClick(v);
 			break;
 		}
+	}
+	private void loadTestimonial(){
+		if(mLoadTestimonialTask==null || mLoadTestimonialTask.getStatus()==Status.FINISHED){
+			mLoadTestimonialTask=new LoadTestimonialTask();
+			mLoadTestimonialTask.execute();
+		}
+	}
+	private class LoadTestimonialTask extends AsyncTask<Void, Void, ResultData>{
+		@Override
+		protected ResultData doInBackground(Void... params) {
+			return LG_CommonUtils.getDataFromServer(URLRequest.TESTIMONIAL);
+		}
+		@Override
+		protected void onPostExecute(ResultData result) {
+			super.onPostExecute(result);
+			try {
+				if(result!=null && result.result==1){
+					JSONArray jArr=new JSONArray(result.data);					
+					if(jArr!=null && jArr.length()>0){
+						List<TestimonialDTO> mList=new ArrayList<TestimonialDTO>();
+						for (int i = 0; i < jArr.length(); i++) {
+							JSONObject jb=jArr.getJSONObject(i);
+							String content=jb.optString("content");
+							if(content!=null && content.length()>0){
+								content=content.replace("<p>", "").replace("</p>", "").replace("\n", "");
+							}
+							mList.add(new TestimonialDTO(jb.optString("thumbnail"),jb.optString("author"),content));
+						}
+						mAdapter.updateData(mList);
+					}
+				}
+			} catch (Exception e) {
+			}			
+		}
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		loadTestimonial();
 	}
 }
