@@ -87,7 +87,7 @@ public class TestimonialAdapter extends BaseAdapter {
 		viewHolder.mContent.setText(Html.fromHtml(item.content));
 		ImageLoader.getInstance(mActivity).DisplayImage(item.thumbnail, viewHolder.mCover);
 		if(position%2==0){
-			convertView.setBackgroundResource(R.color.bright_orange);
+			convertView.setBackgroundResource(R.color.bright_orange_2);
 		}else{
 			convertView.setBackgroundResource(R.color.home_background);
 		}
