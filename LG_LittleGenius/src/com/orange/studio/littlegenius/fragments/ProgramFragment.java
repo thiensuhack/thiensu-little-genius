@@ -70,6 +70,11 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 	}
 	class LoadProgrammeTask extends AsyncTask<Void, Void, ResultData> {
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			getBaseActivity().switchView(true);
+		}
+		@Override
 		protected ResultData doInBackground(Void... arg0) {			
 			return LG_CommonUtils.getDataFromServer(URLRequest.PROGRAMME);
 		}
@@ -90,6 +95,7 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 				}catch(Exception ex){
 					
 				}
+			getBaseActivity().switchView(false);
 		}
 	}
 

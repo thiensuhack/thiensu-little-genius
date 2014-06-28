@@ -147,9 +147,9 @@ public class HomeFragment extends BaseFragment {
 			break;
 		}
 	}
-	private BaseActivity getBaseActivity(){
-		return (BaseActivity)getActivity();
-	}
+//	private BaseActivity getBaseActivity(){
+//		return (BaseActivity)getActivity();
+//	}
 	@Override
 	public void initView() {
 		mData=new ArrayList<HomeSliderDTO>();

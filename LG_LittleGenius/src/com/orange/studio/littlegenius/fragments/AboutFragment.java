@@ -9,13 +9,11 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.objects.ResultData;
@@ -59,6 +57,11 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 	}
 	class LoadAboutTask extends AsyncTask<Void, Void, ResultData> {
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			getBaseActivity().switchView(true);
+		}
+		@Override
 		protected ResultData doInBackground(Void... arg0) {			
 			return LG_CommonUtils.getDataFromServer(URLRequest.ABOUT_URL);
 		}
@@ -80,6 +83,7 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 				}catch(Exception ex){
 					
 				}
+			getBaseActivity().switchView(false);
 		}
 	}
 	@Override

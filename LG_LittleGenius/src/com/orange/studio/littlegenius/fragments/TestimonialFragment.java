@@ -68,6 +68,11 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 	}
 	private class LoadTestimonialTask extends AsyncTask<Void, Void, ResultData>{
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			getBaseActivity().switchView(true);
+		}
+		@Override
 		protected ResultData doInBackground(Void... params) {
 			return LG_CommonUtils.getDataFromServer(URLRequest.TESTIMONIAL);
 		}
@@ -91,7 +96,8 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 					}
 				}
 			} catch (Exception e) {
-			}			
+			}	
+			getBaseActivity().switchView(false);
 		}
 	}
 	@Override
