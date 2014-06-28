@@ -24,9 +24,7 @@ import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class AboutFragment extends BaseFragment implements OnClickListener{
 
-	//private TextView txt_content;
-	private TextView txt_content1;
-	//private InputStream inputStream;
+	//private TextView txt_content1;
 	private WebView webView;
 	private LoadAboutTask mLoadProgrammeTask=null;
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,15 +42,10 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
     }
 	@Override
 	public void initView() {
-		txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
-		//txt_content1.setTextColor(Color.BLACK);
+//		/txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
 		
 		webView = (WebView)mView.findViewById(R.id.webViewMainContent);
 		webView.setBackgroundColor(Color.parseColor(getActivity().getString(R.color.home_background)));
-		
-//		String url_select = LG_CommonUtils.URL_ABOUT;
-//		HTTPRequest request = new HTTPRequest();
-//		request.execute(url_select);		
 	}
 	@Override
 	public void initListener() {
@@ -75,9 +68,9 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 			try {
 					if(result!=null && result.result==1){
 						JSONObject jb=new JSONObject(result.data);
-						String title=jb.optString("name");
+						//String title=jb.optString("name");
 						String content=jb.optString("content");
-						txt_content1.setText(Html.fromHtml(title));
+						//txt_content1.setText(Html.fromHtml(title));
 						//txt_content1.setTextColor(Color.WHITE);
 						webView.loadData(
 								"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"

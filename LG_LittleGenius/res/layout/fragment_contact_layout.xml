@@ -12,7 +12,8 @@
         android:padding="5dp"
         android:textColor="@color/brightRed"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone" />
 
     <WebView
         android:id="@+id/webViewMainContent"

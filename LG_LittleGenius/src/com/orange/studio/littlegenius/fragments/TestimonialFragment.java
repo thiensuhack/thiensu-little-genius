@@ -14,15 +14,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.TestimonialAdapter;
-import com.orange.studio.littlegenius.objects.RadioButtonItem;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.TestimonialDTO;
-import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
+import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class TestimonialFragment extends BaseFragment implements OnClickListener{
 

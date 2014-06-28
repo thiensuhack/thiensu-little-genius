@@ -12,7 +12,6 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,7 +25,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -41,8 +39,7 @@ import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class PreviewFragment extends BaseFragment implements OnClickListener, OnFocusChangeListener{
 
-	private TextView txt_content1;
-	private TextView txt_content;
+	//private TextView txt_content1;
 	private WebView mMainContent;
 	private EditText strUser;
 	private EditText strEmail;
@@ -76,8 +73,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		mAdapter=new ListRadioButtonAdapter(getActivity());
 		mListTimer.setAdapter(mAdapter);
 		
-		txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
-		//txt_content1.setTextColor(Color.BLACK);
+		//txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
 		mMainContent = (WebView)mView.findViewById(R.id.webViewMainContent);
 		mMainContent.setBackgroundColor(Color.parseColor(getActivity().getString(R.color.home_background)));
 		
@@ -156,10 +152,9 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		@Override
 	    protected void onPostExecute(String valus) {             
 			String content = LG_CommonUtils.getContent();
-			String title = LG_CommonUtils.getTitle();
-			txt_content1.setText(Html.fromHtml(title));		
+//			String title = LG_CommonUtils.getTitle();
+//			txt_content1.setText(Html.fromHtml(title));		
 			mMainContent.loadData("<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"+content+"</div>","text/html; charset=UTF-8", null);
-			//mMainContent.setText(Html.fromHtml(content));
 		}
 	}
 
