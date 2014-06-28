@@ -78,7 +78,7 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 						String title=jb.optString("name");
 						String content=jb.optString("content");
 						txt_content1.setText(Html.fromHtml(title));
-						txt_content1.setTextColor(Color.WHITE);
+						//txt_content1.setTextColor(Color.WHITE);
 						webView.loadData(
 								"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"
 										+ content + "</div>", "text/html; charset=UTF-8",
