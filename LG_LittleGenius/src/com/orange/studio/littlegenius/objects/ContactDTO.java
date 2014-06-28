@@ -7,11 +7,11 @@ public class ContactDTO {
 	//"preferred_time":["Day Time","Morning","AFternoon","Evening"],
 	//"request_details":"example msg"}
 	
-	public String first_name;
-	public String last_name;
+	//name, email, telephone, dob, preferred_timing, preferred_date
+	public String name;
 	public String email;
 	public String telephone;
-	public String contact_preference;
-	public String preferred_time;
-	public String request_details;
+	public String dob;
+	public String preferred_timing;
+	public String preferred_date;
 }

@@ -193,11 +193,13 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 				Toast.makeText(getActivity(), getActivity().getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
 				return;
 			}
+			///name, email, telephone, dob, preferred_timing, preferred_date
 			ContactDTO mContact=new ContactDTO();
-			mContact.first_name=name;
-			mContact.last_name=name;
+			mContact.name=name;
 			mContact.email=email;
 			mContact.telephone=phone;
+			mContact.dob=birthday;
+			
 			
 			break;
 		}
@@ -285,6 +287,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	private class SendContactTask extends AsyncTask<Void, Void, ResultData>{
 		private ContactDTO data=null;
 		public SendContactTask(ContactDTO _data){
+			//name, email, telephone, dob, preferred_timing, preferred_date
 			data=_data;
 		}
 		@Override
