@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
-import android.widget.Toast;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
 
 import com.orange.studio.littlegenius.R;
@@ -23,7 +20,7 @@ public class ListRadioButtonAdapter extends BaseAdapter {
 	private static LayoutInflater mInflater = null;
 	private Activity mActivity;
 	private List<RadioButtonItem> mData = null;
-
+	private int currentId=-1;
 	public ListRadioButtonAdapter(Activity a) {
 		mActivity = a;
 		mInflater = (LayoutInflater) mActivity
@@ -55,15 +52,18 @@ public class ListRadioButtonAdapter extends BaseAdapter {
 		}
 		notifyDataSetChanged();
 	}
+	public RadioButtonItem getCurrentItem(){
+		return getItem(currentId);
+	}
 	@Override
 	public int getCount() {
 		return mData.size();
 	}
 
 	@Override
-	public RadioButtonItem getItem(int arg0) {
-		if (mData != null) {
-			return mData.get(arg0);
+	public RadioButtonItem getItem(int position) {
+		if (mData != null && position>-1 && position < mData.size()) {
+			return mData.get(position);
 		}
 		return null;
 	}
@@ -93,6 +93,7 @@ public class ListRadioButtonAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				int id=(int)v.getTag();
+				currentId=id;
 				updateCheckedList(id);
 			}
 		});
