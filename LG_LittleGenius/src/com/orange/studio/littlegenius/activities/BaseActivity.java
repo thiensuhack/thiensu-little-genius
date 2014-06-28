@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.meta.gui.activity.MetaSlidingFragmentActivity;
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.MenuSlidingAdapter;
+import com.orange.studio.littlegenius.dialogs.ExitDialog;
 import com.orange.studio.littlegenius.dialogs.LoginDialog;
 import com.orange.studio.littlegenius.dialogs.RegisterDialog;
 import com.orange.studio.littlegenius.fragments.AboutFragment;
@@ -37,10 +38,12 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 	private MenuSlidingAdapter mMenuAdapter=null;
 	private TextView mViewTitle=null;
 	private ImageView mHomeMenuDrawer;
+	private ExitDialog mExitDialog=null;
 	
 	public interface DoAction{
 		public void DissmissDialog();
 		public void Go2KMS();
+		public void ExitApplication();
 	}
 	public DoAction mDoAction = null;
 	
@@ -76,7 +79,14 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			public void Go2KMS() {
 				selectItem(4, false);
 			}
+
+			@Override
+			public void ExitApplication() {
+				finish();
+			}
 		};
+		
+		mExitDialog=new ExitDialog(BaseActivity.this, mDoAction);
 	}
 	private void initListener(){
 		mHomeMenuDrawer.setOnClickListener(this);
@@ -223,5 +233,14 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 				break;
 			}
 		}
+	}
+	public void showExitDialog(){
+		if(mExitDialog!=null){
+			mExitDialog.show();
+		}
+	}
+	@Override
+	public void onBackPressed() {
+		showExitDialog();
 	}
 }

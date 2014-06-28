@@ -11,6 +11,12 @@
     <string name="email_warning">Email không hợp lệ.</string>
     <string name="phone_warning">Số điện thoại không hợp lệ.</string>
     
+    
+    <string name="exit_dialog_title">Thoát ứng dụng</string>
+    <string name="exit_dialog_message">Bạn muốn thoát ứng dụng?</string>
+    <string name="exit_dialog_OKBtn_title">Thoát</string>
+    <string name="exit_dialog_CancelBtn_label">Huỷ</string>
+    
     <string name="sending_failed">Gửi không thành công.</string>
     <string name="sending_success">Gửi thành công.</string>
     <string name="login_success_message">Đăng nhập thành công.</string>
