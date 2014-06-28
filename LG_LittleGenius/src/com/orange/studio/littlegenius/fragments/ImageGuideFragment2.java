@@ -8,17 +8,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.fedorvlasov.lazylist.ImageLoader;
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.activities.BaseActivity.DoAction;
 
 public class ImageGuideFragment2 extends Fragment implements OnClickListener {
 	public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
-	private int imageResource;
+	private String imageResource;
 	private ImageView mImage = null;
 	private static DoAction doAction = null;
 	
 	public static final ImageGuideFragment2 newInstance(String message,
-			int _imageResource, DoAction _doAction) {
+			String _imageResource, DoAction _doAction) {
 		ImageGuideFragment2 f = new ImageGuideFragment2();
 		f.imageResource = _imageResource;
 		doAction = _doAction;
@@ -37,8 +38,11 @@ public class ImageGuideFragment2 extends Fragment implements OnClickListener {
 	@Override
 	public void onResume() {
 		super.onResume();
-		if(mImage!=null){
-			mImage.setBackgroundResource(imageResource);
+		try {
+			if(mImage!=null){
+				ImageLoader.getInstance(getActivity()).DisplayImage(imageResource, mImage);
+			}
+		} catch (Exception e) {
 		}
 	}
 	@Override
