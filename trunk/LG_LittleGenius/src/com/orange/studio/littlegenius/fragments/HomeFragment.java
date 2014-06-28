@@ -3,6 +3,8 @@ package com.orange.studio.littlegenius.fragments;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
@@ -21,9 +23,13 @@ import com.orange.studio.littlegenius.activities.BaseActivity;
 import com.orange.studio.littlegenius.adapters.MyFragmentAdapter;
 import com.orange.studio.littlegenius.dialogs.LoginDialog;
 import com.orange.studio.littlegenius.dialogs.RegisterDialog;
+import com.orange.studio.littlegenius.objects.HomeSliderDTO;
+import com.orange.studio.littlegenius.objects.RadioButtonItem;
+import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.SlideItemData;
 import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
+import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
 
 
 public class HomeFragment extends BaseFragment {
@@ -40,17 +46,12 @@ public class HomeFragment extends BaseFragment {
 	
 	private  ViewPager mViewPager=null;
 	private MyFragmentAdapter mSlideAdapter=null;
-	private List<SlideItemData> mData=null;
+	private List<HomeSliderDTO> mData=null;
 	private View mPreviousBtn=null;
 	private View mNextBtn=null;
 	
 	private LoadDataTask mLoadDataTask=null;
-	
-//	public interface DoAction{
-//		public void DissmissDialog();
-//		public void Go2KMS();
-//	}
-//	private DoAction mDoAction = null;
+	private LoadSlideBannerTask mLoadSlideBannerTask=null;
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
@@ -91,8 +92,6 @@ public class HomeFragment extends BaseFragment {
 				str_content1 += "";
 				
 				mScheduleTxt1.setText(Html.fromHtml(str_content1));
-				
-				
 				String str_content2 ="";
 				for (int i = (content.size()/2); i < content.size(); i++) {
 					str_content2 +=  "<font color=\"#0181D8\" size=\"30px\">" + content.get(i) + "</font>";
@@ -153,23 +152,11 @@ public class HomeFragment extends BaseFragment {
 	}
 	@Override
 	public void initView() {
-		mData=new ArrayList<SlideItemData>();
-		mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
-		mData.add(new SlideItemData(R.drawable.easing_slider_3, ""));
-		mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
-		mData.add(new SlideItemData(R.drawable.easing_slider_21, ""));
-		
-//		mDoAction=new DoAction() {
-//			@Override
-//			public void DissmissDialog() {
-//				showRegisterDialog();
-//			}
-//
-//			@Override
-//			public void Go2KMS() {
-//				((BaseActivity)getActivity()).selectItem(4, false);
-//			}
-//		};
+		mData=new ArrayList<HomeSliderDTO>();
+//		mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
+//		mData.add(new SlideItemData(R.drawable.easing_slider_3, ""));
+//		mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
+//		mData.add(new SlideItemData(R.drawable.easing_slider_21, ""));
 		
 		mViewPager=(ViewPager)mView.findViewById(R.id.slideViewPager);
 		mSlideAdapter=new MyFragmentAdapter(getChildFragmentManager(), mData, getBaseActivity().mDoAction);
@@ -206,14 +193,29 @@ public class HomeFragment extends BaseFragment {
 		mPreviousBtn.setOnClickListener(this);
 		mNextBtn.setOnClickListener(this);
 	}
-//	private void showLoginDialog() {
-//		LoginDialog mLoginDialog=new LoginDialog(getActivity(),getBaseActivity().mDoAction);
-//		mLoginDialog.show();
-//	}
-//	private void showRegisterDialog(){
-//		RegisterDialog mRegisterDialog=new RegisterDialog(getActivity());
-//		mRegisterDialog.show();
-//	}
+	private class LoadSlideBannerTask extends AsyncTask<Void, Void, ResultData>{
+		@Override
+		protected ResultData doInBackground(Void... params) {
+			return LG_CommonUtils.getDataFromServer(URLRequest.HOME_SLIDE);
+		}
+		@Override
+		protected void onPostExecute(ResultData result) {
+			super.onPostExecute(result);
+			try {
+				if(result!=null && result.result==1){
+					JSONArray jArr=new JSONArray(result.data);					
+					if(jArr!=null && jArr.length()>0){
+						List<HomeSliderDTO> mList=new ArrayList<HomeSliderDTO>();
+						for (int i = 0; i < jArr.length(); i++) {
+							mList.add(new HomeSliderDTO(String.valueOf(i),jArr.getString(i)));
+						}
+						mSlideAdapter.updateData(mList);
+					}
+				}
+			} catch (Exception e) {
+			}			
+		}
+	}
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -225,6 +227,10 @@ public class HomeFragment extends BaseFragment {
 			String url_select = LG_CommonUtils.URL_SCHEDULE;
 			mLoadDataTask=new LoadDataTask();
 			mLoadDataTask.execute(url_select);
+		}
+		if(mLoadSlideBannerTask==null || mLoadSlideBannerTask.getStatus()==Status.FINISHED){
+			mLoadSlideBannerTask=new LoadSlideBannerTask();
+			mLoadSlideBannerTask.execute();
 		}
 	}
 }

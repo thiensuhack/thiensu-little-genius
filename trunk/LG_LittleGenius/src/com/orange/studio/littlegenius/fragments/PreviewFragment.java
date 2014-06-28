@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.graphics.Color;
@@ -35,7 +38,9 @@ import com.orange.studio.littlegenius.dialogs.LG_DatePickerFragment;
 import com.orange.studio.littlegenius.objects.ContactDTO;
 import com.orange.studio.littlegenius.objects.RadioButtonItem;
 import com.orange.studio.littlegenius.objects.ResultData;
+import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
+import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
 
 public class PreviewFragment extends BaseFragment implements OnClickListener, OnFocusChangeListener{
 
@@ -85,11 +90,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		strBirthday   =(EditText)mView.findViewById(R.id.str_birthday);
 		mHougang=(RadioButton)mView.findViewById(R.id.radioHougang);
 		
-		mSendDataBtn = (LinearLayout)mView.findViewById(R.id.sendDataBtn);
-		
-		String url_select = LG_CommonUtils.URL_PREVIEW;
-		HTTPRequest request = new HTTPRequest();
-		request.execute(url_select);
+		mSendDataBtn = (LinearLayout)mView.findViewById(R.id.sendDataBtn);		
 	}
 
 	@Override
@@ -115,26 +116,37 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		loadListTimer();
 	}
 	private void loadListTimer(){
+		
+		String url_select = LG_CommonUtils.URL_PREVIEW;
+		HTTPRequest request = new HTTPRequest();
+		request.execute(url_select);
+		
 		if(mLoadListTimerTask==null || mLoadListTimerTask.getStatus()==Status.FINISHED){
 			mLoadListTimerTask=new LoadListTimerTask();
 			mLoadListTimerTask.execute();
 		}
 	}
 	private class LoadListTimerTask extends AsyncTask<Void, Void, ResultData>{
-
 		@Override
 		protected ResultData doInBackground(Void... params) {
-			return null;
+			return LG_CommonUtils.getDataFromServer(URLRequest.PREVIEW_TIMING);
 		}
 		@Override
 		protected void onPostExecute(ResultData result) {
 			super.onPostExecute(result);
-			List<RadioButtonItem> mList=new ArrayList<RadioButtonItem>();
-			mList.add(new RadioButtonItem(1, "8:30 am"));
-			mList.add(new RadioButtonItem(2, "10:00 am"));
-			mList.add(new RadioButtonItem(3, "11:30 am"));
-			mList.add(new RadioButtonItem(4, "13:00 pm"));
-			mAdapter.updateFriendList(mList);			
+			try {
+				if(result!=null && result.result==1){
+					JSONArray jArr=new JSONArray(result.data);					
+					if(jArr!=null && jArr.length()>0){
+						List<RadioButtonItem> mList=new ArrayList<RadioButtonItem>();
+						for (int i = 0; i < jArr.length(); i++) {
+							mList.add(new RadioButtonItem(i,jArr.getString(i)));
+						}
+						mAdapter.updateFriendList(mList);
+					}
+				}
+			} catch (Exception e) {
+			}			
 		}
 	}
 	class HTTPRequest extends AsyncTask<String, Void, String> {
