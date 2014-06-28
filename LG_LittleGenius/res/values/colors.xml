@@ -15,6 +15,7 @@
 	<color name="home_background">#FDEA52</color>
 	<color name="red">#FD0002</color>
 	<color name="brightRed">#EF5535</color>
+	<color name="bright_orange_2">#FFC947</color>
 	
 	<color name="green">#1F8042</color>
 	<color name="dialog_login_text_color">#F06D39</color>
