@@ -1,5 +1,7 @@
 package com.orange.studio.littlegenius.fragments;
 
+import com.orange.studio.littlegenius.activities.BaseActivity;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,5 +26,8 @@ public abstract class BaseFragment extends Fragment implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		
+	}
+	public BaseActivity getBaseActivity(){
+		return (BaseActivity)getActivity();
 	}
 }

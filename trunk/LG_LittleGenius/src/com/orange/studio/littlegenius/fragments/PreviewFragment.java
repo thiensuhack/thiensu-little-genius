@@ -121,6 +121,11 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	}
 	private class LoadListTimerTask extends AsyncTask<Void, Void, ResultData>{
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			getBaseActivity().switchView(true);
+		}
+		@Override
 		protected ResultData doInBackground(Void... params) {
 			return LG_CommonUtils.getDataFromServer(URLRequest.PREVIEW_TIMING);
 		}
@@ -139,7 +144,8 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 					}
 				}
 			} catch (Exception e) {
-			}			
+			}
+			getBaseActivity().switchView(false);
 		}
 	}
 	class HTTPRequest extends AsyncTask<String, Void, String> {

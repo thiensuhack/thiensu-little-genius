@@ -9,7 +9,9 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,6 +32,7 @@ import com.orange.studio.littlegenius.objects.SlidingMenuItem;
 import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.slidingmenu.lib.SlidingMenu;
+import com.todddavies.components.progressbar.ProgressWheel;
 
 public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemClickListener{
 
@@ -39,6 +42,9 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 	private TextView mViewTitle=null;
 	private ImageView mHomeMenuDrawer;
 	private ExitDialog mExitDialog=null;
+	private View mContainerView=null;
+	private View mLoadingView=null;
+	private ProgressWheel mProgressView=null;
 	
 	public interface DoAction{
 		public void DissmissDialog();
@@ -87,6 +93,12 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		};
 		
 		mExitDialog=new ExitDialog(BaseActivity.this, mDoAction);
+		
+		mContainerView=(FrameLayout)findViewById(R.id.mainFrameLayout);
+		mLoadingView=(LinearLayout)findViewById(R.id.loadingView);
+		mProgressView=(ProgressWheel)findViewById(R.id.progressWheel);
+		mProgressView.spin();
+		switchView(false);
 	}
 	private void initListener(){
 		mHomeMenuDrawer.setOnClickListener(this);
@@ -188,6 +200,10 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 	public void showRegisterDialog(){
 		RegisterDialog mRegisterDialog=new RegisterDialog(this);
 		mRegisterDialog.show();
+	}
+	public void switchView(boolean isShowLoadingView){
+		mLoadingView.setVisibility(isShowLoadingView?View.VISIBLE:View.GONE);
+		mContainerView.setVisibility(isShowLoadingView?View.GONE:View.VISIBLE);
 	}
 	@Override
 	public void onClick(View v) {
