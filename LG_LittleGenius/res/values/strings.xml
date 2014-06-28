@@ -4,7 +4,7 @@
     <string name="app_name">LittleGenius</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+	<string name="testimonial_list_view_title">Parents\'remark</string>
     
     <string name="dialogTitleSelectDate">Chọn ngày sinh</string>
     <string name="empty_warning">Vui lòng nhập đầy đủ thông tin!</string>
