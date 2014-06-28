@@ -19,6 +19,8 @@ public class AppConfig {
 		public static final String UPDATE_USER_INFO_URL=DOMAIN_URL+"/kms/user-info/?api";
 		public static final String TESTIMONIAL=DOMAIN_URL+"/testimonials/?api";
 		public static final String PREVIEW_TIMING=DOMAIN_URL+ "/whats-new/previews/?api=&action=time";
+		public static final String PROGRAMME=DOMAIN_URL+ "/programme-overview/?api";
+		public static final String ABOUT_URL=DOMAIN_URL+ "/home/what-is-my-little-geniustm/?api";
 		public static final String HOME_SLIDE=DOMAIN_URL+ "/?act=slideshow&api=&";
 	}
 }

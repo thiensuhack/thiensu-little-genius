@@ -1,32 +1,34 @@
 package com.orange.studio.littlegenius.fragments;
 
-import java.io.InputStream;
+import org.json.JSONObject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.AsyncTask.Status;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.objects.ResultData;
+import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class AboutFragment extends BaseFragment implements OnClickListener{
 
-	private TextView txt_content;
+	//private TextView txt_content;
 	private TextView txt_content1;
-	private InputStream inputStream;
+	//private InputStream inputStream;
 	private WebView webView;
+	private LoadAboutTask mLoadProgrammeTask=null;
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
 		
@@ -48,30 +50,66 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 		webView = (WebView)mView.findViewById(R.id.webViewMainContent);
 		webView.setBackgroundColor(Color.parseColor(getActivity().getString(R.color.home_background)));
 		
-		String url_select = LG_CommonUtils.URL_ABOUT;
-		HTTPRequest request = new HTTPRequest();
-		request.execute(url_select);		
+//		String url_select = LG_CommonUtils.URL_ABOUT;
+//		HTTPRequest request = new HTTPRequest();
+//		request.execute(url_select);		
 	}
 	@Override
 	public void initListener() {
 		
 	}
-	class HTTPRequest extends AsyncTask<String, Void, String> {
-		@Override
-		protected String doInBackground(String... arg0) {
-			LG_CommonUtils.loadData(arg0[0]);
-			return null;
+	private void loadProgramme(){
+		if(mLoadProgrammeTask==null || mLoadProgrammeTask.getStatus()==Status.FINISHED){
+			mLoadProgrammeTask=new LoadAboutTask();
+			mLoadProgrammeTask.execute();
 		}
-		   
+	}
+	class LoadAboutTask extends AsyncTask<Void, Void, ResultData> {
 		@Override
-	    protected void onPostExecute(String valus) {             
-			String content = LG_CommonUtils.getContent();
-			String title = LG_CommonUtils.getTitle();
-			txt_content1.setText(Html.fromHtml(title));		
-			//txt_content1.setTextColor(Color.WHITE);
-			webView.loadData("<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"+content+"</div>","text/html; charset=UTF-8", null);
+		protected ResultData doInBackground(Void... arg0) {			
+			return LG_CommonUtils.getDataFromServer(URLRequest.ABOUT_URL);
 		}
-	}	
+
+		@Override
+		protected void onPostExecute(ResultData result) {
+			try {
+					if(result!=null && result.result==1){
+						JSONObject jb=new JSONObject(result.data);
+						String title=jb.optString("name");
+						String content=jb.optString("content");
+						txt_content1.setText(Html.fromHtml(title));
+						txt_content1.setTextColor(Color.WHITE);
+						webView.loadData(
+								"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"
+										+ content + "</div>", "text/html; charset=UTF-8",
+								null);
+					}
+				}catch(Exception ex){
+					
+				}
+		}
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		loadProgramme();
+	}
+//	class HTTPRequest extends AsyncTask<String, Void, String> {
+//		@Override
+//		protected String doInBackground(String... arg0) {
+//			LG_CommonUtils.loadData(arg0[0]);
+//			return null;
+//		}
+//		   
+//		@Override
+//	    protected void onPostExecute(String valus) {             
+//			String content = LG_CommonUtils.getContent();
+//			String title = LG_CommonUtils.getTitle();
+//			txt_content1.setText(Html.fromHtml(title));		
+//			//txt_content1.setTextColor(Color.WHITE);
+//			webView.loadData("<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"+content+"</div>","text/html; charset=UTF-8", null);
+//		}
+//	}	
 	public boolean isNetworkOnline() {
 	    boolean status=false;
 	    try{
