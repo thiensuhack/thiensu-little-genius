@@ -11,6 +11,8 @@
     <string name="email_warning">Email không hợp lệ.</string>
     <string name="phone_warning">Số điện thoại không hợp lệ.</string>
     
+    <string name="sending_failed">Gửi không thành công.</string>
+    <string name="sending_success">Gửi thành công.</string>
     <string name="login_success_message">Đăng nhập thành công.</string>
     <string name="login_failed_message">Đăng nhập không thành công.</string>
     <string name="login_title">Login</string>

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,6 +16,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;

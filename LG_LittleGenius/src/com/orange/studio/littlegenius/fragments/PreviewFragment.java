@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
@@ -18,11 +17,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -32,15 +29,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.ListRadioButtonAdapter;
 import com.orange.studio.littlegenius.dialogs.LG_DatePickerFragment;
 import com.orange.studio.littlegenius.objects.ContactDTO;
 import com.orange.studio.littlegenius.objects.RadioButtonItem;
 import com.orange.studio.littlegenius.objects.ResultData;
-import com.orange.studio.littlegenius.utils.AppConfig;
-import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
+import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class PreviewFragment extends BaseFragment implements OnClickListener, OnFocusChangeListener{
 
@@ -199,8 +196,15 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 			mContact.email=email;
 			mContact.telephone=phone;
 			mContact.dob=birthday;
-			
-			
+			RadioButtonItem item=mAdapter.getCurrentItem();
+			if(item!=null){
+				mContact.preferred_timing=item.name;
+			}else{
+				mContact.preferred_timing="";
+			}
+			mContact.preferred_date="29/06/2014";
+			SendContactTask mSendContactTask=new SendContactTask(mContact);
+			mSendContactTask.execute();
 			break;
 		}
 		case R.id.str_birthday:
@@ -288,14 +292,38 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		private ContactDTO data=null;
 		public SendContactTask(ContactDTO _data){
 			//name, email, telephone, dob, preferred_timing, preferred_date
-			data=_data;
+			data=_data;						
 		}
 		@Override
 		protected ResultData doInBackground(Void... params) {
-			
+			try {
+				Gson gs=new Gson();
+				String jsData=gs.toJson(data);
+//				Bundle param=new Bundle();
+//				param.putString("dob", data.dob);
+//				param.putString("email", data.email);
+//				param.putString("name", data.name);
+//				param.putString("preferred_date", data.preferred_date);
+//				param.putString("preferred_timing", data.preferred_timing);
+//				param.putString("telephone", data.telephone);
+				return LG_CommonUtils.postDataServer(URLRequest.PREVIEW_CONTACT_US_POST_URL, jsData);
+			} catch (Exception e) {
+			}
 			return null;
 		}
-		
+		@Override
+		protected void onPostExecute(ResultData result) {
+			super.onPostExecute(result);
+			if(result!=null){
+				if(result.result==1){
+					Toast.makeText(getActivity(), getActivity().getString(R.string.sending_success), Toast.LENGTH_LONG).show();
+				}else{
+					Toast.makeText(getActivity(), getActivity().getString(R.string.sending_failed), Toast.LENGTH_LONG).show();
+				}
+			}else{
+				Toast.makeText(getActivity(), getActivity().getString(R.string.sending_failed), Toast.LENGTH_LONG).show();
+			}
+		}
 	}
 }
 
