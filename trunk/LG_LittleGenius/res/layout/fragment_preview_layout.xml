@@ -12,7 +12,8 @@
         android:padding="5dp"
         android:textColor="@color/brightRed"
         android:textSize="11pt"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone" />
 
     <ScrollView
         android:layout_width="match_parent"

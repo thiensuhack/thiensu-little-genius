@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.objects.ResultData;
@@ -24,12 +22,9 @@ import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class ProgramFragment extends BaseFragment implements OnClickListener,
 		OnTouchListener {
-	private TextView txt_content1;
-	//private TextView txt_content;
+	//private TextView txt_content1;
 	private WebView webView;
 	private WebViewClient client;
-	//private LinearLayout ll_Title;
-	//private Handler handler;
 	private LoadProgrammeTask mLoadProgrammeTask=null;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,37 +42,10 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 	}
 
 	public void initView() {
-		txt_content1 = (TextView) mView.findViewById(R.id.txt_content1);
-		txt_content1.setTextColor(Color.BLACK);
+//		txt_content1 = (TextView) mView.findViewById(R.id.txt_content1);
 
 		webView = (WebView) mView.findViewById(R.id.webViewMainContent);
 		webView.setBackgroundColor(Color.parseColor(getActivity().getString(R.color.home_background)));
-		//handler = new Handler();
-		//ll_Title = (LinearLayout) mView.findViewById(R.id.ll_title);
-//		String url_select = getActivity().getIntent().getStringExtra(
-//				LG_CommonUtils.PROGRAM_PARAM);
-
-//		LoadProgrammeTask request = new LoadProgrammeTask();
-//		request.execute();
-//		if (!url_select.equals(LG_CommonUtils.URL_COURSE_PROGRAM)) {
-//
-//			Button btn_Course = new Button(getActivity());
-//			btn_Course.setLayoutParams(new LayoutParams(
-//					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-//			btn_Course.setText("Course Background");
-//			btn_Course.setPadding(10, 0, 10, 0);
-//			ll_Title.addView(btn_Course);
-//			btn_Course.setOnClickListener(new OnClickListener() {
-//
-//				@Override
-//				public void onClick(View v) {
-//					getActivity().getIntent().putExtra(
-//							LG_CommonUtils.PROGRAM_PARAM,
-//							LG_CommonUtils.URL_COURSE_PROGRAM);
-//					((BaseActivity) getActivity()).selectItem(1, false);
-//				}
-//			});
-//		}
 	}
 
 	public void initListener() {
@@ -111,10 +79,9 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 			try {
 					if(result!=null && result.result==1){
 						JSONObject jb=new JSONObject(result.data);
-						String title=jb.optString("name");
+//						String title=jb.optString("name");
 						String content=jb.optString("content");
-						txt_content1.setText(Html.fromHtml(title));
-						txt_content1.setTextColor(Color.WHITE);
+//						txt_content1.setText(Html.fromHtml(title));
 						webView.loadData(
 								"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"
 										+ content + "</div>", "text/html; charset=UTF-8",
