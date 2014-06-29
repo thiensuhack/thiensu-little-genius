@@ -156,16 +156,20 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 					PreviewFragment.class.getName());
 			break;
 		case 4:
-			if(AppConfig.mUser==null){
-				if(isToggleMenu){
-					toggle();
-				}
-				showLoginDialog();
-			}else{
-				title="KMS";
-				fragment = KMSFragment.instantiate(getApplicationContext(),
-						KMSFragment.class.getName());
-			}
+			title="KMS";
+			fragment = KMSFragment.instantiate(getApplicationContext(),
+					KMSFragment.class.getName());
+//			
+//			if(AppConfig.mUser==null){
+//				if(isToggleMenu){
+//					toggle();
+//				}
+//				showLoginDialog();
+//			}else{
+//				title="KMS";
+//				fragment = KMSFragment.instantiate(getApplicationContext(),
+//						KMSFragment.class.getName());
+//			}
 			
 			break;
 		case 5:
