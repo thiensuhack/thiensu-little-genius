@@ -11,6 +11,8 @@
 <!-- 	<string name="kms_info_email_label">Email:</string> -->
 <!-- 	<string name="kms_info_phone_label">Điện thoại:</string> -->
 <!-- 	<string name="kms_info_address_label">Địa chỉ:</string> -->
+	<string name="course_name_label">Tên khoá học</string>
+	<string name="course_status_label">Trạng thái</string>
 	
     <string name="dialogTitleSelectDate">Chọn ngày sinh</string>
     <string name="empty_warning">Vui lòng nhập đầy đủ thông tin!</string>
