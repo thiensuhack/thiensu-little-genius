@@ -8,7 +8,7 @@ public class ContactDTO {
 	//"request_details":"example msg"}
 	
 	//name, email, telephone, dob, preferred_timing, preferred_date
-	public String name;
+	public String fullname;
 	public String email;
 	public String telephone;
 	public String dob;

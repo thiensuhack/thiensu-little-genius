@@ -29,13 +29,13 @@ public class LG_DatePickerDialog extends DatePickerDialog {
 	public LG_DatePickerDialog(Context context, OnDateSetListener callBack,
 			int minYear, int minMonth, int minDay, int maxYear, int maxMonth,
 			int maxDay) {
-		super(context, callBack, maxYear, maxMonth, maxDay);
+		super(context, callBack, minYear, maxMonth, maxDay);
 		this.minDay = minDay;
 		this.minMonth = minMonth;
 		this.minYear = minYear;
-//		maxDay = maxDay;
-//		maxMonth = maxMonth;
-//		maxYear = maxYear;
+		this.maxDay = maxDay;
+		this.maxMonth = maxMonth;
+		this.maxYear = maxYear;
 	}
 
 	@Override
