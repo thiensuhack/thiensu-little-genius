@@ -13,26 +13,24 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fedorvlasov.lazylist.ImageLoader;
 import com.orange.studio.littlegenius.R;
-import com.orange.studio.littlegenius.objects.VideoKMSDTO;
-import com.orange.studio.littlegenius.objects.VideoKMSDTO;
+import com.orange.studio.littlegenius.objects.CourseKMSDTO;
 
 
-public class VideoKMSAdapter extends BaseAdapter {
+public class CourseKMSAdapter extends BaseAdapter {
 
 	private static LayoutInflater mInflater = null;
 	private Activity mActivity;
-	private List<VideoKMSDTO> mData = null;
+	private List<CourseKMSDTO> mData = null;
 
-	public VideoKMSAdapter(Activity a) {
+	public CourseKMSAdapter(Activity a) {
 		mActivity = a;
 		mInflater = (LayoutInflater) mActivity
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mData = new ArrayList<VideoKMSDTO>();
+		mData = new ArrayList<CourseKMSDTO>();
 	}
 
-	public void updateData(List<VideoKMSDTO> _listUser) {
+	public void updateData(List<CourseKMSDTO> _listUser) {
 		if (mData != null) {
 			mData.clear();
 			mData.addAll(_listUser);
@@ -40,7 +38,7 @@ public class VideoKMSAdapter extends BaseAdapter {
 		}
 	}
 
-	public void insertFriendList(List<VideoKMSDTO> _listUser) {
+	public void insertFriendList(List<CourseKMSDTO> _listUser) {
 		if (mData != null) {
 			mData.addAll(_listUser);
 			notifyDataSetChanged();
@@ -53,7 +51,7 @@ public class VideoKMSAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public VideoKMSDTO getItem(int arg0) {
+	public CourseKMSDTO getItem(int arg0) {
 		if (mData != null) {
 			return mData.get(arg0);
 		}
@@ -70,20 +68,27 @@ public class VideoKMSAdapter extends BaseAdapter {
 		MenuViewHolder viewHolder;
 		if (convertView == null) {
 			convertView = mInflater.inflate(
-					R.layout.video_kms_item, parent, false);
+					R.layout.course_kms_item, parent, false);
 			viewHolder = new MenuViewHolder();
-			viewHolder.mCover = (ImageView) convertView
-					.findViewById(R.id.menuIcon);
 			viewHolder.mName = (TextView) convertView
-					.findViewById(R.id.videoName);
+					.findViewById(R.id.courseName);
+			viewHolder.mStatus = (TextView) convertView
+					.findViewById(R.id.courseStatus);
+			viewHolder.mIconStatus = (ImageView) convertView
+					.findViewById(R.id.statusIcon);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (MenuViewHolder) convertView.getTag();
 		}
 		
-		VideoKMSDTO item=mData.get(position);
-		viewHolder.mName.setText(Html.fromHtml(item.name));
-		ImageLoader.getInstance(mActivity).DisplayImage(item.videoURL, viewHolder.mCover);
+		CourseKMSDTO item=mData.get(position);
+		viewHolder.mName.setText(Html.fromHtml(item.courseName));
+		viewHolder.mStatus.setText(Html.fromHtml(item.status));
+		if(item.status.equals("Done")){
+			viewHolder.mIconStatus.setVisibility(View.VISIBLE);
+		}else{
+			viewHolder.mIconStatus.setVisibility(View.GONE);
+		}
 		if(position%2==0){
 			convertView.setBackgroundResource(R.color.bright_orange_2);
 		}else{
@@ -93,7 +98,8 @@ public class VideoKMSAdapter extends BaseAdapter {
 	}
 
 	public class MenuViewHolder {
-		public ImageView mCover;
 		public TextView mName;
+		public TextView mStatus;
+		public ImageView mIconStatus;
 	}
 }

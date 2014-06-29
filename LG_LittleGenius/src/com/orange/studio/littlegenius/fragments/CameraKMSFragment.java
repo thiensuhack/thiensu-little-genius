@@ -11,14 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.VideoKMSAdapter;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.VideoKMSDTO;
 
-public class CameraKMSFragment extends BaseFragment implements OnClickListener{
+public class CameraKMSFragment extends BaseFragment implements OnClickListener, OnItemClickListener{
 
 	private ListView mListView;
 	private VideoKMSAdapter mAdapter;
@@ -46,7 +49,7 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener{
 
 	@Override
 	public void initListener() {
-		
+		mListView.setOnItemClickListener(this);
 	}
 
 	@Override
@@ -112,6 +115,13 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener{
 		super.onResume();
 		loadVideoKMS();
 	}
-
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
+		try {
+			VideoKMSDTO item=mAdapter.getItem(position);
+			Toast.makeText(getActivity(), item.name, Toast.LENGTH_SHORT).show();
+		} catch (Exception e) {
+		}
+	}
 }
 
