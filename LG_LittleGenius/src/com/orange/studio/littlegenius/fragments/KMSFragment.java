@@ -81,20 +81,30 @@ public class KMSFragment extends BaseFragment {
 		int id=v.getId();
 		switch (id) {
 		case R.id.cameraBtn:
+			changeBackgroundButtonSelected(true, false, false, false);		
 			selectItem(0);
 			break;
 		case R.id.videoBtn:
+			changeBackgroundButtonSelected(false, true, false, false);
 			selectItem(1);
 			break;
 		case R.id.courseBtn:
+			changeBackgroundButtonSelected(false, false, true, false);
 			selectItem(2);
 			break;
 		case R.id.infoBtn:
+			changeBackgroundButtonSelected(false, false, false, true);
 			selectItem(3);
 			break;
 		default:
 			break;
 		}
 		super.onClick(v);
+	}
+	private void changeBackgroundButtonSelected(boolean isCamera,boolean isVideo,boolean isCourse,boolean isInfo){
+		mCameraBtn.setBackgroundResource(isCamera?R.drawable.kms_menu_button_1_active:R.drawable.kms_menu_button_1);
+		mVideoBtn.setBackgroundResource(isVideo?R.drawable.kms_menu_button_3_active:R.drawable.kms_menu_button_3);
+		mCourseBtn.setBackgroundResource(isCourse?R.drawable.kms_menu_button_3_active:R.drawable.kms_menu_button_3);
+		mInfoBtn.setBackgroundResource(isInfo?R.drawable.kms_menu_button_2_active:R.drawable.kms_menu_button_2);
 	}
 }
