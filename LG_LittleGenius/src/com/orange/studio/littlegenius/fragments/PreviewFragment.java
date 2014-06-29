@@ -27,10 +27,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.ListRadioButtonAdapter;
 import com.orange.studio.littlegenius.dialogs.LG_DatePickerFragment;
+import com.orange.studio.littlegenius.dialogs.LG_DatePickerNoLimitMaxDateFragment;
 import com.orange.studio.littlegenius.objects.ContactDTO;
 import com.orange.studio.littlegenius.objects.RadioButtonItem;
 import com.orange.studio.littlegenius.objects.ResultData;
@@ -45,6 +45,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	private EditText strEmail;
 	private EditText strPhone;
 	private EditText strBirthday;
+	private EditText strPreferredDate;
 	private RadioButton mHougang;
 	private RadioGroup mOptionGroup;
 	
@@ -56,7 +57,6 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
-		
     	if (mView == null) {
 			mView = inflater.inflate(R.layout.fragment_preview_layout, container,
 					false);
@@ -81,6 +81,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		strEmail = (EditText)mView.findViewById(R.id.str_email);
 		strPhone = (EditText)mView.findViewById(R.id.str_phone);
 		strBirthday   =(EditText)mView.findViewById(R.id.str_birthday);
+		strPreferredDate   =(EditText)mView.findViewById(R.id.str_preferredDate);
 		mHougang=(RadioButton)mView.findViewById(R.id.radioHougang);
 		
 		mSendDataBtn = (LinearLayout)mView.findViewById(R.id.sendDataBtn);		
@@ -91,17 +92,9 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		mSendDataBtn.setOnClickListener(this);
 		strBirthday.setOnClickListener(this);
 		strBirthday.setKeyListener(null);
+		strPreferredDate.setKeyListener(null);
 		strBirthday.setOnFocusChangeListener(this);
-	}
-	public void onRadioButtonClicked(View view) {
-	    boolean checked = ((RadioButton) view).isChecked();
-	    if(checked){
-		    	switch(view.getId()) {
-		        
-	            default:
-	            	break;
-		    }
-	    }
+		strPreferredDate.setOnFocusChangeListener(this);
 	}
 	@Override
 	public void onResume() {
@@ -193,10 +186,12 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 			}
 			///name, email, telephone, dob, preferred_timing, preferred_date
 			ContactDTO mContact=new ContactDTO();
-			mContact.name=name;
+			mContact.fullname=name;
 			mContact.email=email;
 			mContact.telephone=phone;
 			mContact.dob=birthday;
+			mContact.preferred_date=strPreferredDate.getText().toString();
+			
 			RadioButtonItem item=mAdapter.getCurrentItem();
 			if(item!=null){
 				mContact.preferred_timing=item.name;
@@ -210,6 +205,9 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		}
 		case R.id.str_birthday:
 			selectBirthday();
+			break;
+		case R.id.str_preferredDate:
+			selectPreferredDate();
 			break;
 		default:
 			super.onClick(v);
@@ -261,7 +259,34 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 			strBirthday.setText(strDate);
 		}
 	};
-	
+	public void selectPreferredDate() {
+
+		String preferredDate = strPreferredDate.getText().toString().trim();
+
+		Calendar calender = getBirthDay(preferredDate);
+
+		int mYear = calender.get(Calendar.YEAR);
+		int mMonth = calender.get(Calendar.MONTH);
+		int mDay = calender.get(Calendar.DAY_OF_MONTH);
+
+		LG_DatePickerNoLimitMaxDateFragment date = new LG_DatePickerNoLimitMaxDateFragment();
+		Bundle args = new Bundle();
+		args.putInt("year", mYear);
+		args.putInt("month", mMonth);
+		args.putInt("day", mDay);
+		date.setArguments(args);
+		date.setCallBack(onPreferredDate);
+		date.show(getChildFragmentManager(), getActivity()
+				.getString(R.string.dialogTitleSelectDate));
+	}
+	OnDateSetListener onPreferredDate = new OnDateSetListener() {
+		@Override
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			String strDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+			strPreferredDate.setText(strDate);
+		}
+	};
 	protected void hideSoftKeyBoard(EditText myEditText) {
 		try {
 			InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -279,12 +304,15 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		if (isFocus) {
 			int viewID = v.getId();
 			switch (viewID) {
-			case R.id.str_birthday: {
+			case R.id.str_birthday: 
 				hideSoftKeyBoard();
 				selectBirthday();
 				break;
-			}
-				default:
+			case R.id.str_preferredDate: 
+				hideSoftKeyBoard();
+				selectPreferredDate();
+				break;
+			default:
 					break;
 			}
 		}
@@ -298,16 +326,16 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		@Override
 		protected ResultData doInBackground(Void... params) {
 			try {
-				Gson gs=new Gson();
-				String jsData=gs.toJson(data);
-//				Bundle param=new Bundle();
-//				param.putString("dob", data.dob);
-//				param.putString("email", data.email);
-//				param.putString("name", data.name);
-//				param.putString("preferred_date", data.preferred_date);
-//				param.putString("preferred_timing", data.preferred_timing);
-//				param.putString("telephone", data.telephone);
-				return LG_CommonUtils.postDataServer(URLRequest.PREVIEW_CONTACT_US_POST_URL, jsData);
+//				Gson gs=new Gson();
+//				String jsData=gs.toJson(data);
+				Bundle param=new Bundle();
+				param.putString("dob", data.dob);
+				param.putString("email", data.email);
+				param.putString("name", data.fullname);
+				param.putString("preferred_date", data.preferred_date);
+				param.putString("preferred_timing", data.preferred_timing);
+				param.putString("telephone", data.telephone);
+				return LG_CommonUtils.postDataServer(URLRequest.PREVIEW_CONTACT_US_POST_URL, param);
 			} catch (Exception e) {
 			}
 			return null;

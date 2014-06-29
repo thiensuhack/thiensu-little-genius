@@ -54,6 +54,7 @@
     <string name="str_email">Email(*)</string>
     <string name="str_phone">Điện thoại(*)</string>
     <string name="str_birthday">Ngày sinh(*)</string>
+    <string name="str_preferred_date">Chọn ngày</string>
     <string name="str_preferred_outlet">Preferred outlet :</string>
     <string name="str_hougang">Hougang</string>
     <string name="str_preferred_timing">Preferred Timing :</string>
