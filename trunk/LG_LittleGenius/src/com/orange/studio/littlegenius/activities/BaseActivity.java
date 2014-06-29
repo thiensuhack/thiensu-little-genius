@@ -29,7 +29,6 @@ import com.orange.studio.littlegenius.fragments.PreviewFragment;
 import com.orange.studio.littlegenius.fragments.ProgramFragment;
 import com.orange.studio.littlegenius.fragments.TestimonialFragment;
 import com.orange.studio.littlegenius.objects.SlidingMenuItem;
-import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.slidingmenu.lib.SlidingMenu;
 import com.todddavies.components.progressbar.ProgressWheel;
@@ -110,13 +109,13 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
  	private void createMenuLeft(){
 		mListViewMenu=(ListView)sm.findViewById(R.id.menuList);
 		List<SlidingMenuItem> mListItem=new ArrayList<SlidingMenuItem>();
-		SlidingMenuItem menuHome=new SlidingMenuItem(111,"Home");
-		SlidingMenuItem menuProgram=new SlidingMenuItem(112,"Program");
-		SlidingMenuItem menuTestimonials=new SlidingMenuItem(113,"Testimonials");
-		SlidingMenuItem menuPreview=new SlidingMenuItem(114,"Preview");
+		SlidingMenuItem menuHome=new SlidingMenuItem(111,"Trang chủ");
+		SlidingMenuItem menuProgram=new SlidingMenuItem(112,"Chương trình");
+		SlidingMenuItem menuTestimonials=new SlidingMenuItem(113,"Cảm nhận");
+		SlidingMenuItem menuPreview=new SlidingMenuItem(114,"Tổng quan");
 		SlidingMenuItem menuKms=new SlidingMenuItem(115,"KMS");
-		SlidingMenuItem menuContact=new SlidingMenuItem(116,"Contact");
-		SlidingMenuItem menuAbout=new SlidingMenuItem(117,"About");
+		SlidingMenuItem menuContact=new SlidingMenuItem(116,"Liên hệ");
+		SlidingMenuItem menuAbout=new SlidingMenuItem(117,"Giới thiệu");
 		
 		mListItem.add(menuHome);
 		mListItem.add(menuProgram);
