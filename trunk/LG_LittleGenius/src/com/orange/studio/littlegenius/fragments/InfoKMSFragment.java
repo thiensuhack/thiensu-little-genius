@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.utils.AppConfig;
 
 public class InfoKMSFragment extends BaseFragment implements OnClickListener{
 
@@ -42,6 +43,11 @@ public class InfoKMSFragment extends BaseFragment implements OnClickListener{
 		mAddress=(TextView)mView.findViewById(R.id.userAddress);
 		mUpdateInfoBtn=(Button)mView.findViewById(R.id.updateInfoBtn);
 		mChangePasswordBtn=(Button)mView.findViewById(R.id.changePasswordBtn);
+		
+		if(AppConfig.mUser!=null){
+			mName.setText(AppConfig.mUser.user_nicename);
+			mEmail.setText(AppConfig.mUser.user_email);			
+		}
 	}
 
 	@Override
