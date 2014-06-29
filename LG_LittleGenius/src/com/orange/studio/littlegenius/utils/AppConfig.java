@@ -12,7 +12,7 @@ public class AppConfig {
 		public static final int COMMON_NUMBER=50;		
 	}
 	public class URLRequest{
-		public static final String DOMAIN_URL="http://www.mylittlegenius.com.vn";
+		public static final String DOMAIN_URL="http://mylittlegenius.com.vn";
 		public static final String CONTACT_URL=DOMAIN_URL+"/contact/locations/?api=";
 		public static final String CONTACT_US_URL=DOMAIN_URL+"/contact/contact-us/?api";
 		public static final String PREVIEW_CONTACT_US_POST_URL=DOMAIN_URL+"/whats-new/previews/?api";
