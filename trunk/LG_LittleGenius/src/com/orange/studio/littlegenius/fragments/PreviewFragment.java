@@ -91,9 +91,10 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	public void initListener() {
 		mSendDataBtn.setOnClickListener(this);
 		strBirthday.setOnClickListener(this);
-		strBirthday.setKeyListener(null);
-		strPreferredDate.setKeyListener(null);
+		strBirthday.setKeyListener(null);		
 		strBirthday.setOnFocusChangeListener(this);
+		strPreferredDate.setKeyListener(null);
+		strPreferredDate.setOnClickListener(this);
 		strPreferredDate.setOnFocusChangeListener(this);
 	}
 	@Override

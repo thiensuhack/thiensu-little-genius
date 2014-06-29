@@ -11,7 +11,8 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_margin="30dp"
-        android:background="@drawable/logo" />
+        android:background="@drawable/logo"
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"
@@ -40,10 +41,11 @@
                 android:text="@string/name_label"
                 android:textColor="@color/brightRed" />
 
-            <TextView
+            <EditText
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/info_kms_edittext_background"
                 android:textColor="@color/brightRed"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -68,10 +70,11 @@
                 android:text="@string/email_label"
                 android:textColor="@color/brightRed" />
 
-            <TextView
+            <EditText
                 android:id="@+id/userEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/info_kms_edittext_background"
                 android:textColor="@color/brightRed"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -96,10 +99,11 @@
                 android:text="@string/phone_label"
                 android:textColor="@color/brightRed" />
 
-            <TextView
+            <EditText
                 android:id="@+id/userPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/info_kms_edittext_background"
                 android:textColor="@color/brightRed"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -116,7 +120,8 @@
             android:paddingBottom="15dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="15dp" >
+            android:paddingTop="15dp"
+            android:visibility="gone" >
 
             <TextView
                 android:layout_width="80dp"
@@ -132,38 +137,34 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/green" />
-
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/updateInfoBtn"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="110dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/button_blue_2"
                 android:text="@string/kms_info_update_btn"
                 android:textColor="@color/white"
-                android:textSize="11sp"
-                android:layout_marginRight="5dp" />
+                android:textSize="13sp" />
+
             <Button
                 android:id="@+id/changePasswordBtn"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="110dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/button_blue_2"
                 android:text="@string/kms_info_change_password_btn"
                 android:textColor="@color/white"
-                android:textSize="11sp"
-                android:layout_marginLeft="5dp" />
+                android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>
 
