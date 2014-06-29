@@ -36,7 +36,7 @@ public class ImageLoader {
 	private static ImageLoader instance;
 
 	private ImageLoader(Context context) {
-		fileCache = new FileCache(context, ".AdReward");
+		fileCache = new FileCache(context, ".tempImages");
 		executorService = Executors.newFixedThreadPool(5);
 	}
 
