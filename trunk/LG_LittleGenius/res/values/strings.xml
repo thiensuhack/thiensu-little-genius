@@ -6,12 +6,19 @@
     <string name="action_settings">Settings</string>
 	<string name="testimonial_list_view_title">Parents\'remark</string>
     
+	
+<!-- 	<string name="kms_info_name_label">Họ tên:</string> -->
+<!-- 	<string name="kms_info_email_label">Email:</string> -->
+<!-- 	<string name="kms_info_phone_label">Điện thoại:</string> -->
+<!-- 	<string name="kms_info_address_label">Địa chỉ:</string> -->
+	
     <string name="dialogTitleSelectDate">Chọn ngày sinh</string>
     <string name="empty_warning">Vui lòng nhập đầy đủ thông tin!</string>
     <string name="email_warning">Email không hợp lệ.</string>
     <string name="phone_warning">Số điện thoại không hợp lệ.</string>
     
-    
+    <string name="kms_info_update_btn">Cập nhật\nthông tin</string>
+    <string name="kms_info_change_password_btn">Đổi mật khẩu</string>
     <string name="exit_dialog_title">Thoát ứng dụng</string>
     <string name="exit_dialog_message">Bạn muốn thoát ứng dụng?</string>
     <string name="exit_dialog_OKBtn_title">Thoát</string>
@@ -21,32 +28,32 @@
     <string name="sending_success">Gửi thành công.</string>
     <string name="login_success_message">Đăng nhập thành công.</string>
     <string name="login_failed_message">Đăng nhập không thành công.</string>
-    <string name="login_title">Login</string>
-    <string name="register_title">Register</string>
-    <string name="username_label">User name:</string>
-    <string name="password_label">Password:</string>
-    <string name="username_hint">Input user name</string>
-    <string name="password_hint">Your passwords</string>
-    <string name="login_btn">Login</string>
-    <string name="register_btn">Register</string>
+    <string name="login_title">Đăng nhập</string>
+    <string name="register_title">Đăng ký</string>
+    <string name="username_label">Họ tên:</string>
+    <string name="password_label">Mật khẩu:</string>
+    <string name="username_hint">Nhập họ tên</string>
+    <string name="password_hint">Nhập mật khẩu</string>
+    <string name="login_btn">Đăng nhập</string>
+    <string name="register_btn">Đăng ký</string>
     
-    <string name="name_label">Name:</string>
-    <string name="name_hint">Input your name</string>
+    <string name="name_label">Họ tên:</string>
+    <string name="name_hint">Nhập họ tên:</string>
     <string name="email_label">Email:</string>
-    <string name="email_hint">Input your email:</string>
-    <string name="phone_label">Phone:</string>
-    <string name="phone_hint">Input your phone:</string>
-    <string name="address_label">Address:</string>
-    <string name="address_hint">Input your address</string>
+    <string name="email_hint">Nhập email:</string>
+    <string name="phone_label">Điện thoại:</string>
+    <string name="phone_hint">Nhập điện thoại:</string>
+    <string name="address_label">Địa chỉ:</string>
+    <string name="address_hint">Nhập địa chỉ:</string>
     
-    <string name="contact_infomation_label">Contact Information</string>
+    <string name="contact_infomation_label">Thông tin liên hệ</string>
     <string name="txt_user">Họ tên</string>
     <string name="txt_pass">Mật khẩu</string>
     <string name="str_login">Đăng nhập</string>
-    <string name="str_username">Name(*)</string>
+    <string name="str_username">Họ tên(*)</string>
     <string name="str_email">Email(*)</string>
-    <string name="str_phone">Mobile(*)</string>
-    <string name="str_birthday">Date of birth(*)</string>
+    <string name="str_phone">Điện thoại(*)</string>
+    <string name="str_birthday">Ngày sinh(*)</string>
     <string name="str_preferred_outlet">Preferred outlet :</string>
     <string name="str_hougang">Hougang</string>
     <string name="str_preferred_timing">Preferred Timing :</string>
@@ -54,16 +61,16 @@
     
     <string name="kms_menu_camera_btn">Camera</string>
     <string name="kms_menu_video_btn">Video</string>
-    <string name="kms_menu_courses_btn">Courses</string>
-    <string name="kms_menu_info_btn">Info</string>
+    <string name="kms_menu_courses_btn">Khoá học</string>
+    <string name="kms_menu_info_btn">Thông tin</string>
     <string name="versionNameLabel">Phiên bản</string>
-    <string name="home_menu_program_btn">PROGRAM</string>
-    <string name="home_menu_testimonials_btn">TESTIMONIALS</string>
-    <string name="home_menu_preview_btn">PREVIEW</string>
+    <string name="home_menu_program_btn">CHƯƠNG TRÌNH</string>
+    <string name="home_menu_testimonials_btn">CẢM NHẬN</string>
+    <string name="home_menu_preview_btn">TỔNG QUAN</string>
     <string name="home_menu_kms_btn">KMS</string>
-    <string name="home_menu_contact_btn">CONTACT</string>
+    <string name="home_menu_contact_btn">LIÊN HỆ</string>
 
     <!-- menu home bar -->
-    <string name="home_menu_about_btn">ABOUT US</string>
+    <string name="home_menu_about_btn">GIỚI THIỆU</string>
 
 </resources>
