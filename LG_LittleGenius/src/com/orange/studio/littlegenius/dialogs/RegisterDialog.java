@@ -1,12 +1,17 @@
 package com.orange.studio.littlegenius.dialogs;
 
 import android.content.Context;
+import android.os.AsyncTask;
+import android.os.AsyncTask.Status;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.objects.ResultData;
+import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class RegisterDialog extends BaseDialog {
 
@@ -19,14 +24,19 @@ public class RegisterDialog extends BaseDialog {
 	private EditText mEmail=null;
 	private EditText mPhone=null;
 	private EditText mAddress=null;
+	private Context mContext=null;
+	
+	private SubmitRegisterTask mSubmitRegisterTask=null;
 	
 	public RegisterDialog(Context context) {
 	    super(context);
+	    mContext=context;
 	    initView();
 	    initListener();
 	}
 	public RegisterDialog(Context context, int theme) {
 	    super(context, theme);
+	    mContext=context;
 	    initView();
 	    initListener();
 	}
@@ -60,5 +70,44 @@ public class RegisterDialog extends BaseDialog {
 			super.onClick(v);	
 			break;
 		}		
+	}
+	private void submitRegister(){
+		if(mSubmitRegisterTask==null || mSubmitRegisterTask.getStatus()==Status.FINISHED){
+			mSubmitRegisterTask=new SubmitRegisterTask();
+			mSubmitRegisterTask.execute();
+		}
+	}
+	private class SubmitRegisterTask extends AsyncTask<Void, Void, ResultData>{
+		
+		@Override
+		protected ResultData doInBackground(Void... params) {
+			String name=mName.getText().toString();
+			String username=mUserName.getText().toString();
+			String password=mPassword.getText().toString();
+			String email=mEmail.getText().toString();
+			String phone=mPhone.getText().toString();
+			String address=mAddress.getText().toString();
+			if(name.trim().length()<1 || username.trim().length()<1 
+					|| password.trim().length()<1 || email.trim().length()<1 || phone.trim().length()<1 || address.trim().length()<1){
+				Toast.makeText(mContext, mContext.getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
+				return null;
+			}
+			if(!LG_CommonUtils.validateEmail(email)){
+				Toast.makeText(mContext, mContext.getString(R.string.email_warning), Toast.LENGTH_LONG).show();
+				return null;
+			}
+			if(!LG_CommonUtils.validatePhoneNumber(phone)){
+				Toast.makeText(mContext, mContext.getString(R.string.phone_warning), Toast.LENGTH_LONG).show();
+				return null;
+			}
+			return null;
+		}
+		@Override
+		protected void onPostExecute(ResultData result) {
+			super.onPostExecute(result);
+			if(result!=null){
+				
+			}
+		}
 	}
 }
