@@ -83,7 +83,7 @@ public class VideoKMSAdapter extends BaseAdapter {
 		
 		VideoKMSDTO item=mData.get(position);
 		viewHolder.mName.setText(Html.fromHtml(item.name));
-		ImageLoader.getInstance(mActivity).DisplayImage(item.videoURL, viewHolder.mCover);
+		ImageLoader.getInstance(mActivity).DisplayImage(item.cover, viewHolder.mCover);
 		if(position%2==0){
 			convertView.setBackgroundResource(R.color.bright_orange_2);
 		}else{
