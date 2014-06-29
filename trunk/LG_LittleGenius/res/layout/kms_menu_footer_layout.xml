@@ -23,6 +23,7 @@
             android:clickable="true" >
 
             <TextView
+                android:id="@+id/cameraTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -42,6 +43,7 @@
             android:clickable="true" >
 
             <TextView
+                android:id="@+id/videoTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -61,6 +63,7 @@
             android:clickable="true" >
 
             <TextView
+                android:id="@+id/courseTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -80,6 +83,7 @@
             android:clickable="true" >
 
             <TextView
+                android:id="@+id/infoTxt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

@@ -135,22 +135,22 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		String title="";
 		switch (position) {
 		case 0:
-			title="HOME";
+			title="TRANG CHỦ";
 			fragment = HomeFragment.instantiate(getApplicationContext(),
 					HomeFragment.class.getName());
 			break;
 		case 1:
-			title="PROGRAM";
+			title="CHƯƠNG TRÌNH";
 			fragment = ProgramFragment.instantiate(getApplicationContext(),
 					ProgramFragment.class.getName());
 			break;
 		case 2:
-			title="TESTIMONIALS";
+			title="CẢM NHẬN";
 			fragment = TestimonialFragment.instantiate(getApplicationContext(),
 					TestimonialFragment.class.getName());
 			break;
 		case 3:
-			title="PREVIEW";
+			title="TỔNG QUAN";
 			fragment = PreviewFragment.instantiate(getApplicationContext(),
 					PreviewFragment.class.getName());
 			break;
@@ -172,12 +172,12 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			
 			break;
 		case 5:
-			title="CONTACT";
+			title="LIÊN HỆ";
 			fragment = ContactFragment.instantiate(getApplicationContext(),
 					ContactFragment.class.getName());
 			break;
 		case 6:
-			title="ABOUT";
+			title="GIỚI THIỆU";
 			fragment = AboutFragment.instantiate(getApplicationContext(),
 					AboutFragment.class.getName());
 			break;
