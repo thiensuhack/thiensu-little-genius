@@ -60,7 +60,7 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		sm.setShadowWidthRes(R.dimen.shadow_width);
 		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
 		sm.setFadeDegree(0.35f);
-		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 		enableDrawerButton(true);
 		
 		createMenuLeft();
