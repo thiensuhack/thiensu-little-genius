@@ -61,6 +61,9 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 		}
 	}
 	private void loadTestimonial(){
+		if(mAdapter!=null && mAdapter.getCount()>0){
+			return;
+		}
 		if(mLoadTestimonialTask==null || mLoadTestimonialTask.getStatus()==Status.FINISHED){
 			mLoadTestimonialTask=new LoadTestimonialTask();
 			mLoadTestimonialTask.execute();
