@@ -331,7 +331,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 				Bundle param=new Bundle();
 				param.putString("dob", data.dob);
 				param.putString("email", data.email);
-				param.putString("name", data.fullname);
+				param.putString("fullname", data.fullname);
 				param.putString("preferred_date", data.preferred_date);
 				param.putString("preferred_timing", data.preferred_timing);
 				param.putString("telephone", data.telephone);
@@ -345,6 +345,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 			super.onPostExecute(result);
 			if(result!=null){
 				if(result.result==1){
+					ClearAllView();
 					Toast.makeText(getActivity(), getActivity().getString(R.string.sending_success), Toast.LENGTH_LONG).show();
 				}else{
 					Toast.makeText(getActivity(), getActivity().getString(R.string.sending_failed), Toast.LENGTH_LONG).show();
@@ -353,6 +354,13 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 				Toast.makeText(getActivity(), getActivity().getString(R.string.sending_failed), Toast.LENGTH_LONG).show();
 			}
 		}
+	}
+	private void ClearAllView(){
+		strUser.setText("");
+		strEmail.setText("");
+		strPhone.setText("");
+		strBirthday.setText("");
+		strPreferredDate.setText("");
 	}
 }
 
