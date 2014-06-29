@@ -1,5 +1,6 @@
 package com.orange.studio.littlegenius.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
 
@@ -15,7 +17,10 @@ public class KMSFragment extends BaseFragment {
 	private View mVideoBtn;
 	private View mCourseBtn;
 	private View mInfoBtn;
-	
+	private TextView mCameraTv;
+	private TextView mVideoTv;
+	private TextView mCourseTv;
+	private TextView mInfoTv;
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
@@ -37,6 +42,10 @@ public class KMSFragment extends BaseFragment {
 		mCourseBtn=(LinearLayout)mView.findViewById(R.id.courseBtn);
 		mInfoBtn=(LinearLayout)mView.findViewById(R.id.infoBtn);
 		
+		mCameraTv=(TextView)mView.findViewById(R.id.cameraTxt);
+		mVideoTv=(TextView)mView.findViewById(R.id.videoTxt);
+		mCourseTv=(TextView)mView.findViewById(R.id.courseTxt);
+		mInfoTv=(TextView)mView.findViewById(R.id.infoTxt);
 		selectItem(0);
 	}
 
@@ -52,18 +61,22 @@ public class KMSFragment extends BaseFragment {
 		FragmentManager fragmentManager = getChildFragmentManager();
 		switch (position) {
 		case 0:
+			changeBackgroundButtonSelected(true, false, false, false);		
 			fragment = CameraKMSFragment.instantiate(getActivity().getApplicationContext(),
 					CameraKMSFragment.class.getName());
 			break;
 		case 1:
+			changeBackgroundButtonSelected(false, true, false, false);
 			fragment = VideoKMSFragment.instantiate(getActivity().getApplicationContext(),
 					VideoKMSFragment.class.getName());
 			break;
 		case 2:
+			changeBackgroundButtonSelected(false, false, true, false);
 			fragment = CourseKMSFragment.instantiate(getActivity().getApplicationContext(),
 					CourseKMSFragment.class.getName());
 			break;
 		case 3:
+			changeBackgroundButtonSelected(false, false, false, true);
 			fragment = InfoKMSFragment.instantiate(getActivity().getApplicationContext(),
 					InfoKMSFragment.class.getName());
 			break;
@@ -81,19 +94,19 @@ public class KMSFragment extends BaseFragment {
 		int id=v.getId();
 		switch (id) {
 		case R.id.cameraBtn:
-			changeBackgroundButtonSelected(true, false, false, false);		
+			//changeBackgroundButtonSelected(true, false, false, false);		
 			selectItem(0);
 			break;
 		case R.id.videoBtn:
-			changeBackgroundButtonSelected(false, true, false, false);
+			//changeBackgroundButtonSelected(false, true, false, false);
 			selectItem(1);
 			break;
 		case R.id.courseBtn:
-			changeBackgroundButtonSelected(false, false, true, false);
+			//changeBackgroundButtonSelected(false, false, true, false);
 			selectItem(2);
 			break;
 		case R.id.infoBtn:
-			changeBackgroundButtonSelected(false, false, false, true);
+			//changeBackgroundButtonSelected(false, false, false, true);
 			selectItem(3);
 			break;
 		default:
@@ -106,5 +119,11 @@ public class KMSFragment extends BaseFragment {
 		mVideoBtn.setBackgroundResource(isVideo?R.drawable.kms_menu_button_3_active:R.drawable.kms_menu_button_3);
 		mCourseBtn.setBackgroundResource(isCourse?R.drawable.kms_menu_button_3_active:R.drawable.kms_menu_button_3);
 		mInfoBtn.setBackgroundResource(isInfo?R.drawable.kms_menu_button_2_active:R.drawable.kms_menu_button_2);
+		
+		
+		mCameraTv.setTextColor(isCamera?Color.parseColor(getActivity().getString(R.color.blue)):Color.parseColor(getActivity().getString(R.color.white)));
+		mVideoTv.setTextColor(isVideo?Color.parseColor(getActivity().getString(R.color.blue)):Color.parseColor(getActivity().getString(R.color.white)));
+		mCourseTv.setTextColor(isCourse?Color.parseColor(getActivity().getString(R.color.blue)):Color.parseColor(getActivity().getString(R.color.white)));
+		mInfoTv.setTextColor(isInfo?Color.parseColor(getActivity().getString(R.color.blue)):Color.parseColor(getActivity().getString(R.color.white)));
 	}
 }
