@@ -9,7 +9,10 @@ public class AppConfig {
 	public static int DBVERSION=1;
 	public class Cache{		
 		public static final String COMMON_NAME="Common";
-		public static final int COMMON_NUMBER=50;		
+		public static final int COMMON_NUMBER=50;
+		
+		public static final String USER_INFO_KEY="Userinfo";
+		public static final int USER_INFO_TIME=2*60*60;
 	}
 	public class URLRequest{
 		public static final String DOMAIN_URL="http://mylittlegenius.com.vn";

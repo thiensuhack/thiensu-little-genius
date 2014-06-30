@@ -14,11 +14,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.VideoKMSAdapter;
+import com.orange.studio.littlegenius.models.CommonModel;
 import com.orange.studio.littlegenius.objects.VideoKMSDTO;
+import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class VideoKMSFragment extends BaseFragment implements OnClickListener, OnItemClickListener{
@@ -77,8 +78,8 @@ public class VideoKMSFragment extends BaseFragment implements OnClickListener, O
 		}
 		@Override
 		protected List<VideoKMSDTO> doInBackground(Void... params) {
-			//return LG_CommonUtils.getListVideoFromServer(URLRequest.VIDEO_KMS_URL);
-			return null;
+			return CommonModel.getInstance().getListVideoFromServer(URLRequest.VIDEO_KMS_URL);
+			//return null;
 		}
 		@Override
 		protected void onPostExecute(List<VideoKMSDTO> result) {
@@ -87,14 +88,14 @@ public class VideoKMSFragment extends BaseFragment implements OnClickListener, O
 				if(result!=null && result.size()>0){
 					mAdapter.updateData(result);
 				}
-				else{
-					List<VideoKMSDTO> mList=new ArrayList<VideoKMSDTO>();
-					for (int i = 0; i < 12; i++) {
-						String id=String.valueOf(i);
-						mList.add(new VideoKMSDTO(id, "Video " + id, "http://www.youtube.com/watch?v=tjnA7thSKPY", "http://l.f31.img.vnecdn.net/2014/06/29/1_1404011636_1404015283_490x294.jpg"));
-					}
-					mAdapter.updateData(mList);
-				}
+//				else{
+//					List<VideoKMSDTO> mList=new ArrayList<VideoKMSDTO>();
+//					for (int i = 0; i < 12; i++) {
+//						String id=String.valueOf(i);
+//						mList.add(new VideoKMSDTO(id, "Video " + id, "http://www.youtube.com/watch?v=tjnA7thSKPY", "http://l.f31.img.vnecdn.net/2014/06/29/1_1404011636_1404015283_490x294.jpg"));
+//					}
+//					mAdapter.updateData(mList);
+//				}
 			} catch (Exception e) {
 			}	
 			getBaseActivity().switchView(false);
@@ -111,7 +112,8 @@ public class VideoKMSFragment extends BaseFragment implements OnClickListener, O
 		try {
 			VideoKMSDTO item=mAdapter.getItem(position);
 			//Toast.makeText(getActivity(), item.name, Toast.LENGTH_SHORT).show();
-			LG_CommonUtils.go2WebAction(getActivity(), item.videoURL);
+			String videoURL="http://www.youtube.com/watch?v="+item.youtubeId;
+			LG_CommonUtils.go2WebAction(getActivity(), videoURL);
 		} catch (Exception e) {
 		}
 	}

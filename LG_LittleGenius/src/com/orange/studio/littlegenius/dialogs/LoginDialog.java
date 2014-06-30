@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.activities.BaseActivity.DoAction;
+import com.orange.studio.littlegenius.models.CommonModel;
 import com.orange.studio.littlegenius.objects.LoginDTO;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.UserDTO;
@@ -91,10 +92,10 @@ public class LoginDialog extends BaseDialog {
 			mLoginTask.execute();
 		}
 	}
-	private class LoginTask extends AsyncTask<Void, Void, ResultData>{
+	private class LoginTask extends AsyncTask<Void, Void, UserDTO>{
 
 		@Override
-		protected ResultData doInBackground(Void... params) {
+		protected UserDTO doInBackground(Void... params) {
 			try {
 				String userName=mUserName.getText().toString();
 				String password=mPassword.getText().toString();
@@ -103,38 +104,41 @@ public class LoginDialog extends BaseDialog {
 				mData.user_password=password;
 				Gson gs=new Gson();
 				String data=gs.toJson(mData);
-				return LG_CommonUtils.postDataServer(URLRequest.LOGIN_URL, data);
+				return CommonModel.getInstance().userLogin(URLRequest.LOGIN_URL, data);
 				
 			} catch (Exception e) {
 			}
 			return null;
 		}
 		@Override
-		protected void onPostExecute(ResultData result) {
+		protected void onPostExecute(UserDTO result) {
 			super.onPostExecute(result);
 			if(result!=null){
-				if(result.result == 1){
-					try {
-						JSONObject jb=new JSONObject(result.data);
-						UserDTO mUser=new UserDTO();
-						mUser.user_email=jb.optString("user_email");
-						mUser.user_login=jb.optString("user_login");
-						mUser.user_nicename=jb.optString("user_nicename");
-						mUser.user_id=jb.optString("user_id");
-						mUser.token_id=jb.optString("token_id");
-						AppConfig.mUser=mUser;
-						LoginDialog.this.dismiss();
-						mDoAction.Go2KMS();
-						Toast.makeText(mContext, mContext.getString(R.string.login_success_message), Toast.LENGTH_LONG).show();
-					} catch (JSONException e) {
-						e.printStackTrace();
-						Toast.makeText(mContext, mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
-						return;
-					}
-				}else{
-					Toast.makeText(mContext, (result.msg!=null && result.msg.trim().length()>0)?result.msg:mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
-					return;
-				}
+				AppConfig.mUser=result;
+				mDoAction.Go2KMS();
+				LoginDialog.this.dismiss();
+//				if(result.result == 1){
+//					try {
+//						JSONObject jb=new JSONObject(result.data);
+//						UserDTO mUser=new UserDTO();
+//						mUser.user_email=jb.optString("user_email");
+//						mUser.user_login=jb.optString("user_login");
+//						mUser.user_nicename=jb.optString("user_nicename");
+//						mUser.user_id=jb.optString("user_id");
+//						mUser.token_id=jb.optString("token_id");
+//						AppConfig.mUser=mUser;
+//						LoginDialog.this.dismiss();
+//						mDoAction.Go2KMS();
+//						Toast.makeText(mContext, mContext.getString(R.string.login_success_message), Toast.LENGTH_LONG).show();
+//					} catch (JSONException e) {
+//						e.printStackTrace();
+//						Toast.makeText(mContext, mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
+//						return;
+//					}
+//				}else{
+//					Toast.makeText(mContext, (result.msg!=null && result.msg.trim().length()>0)?result.msg:mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
+//					return;
+//				}
 			}else{
 				Toast.makeText(mContext, mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
 				return;

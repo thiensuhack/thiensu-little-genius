@@ -180,6 +180,7 @@ public class HomeFragment extends BaseFragment {
 				getBaseActivity().mDoAction);
 		mViewPager.setAdapter(mSlideAdapter);
 		mCirclePageIndicator.setViewPager(mViewPager);
+		mCirclePageIndicator.setVisibility(View.GONE);
 		
 		mPreviousBtn = (ImageView) mView.findViewById(R.id.previousBtn);
 		mNextBtn = (ImageView) mView.findViewById(R.id.nextBtn);
