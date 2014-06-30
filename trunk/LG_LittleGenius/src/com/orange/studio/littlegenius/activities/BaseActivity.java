@@ -29,6 +29,7 @@ import com.orange.studio.littlegenius.fragments.PreviewFragment;
 import com.orange.studio.littlegenius.fragments.ProgramFragment;
 import com.orange.studio.littlegenius.fragments.TestimonialFragment;
 import com.orange.studio.littlegenius.objects.SlidingMenuItem;
+import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.slidingmenu.lib.SlidingMenu;
 import com.todddavies.components.progressbar.ProgressWheel;
@@ -156,19 +157,19 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			break;
 		case 4:
 			title="TRUY VẤN";
-			fragment = KMSFragment.instantiate(getApplicationContext(),
-					KMSFragment.class.getName());
-//			
-//			if(AppConfig.mUser==null){
-//				if(isToggleMenu){
-//					toggle();
-//				}
-//				showLoginDialog();
-//			}else{
-//				title="KMS";
-//				fragment = KMSFragment.instantiate(getApplicationContext(),
-//						KMSFragment.class.getName());
-//			}
+//			fragment = KMSFragment.instantiate(getApplicationContext(),
+//					KMSFragment.class.getName());
+			LG_CommonUtils.checkUserInfo();
+			if(AppConfig.mUser==null){
+				if(isToggleMenu){
+					toggle();
+				}
+				showLoginDialog();
+			}else{
+				title="KMS";
+				fragment = KMSFragment.instantiate(getApplicationContext(),
+						KMSFragment.class.getName());
+			}
 			
 			break;
 		case 5:

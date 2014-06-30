@@ -18,8 +18,11 @@ import android.widget.Toast;
 
 import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.VideoKMSAdapter;
+import com.orange.studio.littlegenius.models.CommonModel;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.VideoKMSDTO;
+import com.orange.studio.littlegenius.utils.LG_CommonUtils;
+import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
 
 public class CameraKMSFragment extends BaseFragment implements OnClickListener, OnItemClickListener{
 
@@ -69,42 +72,31 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener, 
 			mLoadVideoKMSTask.execute();
 		}
 	}
-	private class LoadVideoKMSTask extends AsyncTask<Void, Void, ResultData>{
+	private class LoadVideoKMSTask extends AsyncTask<Void, Void, List<VideoKMSDTO>>{
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
 			getBaseActivity().switchView(true);
 		}
 		@Override
-		protected ResultData doInBackground(Void... params) {
-			///return LG_CommonUtils.getDataFromServer(URLRequest.TESTIMONIAL);
-			return null;
+		protected List<VideoKMSDTO> doInBackground(Void... params) {
+			return CommonModel.getInstance().getListVideoFromServer(URLRequest.VIDEO_KMS_URL);
 		}
 		@Override
-		protected void onPostExecute(ResultData result) {
+		protected void onPostExecute(List<VideoKMSDTO> result) {
 			super.onPostExecute(result);
 			try {
-//				if(result!=null && result.result==1){
-//					JSONArray jArr=new JSONArray(result.data);					
-//					if(jArr!=null && jArr.length()>0){
-//						List<VideoKMSDTO> mList=new ArrayList<VideoKMSDTO>();
-//						for (int i = 0; i < jArr.length(); i++) {
-//							JSONObject jb=jArr.getJSONObject(i);
-//							String content=jb.optString("content");
-//							if(content!=null && content.length()>0){
-//								content=content.replace("<p>", "").replace("</p>", "").replace("\n", "");
-//							}
-//							mList.add(new VideoKMSDTO(jb.optString("thumbnail"),jb.optString("author"),content,content));
-//						}
-//						mAdapter.updateData(mList);
-//					}
-//				}
-				List<VideoKMSDTO> mList=new ArrayList<VideoKMSDTO>();
-				for (int i = 0; i < 8; i++) {
-					String id=String.valueOf(i);
-					mList.add(new VideoKMSDTO(id, "Video " + id, "", "http://s.f2.img.vnecdn.net/2014/06/29/tag-reuters-2-7141-1403993181_180x108.jpg"));
+				if(result!=null && result.size()>0){
+					mAdapter.updateData(result);
 				}
-				mAdapter.updateData(mList);
+//				else{
+//					List<VideoKMSDTO> mList=new ArrayList<VideoKMSDTO>();
+//					for (int i = 0; i < 12; i++) {
+//						String id=String.valueOf(i);
+//						mList.add(new VideoKMSDTO(id, "Video " + id, "http://www.youtube.com/watch?v=tjnA7thSKPY", "http://l.f31.img.vnecdn.net/2014/06/29/1_1404011636_1404015283_490x294.jpg"));
+//					}
+//					mAdapter.updateData(mList);
+//				}
 			} catch (Exception e) {
 			}	
 			getBaseActivity().switchView(false);
@@ -119,7 +111,9 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener, 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
 		try {
 			VideoKMSDTO item=mAdapter.getItem(position);
-			Toast.makeText(getActivity(), item.name, Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getActivity(), item.name, Toast.LENGTH_SHORT).show();
+			String videoURL="http://www.youtube.com/watch?v="+item.youtubeId;
+			LG_CommonUtils.go2WebAction(getActivity(), videoURL);
 		} catch (Exception e) {
 		}
 	}

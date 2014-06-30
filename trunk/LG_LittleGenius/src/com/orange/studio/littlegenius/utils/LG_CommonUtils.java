@@ -37,8 +37,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.orange.studio.littlegenius.models.CommonModel;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.VideoKMSDTO;
+import com.zuzu.db.store.SQLiteStore;
+import com.zuzu.db.store.SimpleStoreIF;
 
 public class LG_CommonUtils {
 	public static String Title = "";
@@ -56,6 +59,17 @@ public class LG_CommonUtils {
 	  public static String URL_SCHEDULE = "http://mylittlegenius.com.vn/?api&act=schedules";
 	  public static String URL_COURSE_PROGRAM = "http://mylittlegenius.com.vn/home/course-background/?api";
 	  public static String PROGRAM_PARAM = "program";
+	  
+	  public static void checkUserInfo(){
+		  if(AppConfig.mUser==null){
+			  AppConfig.mUser=CommonModel.getInstance().getUserInfo();
+		  }
+	  }
+	  public static SimpleStoreIF getStoreAdapter(String name, Context mContext,
+				int items) {
+			return SQLiteStore.getInstance(name, mContext, AppConfig.DBVERSION,
+					items);
+		}
 	  
 	  public static boolean validateEmail(String email) {
 			Pattern pattern;
@@ -188,7 +202,7 @@ public class LG_CommonUtils {
 		}
 	  }
 	  public static ResultData getDataFromServer(String url){
-		  ResultData result=null;
+	  		ResultData result=null;
 			String data=getStringFromURL(url);
 			if(data!=null && data.length()>0){
 				try {

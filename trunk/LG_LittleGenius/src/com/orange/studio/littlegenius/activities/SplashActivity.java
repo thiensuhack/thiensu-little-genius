@@ -33,12 +33,12 @@ public class SplashActivity extends Activity {
 	}
 	private void checkConnection() {
 		go2HomePage();
-		if (LG_CommonUtils.isOnline(getApplicationContext())) {
-			
-		} 
-		else {
-			//go2NetworkError();
-		}
+//		if (LG_CommonUtils.isOnline(getApplicationContext())) {
+//			
+//		} 
+//		else {
+//			//go2NetworkError();
+//		}
 	}
 	private void go2HomePage(){
 		Intent intent=new Intent(getApplicationContext(),BaseActivity.class);
