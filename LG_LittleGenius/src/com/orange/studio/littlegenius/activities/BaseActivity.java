@@ -111,9 +111,9 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		List<SlidingMenuItem> mListItem=new ArrayList<SlidingMenuItem>();
 		SlidingMenuItem menuHome=new SlidingMenuItem(111,"Trang chủ");
 		SlidingMenuItem menuProgram=new SlidingMenuItem(112,"Chương trình");
-		SlidingMenuItem menuTestimonials=new SlidingMenuItem(113,"Cảm nhận");
-		SlidingMenuItem menuPreview=new SlidingMenuItem(114,"Tổng quan");
-		SlidingMenuItem menuKms=new SlidingMenuItem(115,"KMS");
+		SlidingMenuItem menuTestimonials=new SlidingMenuItem(113,"Nhận xét");
+		SlidingMenuItem menuPreview=new SlidingMenuItem(114,"Tin tức");
+		SlidingMenuItem menuKms=new SlidingMenuItem(115,"Truy vấn");
 		SlidingMenuItem menuContact=new SlidingMenuItem(116,"Liên hệ");
 		SlidingMenuItem menuAbout=new SlidingMenuItem(117,"Giới thiệu");
 		
@@ -145,17 +145,17 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 					ProgramFragment.class.getName());
 			break;
 		case 2:
-			title="CẢM NHẬN";
+			title="NHẬN XÉT";
 			fragment = TestimonialFragment.instantiate(getApplicationContext(),
 					TestimonialFragment.class.getName());
 			break;
 		case 3:
-			title="TỔNG QUAN";
+			title="TIN TỨC";
 			fragment = PreviewFragment.instantiate(getApplicationContext(),
 					PreviewFragment.class.getName());
 			break;
 		case 4:
-			title="KMS";
+			title="TRUY VẤN";
 			fragment = KMSFragment.instantiate(getApplicationContext(),
 					KMSFragment.class.getName());
 //			

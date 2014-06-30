@@ -39,14 +39,14 @@
     <string name="login_btn">Đăng nhập</string>
     <string name="register_btn">Đăng ký</string>
     
-    <string name="name_label">Họ tên:</string>
-    <string name="name_hint">Nhập họ tên:</string>
+    <string name="name_label">Tên đăng nhập:</string>
+    <string name="name_hint">Nhập tên đăng nhập</string>
     <string name="email_label">Email:</string>
-    <string name="email_hint">Nhập email:</string>
+    <string name="email_hint">Nhập email</string>
     <string name="phone_label">Điện thoại:</string>
-    <string name="phone_hint">Nhập điện thoại:</string>
+    <string name="phone_hint">Nhập điện thoại</string>
     <string name="address_label">Địa chỉ:</string>
-    <string name="address_hint">Nhập địa chỉ:</string>
+    <string name="address_hint">Nhập địa chỉ</string>
     
     <string name="contact_infomation_label">Thông tin liên hệ</string>
     <string name="txt_user">Họ tên</string>
@@ -68,9 +68,9 @@
     <string name="kms_menu_info_btn">Thông tin</string>
     <string name="versionNameLabel">Phiên bản</string>
     <string name="home_menu_program_btn">CHƯƠNG TRÌNH</string>
-    <string name="home_menu_testimonials_btn">CẢM NHẬN</string>
-    <string name="home_menu_preview_btn">TỔNG QUAN</string>
-    <string name="home_menu_kms_btn">KMS</string>
+    <string name="home_menu_testimonials_btn">NHẬN XÉT</string>
+    <string name="home_menu_preview_btn">TIN TỨC</string>
+    <string name="home_menu_kms_btn">TRUY VẤN</string>
     <string name="home_menu_contact_btn">LIÊN HỆ</string>
 
     <!-- menu home bar -->
