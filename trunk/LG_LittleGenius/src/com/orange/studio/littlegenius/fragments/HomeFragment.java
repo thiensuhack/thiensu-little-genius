@@ -26,6 +26,7 @@ import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
+import com.viewpagerindicator.CirclePageIndicator;
 
 public class HomeFragment extends BaseFragment {
 	private View mAboutBtn;
@@ -39,6 +40,8 @@ public class HomeFragment extends BaseFragment {
 	private TextView mScheduleTxt1;
 	private TextView mScheduleTxt2;
 
+	private CirclePageIndicator mCirclePageIndicator=null;
+	
 	private ViewPager mViewPager = null;
 	private MyFragmentAdapter mSlideAdapter = null;
 	private List<HomeSliderDTO> mData = null;
@@ -171,12 +174,13 @@ public class HomeFragment extends BaseFragment {
 		// mData.add(new SlideItemData(R.drawable.easing_slider_3, ""));
 		// mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
 		// mData.add(new SlideItemData(R.drawable.easing_slider_21, ""));
-
+		mCirclePageIndicator=(CirclePageIndicator)mView.findViewById(R.id.slideIndicator);
 		mViewPager = (ViewPager) mView.findViewById(R.id.slideViewPager);
 		mSlideAdapter = new MyFragmentAdapter(getChildFragmentManager(), mData,
 				getBaseActivity().mDoAction);
 		mViewPager.setAdapter(mSlideAdapter);
-
+		mCirclePageIndicator.setViewPager(mViewPager);
+		
 		mPreviousBtn = (ImageView) mView.findViewById(R.id.previousBtn);
 		mNextBtn = (ImageView) mView.findViewById(R.id.nextBtn);
 

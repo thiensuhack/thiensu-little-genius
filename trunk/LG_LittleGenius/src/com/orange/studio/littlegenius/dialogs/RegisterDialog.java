@@ -9,9 +9,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.orange.studio.littlegenius.R;
+import com.orange.studio.littlegenius.objects.LoginDTO;
+import com.orange.studio.littlegenius.objects.RegisterDTO;
 import com.orange.studio.littlegenius.objects.ResultData;
+import com.orange.studio.littlegenius.objects.UserDTO;
+import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
+import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
 
 public class RegisterDialog extends BaseDialog {
 
@@ -82,13 +88,17 @@ public class RegisterDialog extends BaseDialog {
 		@Override
 		protected ResultData doInBackground(Void... params) {
 			String name=mName.getText().toString();
-			String username=mUserName.getText().toString();
-			String password=mPassword.getText().toString();
+			//String username=mUserName.getText().toString();
+			//String password=mPassword.getText().toString();
 			String email=mEmail.getText().toString();
-			String phone=mPhone.getText().toString();
-			String address=mAddress.getText().toString();
-			if(name.trim().length()<1 || username.trim().length()<1 
-					|| password.trim().length()<1 || email.trim().length()<1 || phone.trim().length()<1 || address.trim().length()<1){
+			//String phone=mPhone.getText().toString();
+			//String address=mAddress.getText().toString();
+//			if(name.trim().length()<1 || username.trim().length()<1 
+//					|| password.trim().length()<1 || email.trim().length()<1 || phone.trim().length()<1 || address.trim().length()<1){
+//				Toast.makeText(mContext, mContext.getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
+//				return null;
+//			}
+			if(name.trim().length()<1 || email.trim().length()<1){
 				Toast.makeText(mContext, mContext.getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
 				return null;
 			}
@@ -96,17 +106,29 @@ public class RegisterDialog extends BaseDialog {
 				Toast.makeText(mContext, mContext.getString(R.string.email_warning), Toast.LENGTH_LONG).show();
 				return null;
 			}
-			if(!LG_CommonUtils.validatePhoneNumber(phone)){
-				Toast.makeText(mContext, mContext.getString(R.string.phone_warning), Toast.LENGTH_LONG).show();
-				return null;
-			}
-			return null;
+//			if(!LG_CommonUtils.validatePhoneNumber(phone)){
+//				Toast.makeText(mContext, mContext.getString(R.string.phone_warning), Toast.LENGTH_LONG).show();
+//				return null;
+//			}
+			RegisterDTO userInfo=new RegisterDTO();
+			userInfo.user_login=name;
+			userInfo.user_email=email;
+			Gson gs=new Gson();
+			String data=gs.toJson(userInfo);
+			return LG_CommonUtils.postDataServer(URLRequest.REGISTER_URL, data);
 		}
 		@Override
 		protected void onPostExecute(ResultData result) {
 			super.onPostExecute(result);
-			if(result!=null){
-				
+			try {
+				if(result!=null){
+					 if(result.result==1){
+					 
+					 }else{
+						 
+					 }
+				}
+			} catch (Exception e) {
 			}
 		}
 	}

@@ -120,6 +120,8 @@ public class LoginDialog extends BaseDialog {
 						mUser.user_email=jb.optString("user_email");
 						mUser.user_login=jb.optString("user_login");
 						mUser.user_nicename=jb.optString("user_nicename");
+						mUser.user_id=jb.optString("user_id");
+						mUser.token_id=jb.optString("token_id");
 						AppConfig.mUser=mUser;
 						LoginDialog.this.dismiss();
 						mDoAction.Go2KMS();

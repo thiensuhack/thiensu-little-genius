@@ -38,6 +38,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.orange.studio.littlegenius.objects.ResultData;
+import com.orange.studio.littlegenius.objects.VideoKMSDTO;
 
 public class LG_CommonUtils {
 	public static String Title = "";
@@ -155,6 +156,37 @@ public class LG_CommonUtils {
 				}
 		}
 	  
+	  public static List<VideoKMSDTO> getListVideoFromServer(String url){
+		  try {
+			  	List<VideoKMSDTO> mList=null;			  	
+				ResultData data=getDataFromServer(url);
+				if(data!=null && data.result==1){
+					JSONArray jArr=new JSONArray(data.data);					
+					if(jArr!=null && jArr.length()>0){
+						mList=new ArrayList<VideoKMSDTO>();
+						for (int i = 0; i < jArr.length(); i++) {
+							JSONObject jb=jArr.getJSONObject(i);
+							VideoKMSDTO video=new VideoKMSDTO();
+							video.id=jb.optString("video_id");
+							video.name=jb.optString("video_name");
+							video.date=jb.optString("video_date");
+							video.status=jb.optString("video_status");
+							video.type=jb.optString("video_type");
+							video.videoURL=jb.optString("video_url");
+							video.youtubeId=jb.optString("youtube_id");
+							video.user_id=jb.optString("user_id");
+							if(video.youtubeId!=null && video.youtubeId.length()>0){
+								video.cover="http://img.youtube.com/vi/"+video.youtubeId+"/1.jpg";
+							}
+							mList.add(video);
+						}
+					}
+				}
+				return mList;
+		} catch (Exception e) {
+			return null;
+		}
+	  }
 	  public static ResultData getDataFromServer(String url){
 		  ResultData result=null;
 			String data=getStringFromURL(url);
