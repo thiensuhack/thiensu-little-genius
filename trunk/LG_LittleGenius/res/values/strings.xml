@@ -28,6 +28,8 @@
     
     <string name="sending_failed">Gửi không thành công.</string>
     <string name="sending_success">Gửi thành công.</string>
+    <string name="update_failed">Cập nhật không thành công.</string>
+    <string name="update_success">Cập nhật thành công.</string>
     <string name="login_success_message">Đăng nhập thành công.</string>
     <string name="login_failed_message">Đăng nhập không thành công.</string>
     <string name="login_title">Đăng nhập</string>

@@ -13,6 +13,7 @@ public class AppConfig {
 		
 		public static final String USER_INFO_KEY="Userinfo";
 		public static final int USER_INFO_TIME=2*60*60;
+		//public static final int USER_INFO_TIME=2*60;
 	}
 	public class URLRequest{
 		public static final String DOMAIN_URL="http://mylittlegenius.com.vn";

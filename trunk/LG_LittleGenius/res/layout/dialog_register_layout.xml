@@ -118,7 +118,8 @@
                 android:hint="@string/email_hint"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:inputType="textEmailAddress" />
         </LinearLayout>
 
         <LinearLayout

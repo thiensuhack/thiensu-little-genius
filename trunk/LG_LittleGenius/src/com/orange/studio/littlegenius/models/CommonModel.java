@@ -210,6 +210,10 @@ public class CommonModel implements CommonIF {
 		return result;
 	}
 	@Override
+	public void clearUserInfo(){
+		this.getStoreAdapter().remove(Cache.USER_INFO_KEY);
+	}
+	@Override
 	public UserDTO userLogin(String url, String data) {
 		ResultData result = LG_CommonUtils.postDataServer(URLRequest.LOGIN_URL, data);
 		if(result!=null && result.result == 1){
