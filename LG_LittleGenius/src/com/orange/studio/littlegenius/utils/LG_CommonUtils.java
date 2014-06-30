@@ -36,7 +36,10 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.orange.studio.littlegenius.LG_ApplicationContext;
+import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.models.CommonModel;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.VideoKMSDTO;
@@ -60,6 +63,9 @@ public class LG_CommonUtils {
 	  public static String URL_COURSE_PROGRAM = "http://mylittlegenius.com.vn/home/course-background/?api";
 	  public static String PROGRAM_PARAM = "program";
 	  
+	  public static void showToast(String toast){
+		  Toast.makeText(LG_ApplicationContext.getContext(), toast, Toast.LENGTH_LONG).show();
+	  }
 	  public static void checkUserInfo(){
 		  if(AppConfig.mUser==null){
 			  AppConfig.mUser=CommonModel.getInstance().getUserInfo();

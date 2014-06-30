@@ -7,17 +7,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.orange.studio.littlegenius.LG_ApplicationContext;
 import com.orange.studio.littlegenius.R;
-import com.orange.studio.littlegenius.objects.LoginDTO;
 import com.orange.studio.littlegenius.objects.RegisterDTO;
 import com.orange.studio.littlegenius.objects.ResultData;
-import com.orange.studio.littlegenius.objects.UserDTO;
-import com.orange.studio.littlegenius.utils.AppConfig;
-import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
+import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class RegisterDialog extends BaseDialog {
 
@@ -70,23 +67,6 @@ public class RegisterDialog extends BaseDialog {
 			this.dismiss();
 			break;
 		case R.id.registerBtn:
-			
-			break;
-		default:
-			super.onClick(v);	
-			break;
-		}		
-	}
-	private void submitRegister(){
-		if(mSubmitRegisterTask==null || mSubmitRegisterTask.getStatus()==Status.FINISHED){
-			mSubmitRegisterTask=new SubmitRegisterTask();
-			mSubmitRegisterTask.execute();
-		}
-	}
-	private class SubmitRegisterTask extends AsyncTask<Void, Void, ResultData>{
-		
-		@Override
-		protected ResultData doInBackground(Void... params) {
 			String name=mName.getText().toString();
 			//String username=mUserName.getText().toString();
 			//String password=mPassword.getText().toString();
@@ -98,18 +78,48 @@ public class RegisterDialog extends BaseDialog {
 //				Toast.makeText(mContext, mContext.getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
 //				return null;
 //			}
-			if(name.trim().length()<1 || email.trim().length()<1){
-				Toast.makeText(mContext, mContext.getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
-				return null;
-			}
-			if(!LG_CommonUtils.validateEmail(email)){
-				Toast.makeText(mContext, mContext.getString(R.string.email_warning), Toast.LENGTH_LONG).show();
-				return null;
-			}
+
 //			if(!LG_CommonUtils.validatePhoneNumber(phone)){
 //				Toast.makeText(mContext, mContext.getString(R.string.phone_warning), Toast.LENGTH_LONG).show();
 //				return null;
 //			}
+			if(name.trim().length()<1 || email.trim().length()<1){
+				LG_CommonUtils.showToast(LG_ApplicationContext.getContext().getString(R.string.empty_warning));
+				return;
+			}
+			if(!LG_CommonUtils.validateEmail(email)){
+				LG_CommonUtils.showToast(LG_ApplicationContext.getContext().getString(R.string.email_warning));
+				return;
+			}
+			submitRegister();
+			break;
+		default:
+			super.onClick(v);	
+			break;
+		}		
+	}
+	private void setEnableView(boolean isEnable){
+		mName.setEnabled(isEnable);
+		mEmail.setEnabled(isEnable);
+		mRegisterBtn.setEnabled(isEnable);
+	}
+	private void submitRegister(){
+		if(mSubmitRegisterTask==null || mSubmitRegisterTask.getStatus()==Status.FINISHED){
+			mSubmitRegisterTask=new SubmitRegisterTask();
+			mSubmitRegisterTask.execute();
+		}
+	}
+	private class SubmitRegisterTask extends AsyncTask<Void, Void, ResultData>{
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			setEnableView(false);
+		}
+		@Override
+		protected ResultData doInBackground(Void... params) {
+			String name=mName.getText().toString();
+			String email=mEmail.getText().toString();
+
 			RegisterDTO userInfo=new RegisterDTO();
 			userInfo.user_login=name;
 			userInfo.user_email=email;
@@ -120,16 +130,16 @@ public class RegisterDialog extends BaseDialog {
 		@Override
 		protected void onPostExecute(ResultData result) {
 			super.onPostExecute(result);
-			try {
-				if(result!=null){
-					 if(result.result==1){
-					 
-					 }else{
-						 
-					 }
+			if(result!=null){
+				if(result.result==1){
+					//Toast.makeText(mContext, mContext.getString(R.string.update_success), Toast.LENGTH_LONG).show();
+					RegisterDialog.this.dismiss();
 				}
-			} catch (Exception e) {
+				LG_CommonUtils.showToast(result.msg);
+			}else{
+				LG_CommonUtils.showToast(mContext.getString(R.string.update_failed));
 			}
+			setEnableView(true);
 		}
 	}
 }

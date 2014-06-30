@@ -16,4 +16,5 @@ public interface CommonIF {
 	public UserDTO getUserInfo();
 	public List<VideoKMSDTO> getListVideoFromServer(String url);
 	public List<CourseKMSDTO> getListCourseFromServer();
+	public void clearUserInfo();
 }

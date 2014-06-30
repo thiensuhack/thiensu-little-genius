@@ -61,6 +61,12 @@ public class LoginDialog extends BaseDialog {
 		mRegisterBtn.setOnClickListener(this);
 		mExitBtn.setOnClickListener(this);
 	}
+	private void setEnableView(boolean isEnable){
+		mUserName.setEnabled(isEnable);
+		mPassword.setEnabled(isEnable);
+		mLoginBtn.setEnabled(isEnable);
+		mRegisterBtn.setEnabled(isEnable);
+	}
 	@Override
 	public void onClick(View v) {
 		int id=v.getId();
@@ -93,7 +99,11 @@ public class LoginDialog extends BaseDialog {
 		}
 	}
 	private class LoginTask extends AsyncTask<Void, Void, UserDTO>{
-
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			setEnableView(false);
+		}
 		@Override
 		protected UserDTO doInBackground(Void... params) {
 			try {
@@ -141,8 +151,8 @@ public class LoginDialog extends BaseDialog {
 //				}
 			}else{
 				Toast.makeText(mContext, mContext.getString(R.string.login_failed_message), Toast.LENGTH_LONG).show();
-				return;
 			}
+			setEnableView(true);
 		}
 	}
 }

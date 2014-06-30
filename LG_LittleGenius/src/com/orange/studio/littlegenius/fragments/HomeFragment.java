@@ -147,6 +147,7 @@ public class HomeFragment extends BaseFragment {
 			mActivity.selectItem(3, false);
 			break;
 		case R.id.kmsBtn:
+			LG_CommonUtils.checkUserInfo();
 			if (AppConfig.mUser == null) {
 				getBaseActivity().showLoginDialog();
 			} else {
