@@ -113,9 +113,9 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		SlidingMenuItem menuHome=new SlidingMenuItem(111,"Trang chủ");
 		SlidingMenuItem menuProgram=new SlidingMenuItem(112,"Chương trình");
 		SlidingMenuItem menuTestimonials=new SlidingMenuItem(113,"Nhận xét");
-		SlidingMenuItem menuPreview=new SlidingMenuItem(114,"Tin tức");
-		SlidingMenuItem menuKms=new SlidingMenuItem(115,"Truy vấn");
-		SlidingMenuItem menuContact=new SlidingMenuItem(116,"Liên hệ");
+		SlidingMenuItem menuPreview=new SlidingMenuItem(114,"Liên hệ");
+		SlidingMenuItem menuKms=new SlidingMenuItem(115,"Thành viên");
+		SlidingMenuItem menuContact=new SlidingMenuItem(116,"Địa chỉ");
 		SlidingMenuItem menuAbout=new SlidingMenuItem(117,"Giới thiệu");
 		
 		mListItem.add(menuHome);
@@ -151,12 +151,12 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 					TestimonialFragment.class.getName());
 			break;
 		case 3:
-			title="TIN TỨC";
+			title="LIÊN HỆ";
 			fragment = PreviewFragment.instantiate(getApplicationContext(),
 					PreviewFragment.class.getName());
 			break;
 		case 4:
-			title="TRUY VẤN";
+			title="THÀNH VIÊN";
 //			fragment = KMSFragment.instantiate(getApplicationContext(),
 //					KMSFragment.class.getName());
 			LG_CommonUtils.checkUserInfo();
@@ -166,14 +166,14 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 				}
 				showLoginDialog();
 			}else{
-				title="KMS";
+				title="THÀNH VIÊN";
 				fragment = KMSFragment.instantiate(getApplicationContext(),
 						KMSFragment.class.getName());
 			}
 			
 			break;
 		case 5:
-			title="LIÊN HỆ";
+			title="ĐỊA CHỈ";
 			fragment = ContactFragment.instantiate(getApplicationContext(),
 					ContactFragment.class.getName());
 			break;

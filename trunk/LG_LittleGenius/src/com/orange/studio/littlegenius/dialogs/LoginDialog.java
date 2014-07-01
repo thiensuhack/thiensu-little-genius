@@ -1,8 +1,5 @@
 package com.orange.studio.littlegenius.dialogs;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
@@ -17,11 +14,9 @@ import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.activities.BaseActivity.DoAction;
 import com.orange.studio.littlegenius.models.CommonModel;
 import com.orange.studio.littlegenius.objects.LoginDTO;
-import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.UserDTO;
 import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
-import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class LoginDialog extends BaseDialog {
 
