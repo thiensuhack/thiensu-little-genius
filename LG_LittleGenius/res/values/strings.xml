@@ -34,7 +34,7 @@
     <string name="login_failed_message">Đăng nhập không thành công.</string>
     <string name="login_title">Đăng nhập</string>
     <string name="register_title">Đăng ký</string>
-    <string name="username_label">Họ tên:</string>
+    <string name="username_label">Tên đăng nhập:</string>
     <string name="password_label">Mật khẩu:</string>
     <string name="username_hint">Nhập họ tên</string>
     <string name="password_hint">Nhập mật khẩu</string>
@@ -71,9 +71,9 @@
     <string name="versionNameLabel">Phiên bản</string>
     <string name="home_menu_program_btn">CHƯƠNG TRÌNH</string>
     <string name="home_menu_testimonials_btn">NHẬN XÉT</string>
-    <string name="home_menu_preview_btn">TIN TỨC</string>
-    <string name="home_menu_kms_btn">TRUY VẤN</string>
-    <string name="home_menu_contact_btn">LIÊN HỆ</string>
+    <string name="home_menu_preview_btn">LIÊN HỆ</string>
+    <string name="home_menu_kms_btn">THÀNH VIÊN</string>
+    <string name="home_menu_contact_btn">ĐỊA CHỈ</string>
 
     <!-- menu home bar -->
     <string name="home_menu_about_btn">GIỚI THIỆU</string>
