@@ -39,7 +39,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.orange.studio.littlegenius.LG_ApplicationContext;
-import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.models.CommonModel;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.VideoKMSDTO;
@@ -225,7 +224,7 @@ public class LG_CommonUtils {
 			return result;
 		}	
 	  public static ResultData postDataServer(String url,String _data){
-		  ResultData result=null;		
+		  	ResultData result=null;		
 			String data=postServer(url,_data);
 			if(data!=null && data.length()>0){
 				try {
