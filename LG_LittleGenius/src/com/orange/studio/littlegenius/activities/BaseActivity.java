@@ -3,6 +3,7 @@ package com.orange.studio.littlegenius.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,6 +31,7 @@ import com.orange.studio.littlegenius.fragments.ProgramFragment;
 import com.orange.studio.littlegenius.fragments.TestimonialFragment;
 import com.orange.studio.littlegenius.objects.SlidingMenuItem;
 import com.orange.studio.littlegenius.utils.AppConfig;
+import com.orange.studio.littlegenius.utils.AppConfig.PushNotificationKey;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.slidingmenu.lib.SlidingMenu;
 import com.todddavies.components.progressbar.ProgressWheel;
@@ -68,7 +70,7 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		setMetaContentView(R.layout.activity_base_layout);
 		initView();
 		initListener();
-		selectItem(0,false);
+		
 		
 	}
 	private void initView(){
@@ -262,5 +264,27 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 	@Override
 	public void onBackPressed() {
 		showExitDialog();
+	}
+	private boolean getPushNotificationFlag(){
+		boolean result=false;
+		try {
+			Bundle param=getIntent().getExtras();
+			if(param!=null){
+				result=param.getBoolean(PushNotificationKey.PROGRAM_KEY);
+				getIntent().putExtra(PushNotificationKey.PROGRAM_KEY, false);
+			}
+			return result;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if(getPushNotificationFlag()){
+			selectItem(1,false);
+		}else{
+			selectItem(0,false);
+		}
 	}
 }

@@ -13,6 +13,7 @@ import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.pushnotification.CommonUtilities;
 import com.orange.studio.littlegenius.pushnotification.ConnectionDetector;
 import com.orange.studio.littlegenius.pushnotification.ServerUtilities;
+import com.orange.studio.littlegenius.utils.AppConfig.PushNotificationKey;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class SplashActivity extends Activity {
@@ -55,6 +56,7 @@ public class SplashActivity extends Activity {
 
 	private void go2HomePage() {
 		Intent intent = new Intent(getApplicationContext(), BaseActivity.class);
+		intent.putExtra(PushNotificationKey.PROGRAM_KEY, true);
 		startActivity(intent);
 		finish();
 	}
