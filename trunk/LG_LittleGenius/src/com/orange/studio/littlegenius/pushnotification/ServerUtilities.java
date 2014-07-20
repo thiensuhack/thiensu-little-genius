@@ -31,13 +31,13 @@ public final class ServerUtilities {
 		Log.i(TAG, "registering device (regId = " + regId + ")");
 		String serverUrl = CommonUtilities.SERVER_BASE_URL;
 
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("method", CommonUtilities.SERVER_REGISTER_METHOD);
-		params.put("appname", CommonUtilities.APP_NAME);
-		params.put("device_id", CommonUtilities.DEVICE_ID);
-		params.put("reg_id", regId);
-		params.put("devicetk", regId);
-		params.put("mem_id", "");
+//		Map<String, String> params = new HashMap<String, String>();
+//		params.put("method", CommonUtilities.SERVER_REGISTER_METHOD);
+//		params.put("appname", CommonUtilities.APP_NAME);
+//		params.put("device_id", CommonUtilities.DEVICE_ID);
+//		params.put("reg_id", regId);
+//		params.put("devicetk", regId);
+//		params.put("mem_id", "");
 		DeviceDTO device=new DeviceDTO(regId, "2");
 		Gson gs=new Gson();
 		String data=gs.toJson(device);
