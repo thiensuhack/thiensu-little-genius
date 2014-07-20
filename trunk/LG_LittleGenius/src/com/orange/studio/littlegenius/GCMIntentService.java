@@ -17,6 +17,7 @@ import com.orange.studio.littlegenius.activities.BaseActivity;
 import com.orange.studio.littlegenius.objects.NotificationDTO;
 import com.orange.studio.littlegenius.pushnotification.CommonUtilities;
 import com.orange.studio.littlegenius.pushnotification.ServerUtilities;
+import com.orange.studio.littlegenius.utils.AppConfig.PushNotificationKey;
 
 public class GCMIntentService extends GCMBaseIntentService {
 	private static final String TAG = GCMIntentService.class.getSimpleName();
@@ -84,6 +85,8 @@ public class GCMIntentService extends GCMBaseIntentService {
 			int pushID = 1111;
 			notificationIntent = new Intent(context,
 					BaseActivity.class);
+			notificationIntent.putExtra(PushNotificationKey.PROGRAM_KEY, true);
+			
 			title = context.getString(R.string.app_name);
 			message = notify.message;
 			pushID = 1112;			
@@ -95,7 +98,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 					| Intent.FLAG_ACTIVITY_SINGLE_TOP);
 			PendingIntent intent = PendingIntent.getActivity(context, 0,
 					notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
+			
 			NotificationCompat.Builder builder = new NotificationCompat.Builder(
 					context)
 					// Set small icon
@@ -132,7 +135,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 		     }
 
 
-		  //  builder.setContentIntent(intent);   
+		    //builder.setContentIntent(intent);   
 			notificationManager.notify(pushID, builder.build());
 		} catch (Exception e) {
 			return;

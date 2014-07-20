@@ -34,4 +34,7 @@ public class AppConfig {
 		public static final String COURSE_KMS_URL=DOMAIN_URL+ "/kms/courses/?api";
 		public static final String INFO_KMS_UPDATE_URL=DOMAIN_URL+ "/kms/user-info/?api";
 	}
+	public class PushNotificationKey{
+		public static final String PROGRAM_KEY="programView";
+	}
 }
