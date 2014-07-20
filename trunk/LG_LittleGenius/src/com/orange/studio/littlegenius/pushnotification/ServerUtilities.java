@@ -12,6 +12,9 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 import com.google.android.gcm.GCMRegistrar;
+import com.google.gson.Gson;
+import com.orange.studio.littlegenius.objects.DeviceDTO;
+import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 
 import android.content.Context;
@@ -35,20 +38,24 @@ public final class ServerUtilities {
 		params.put("reg_id", regId);
 		params.put("devicetk", regId);
 		params.put("mem_id", "");
-
+		DeviceDTO device=new DeviceDTO(regId, "2");
+		Gson gs=new Gson();
+		String data=gs.toJson(device);
+		
 		long backoff = BACKOFF_MILLI_SECONDS + random.nextInt(1000);
 		for (int i = 1; i <= MAX_ATTEMPTS; i++) {
 			Log.d(TAG, "Attempt #" + i + " to register");
 			try {
 				// CommonUtilities.displayMessage(context, context.getString(
 				// R.string.server_registering, i, MAX_ATTEMPTS));
-				post(serverUrl, params);
+				//post(serverUrl, params);
+				LG_CommonUtils.postDataServer(serverUrl, data);
 				GCMRegistrar.setRegisteredOnServer(context, true);
 				// String message =
 				// context.getString(R.string.server_registered);
 				// CommonUtilities.displayMessage(context, message);
 				return;
-			} catch (IOException e) {
+			} catch (Exception e) {
 				// Here we are simplifying and retrying on any error; in a real
 				// application, it should retry only on unrecoverable errors
 				// (like HTTP error code 503).
