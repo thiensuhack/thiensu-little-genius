@@ -4,7 +4,7 @@ import com.orange.studio.littlegenius.LG_ApplicationContext;
 import com.orange.studio.littlegenius.utils.DeviceUtils;
 
 public final class CommonUtilities {
-	public static final String SERVER_BASE_URL = "http://test.adreward.onetechonline.com/v2/registergcm";
+	public static final String SERVER_BASE_URL = "http://mylittlegenius.com.vn/?api&act=register";
 	public static final String SERVER_REGISTER_METHOD = "acceptNotificationAndroid";
 	public static final String SENDER_ID = "942277664486";
 

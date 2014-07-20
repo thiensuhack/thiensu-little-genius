@@ -69,10 +69,16 @@ public class GCMIntentService extends GCMBaseIntentService {
 			Bitmap largeIcon = null;
 			NotificationDTO notify = new NotificationDTO();
 			
-			//{type:"123",message:"<data here>"}
+//			{
+//		    aps =     {
+//		            alert = "My first push notification!";
+//		            sound = default;
+//		        };
+//		        "property_id" = 2;
+//		    }
 			JSONObject jb=new JSONObject(message);
-			notify.type=jb.getString("type");
-			notify.message=jb.getString("msg");
+			notify.type=jb.optInt("property_id");
+			notify.message=jb.getJSONObject("aps").getString("alert");
 			
 			Intent notificationIntent = null;
 			int pushID = 1111;
@@ -80,125 +86,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 					BaseActivity.class);
 			title = context.getString(R.string.app_name);
 			message = notify.message;
-			pushID = 1112;
-			
-//			switch (notify.getDataType()) {
-//			case NEWCOMIC: {
-//				if (notify.getComic() != null) {
-//					ComicDTO comic = notify.getComic();
-//					// AppConfig.curComic = notify.getComic();
-//					AppConfig.isPushNotification = true;
-//					notificationIntent = new Intent(context,
-//							DetailActivity.class);
-//					notificationIntent.putExtra(AppConfig.COMIC_ID_KEY,
-//							comic.getId());
-//					title = context.getString(R.string.new_comic_notify);
-//					message = comic.getName() + " - "
-//							+ comic.getAuthor().getName();
-//					pushID = 1112;
-//				} else {
-//					return;
-//				}
-//				break;
-//			}
-//			case NEWCOMICNUMBER: {
-//				COMIC_NUMBER_DTO comicNumber = notify.getComicNumber();
-//				if (comicNumber == null) {
-//					return;
-//				}
-//				if (TheComicsWorldUltils
-//						.parserString2Integer(comicNumber.numberComic) > 0) {
-//					notificationIntent = new Intent(context, HomeActivity.class);
-//					Bundle params = new Bundle();
-//					params.putInt("curTab", 2);
-//					notificationIntent.putExtras(params);
-//					message = "Vá»«a cáº­p nháº­t " + comicNumber.numberComic
-//							+ " cuá»‘n truyá»‡n má»›i. Xem ngay!";
-//					pushID = 1113;
-//				} else {
-//					return;
-//				}
-//				break;
-//			}
-//			case EVENT: {
-//				if (notify.getEvent() != null) {
-//					AppConfig.isPushNotification = true;
-//					notificationIntent = new Intent(context,
-//							EventDetailActivity.class);
-//					notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//					Gson gs = new Gson();
-//					String strEvent = gs.toJson(notify.getEvent());
-//					notificationIntent.putExtra("eventObject", strEvent);
-//					title = context.getString(R.string.event_title_label);
-//					message = notify.getEvent().getEventName();
-//					pushID = 1119;
-//				} else {
-//					return;
-//				}
-//				break;
-//			}
-//
-//			
-//			case UPDATE: {
-//				String version = TheComicsWorldUltils
-//						.getCurrentVersionName(context);
-//				AppVersion oldVer = TheComicsWorldUltils
-//						.parserOldVersion(version);
-//				UpdateDTO update = notify.getUpdate();
-//				AppVersion newVer = new AppVersion();
-//				newVer.setMinVerSion(update.minVerId);
-//				newVer.setVersion(update.verId);
-//				if (TheComicsWorldUltils.compareVersion(newVer, oldVer)) {
-//					message = "Ä�Ã£ cÃ³ phiÃªn báº£n má»›i " + newVer.getVersion()
-//							+ ". Cáº­p nháº­t ngay!";
-//					if (PackageHelper.getInstance(context).isInstalled(
-//							"com.android.vending")) {
-//						notificationIntent = new Intent(
-//								Intent.ACTION_VIEW,
-//								Uri.parse("market://details?id=com.ulabs.comicworld"));
-//					} else {
-//						notificationIntent = new Intent(
-//								Intent.ACTION_VIEW,
-//								Uri.parse("http://play.google.com/store/apps/details?id=com.ulabs.comicworld"));
-//					}
-//					notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//				} else {
-//					return;
-//				}
-//				break;
-//			}
-//			case APP_PROMOTE: {
-//				if (notify.getAppPromote() != null) {
-//					if (!PackageHelper.getInstance(context).isInstalled(
-//							notify.getAppPromote().packageName.trim())) {						
-//
-//						notificationIntent = new Intent(Intent.ACTION_VIEW,
-//								Uri.parse(notify.getAppPromote().actionlink
-//										+ "&utm_medium=thegioitruyentranh"));
-//						notificationIntent
-//								.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//						title = notify.getAppPromote().appName;
-//						message = context
-//								.getString(R.string.promote_app_title_label);
-//						largeIcon = ImageLoader.getInstance(context).getBitmap(
-//								notify.getAppPromote().logo);
-//						// icon = R.drawable.playstoreicon;
-//						pushID = 1115;
-//					} else {
-//						return;
-//					}
-//				} else {
-//					return;
-//				}
-//				break;
-//			}
-//			case NORMAL_MESSAGE: {
-//				break;
-//			}
-//			default: {
-//				return;
-//			}
-//			}
+			pushID = 1112;			
 
 			NotificationManager notificationManager = (NotificationManager) context
 					.getSystemService(Context.NOTIFICATION_SERVICE);
