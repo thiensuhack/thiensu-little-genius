@@ -33,7 +33,7 @@ public class SplashActivity extends Activity {
 			mVersionName.setText(verName);
 		}
 
-		registerGCM();
+		//registerGCM();
 
 		Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
@@ -56,7 +56,7 @@ public class SplashActivity extends Activity {
 
 	private void go2HomePage() {
 		Intent intent = new Intent(getApplicationContext(), BaseActivity.class);
-		intent.putExtra(PushNotificationKey.PROGRAM_KEY, true);
+		//intent.putExtra(PushNotificationKey.PROGRAM_KEY, true);
 		startActivity(intent);
 		finish();
 	}
