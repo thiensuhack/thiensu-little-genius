@@ -99,7 +99,7 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		mContainerView=(FrameLayout)findViewById(R.id.mainFrameLayout);
 		mLoadingView=(LinearLayout)findViewById(R.id.loadingView);
 		mProgressView=(ProgressWheel)findViewById(R.id.progressWheel);
-		mProgressView.spin();
+		
 		switchView(false);
 	}
 	private void initListener(){
@@ -209,6 +209,11 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 	}
 	public void switchView(boolean isShowLoadingView){
 		mLoadingView.setVisibility(isShowLoadingView?View.VISIBLE:View.GONE);
+		if(isShowLoadingView){
+			mProgressView.spin();
+		}else{
+			mProgressView.stopSpinning();
+		}
 		mContainerView.setVisibility(isShowLoadingView?View.GONE:View.VISIBLE);
 	}
 	@Override
