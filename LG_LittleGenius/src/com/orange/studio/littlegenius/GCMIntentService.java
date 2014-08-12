@@ -64,7 +64,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 	private static void generateNotification(Context context, String message) {
 		try { 
-			int icon = R.drawable.logo;
+			int icon = R.drawable.logo_push;
 			String title = context.getString(R.string.app_name);
 			// long when = System.currentTimeMillis();
 			Bitmap largeIcon = null;
@@ -77,9 +77,10 @@ public class GCMIntentService extends GCMBaseIntentService {
 //		        };
 //		        "property_id" = 2;
 //		    }
-			JSONObject jb=new JSONObject(message);
-			notify.type=jb.optInt("property_id");
-			notify.message=jb.getJSONObject("aps").getString("alert");
+//			JSONObject jb=new JSONObject(message);
+//			notify.type=jb.optInt("property_id");
+//			notify.message=jb.getJSONObject("aps").getString("alert");
+			notify.message=message;
 			
 			Intent notificationIntent = null;
 			int pushID = 1111;

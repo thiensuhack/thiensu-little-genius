@@ -33,7 +33,7 @@ public class SplashActivity extends Activity {
 			mVersionName.setText(verName);
 		}
 
-		//registerGCM();
+		registerGCM();
 
 		Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
