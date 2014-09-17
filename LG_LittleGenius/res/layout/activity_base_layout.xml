@@ -21,10 +21,19 @@
             android:layout_height="match_parent" >
         </FrameLayout>
 
-        <include android:id="@+id/loadingView"
+        <include
+            android:id="@+id/loadingView"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            layout="@layout/loading_layout" />
+            layout="@layout/loading_layout"
+            android:background="@color/home_background" />
+
+        <include
+            android:id="@+id/notFoundDataView"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            layout="@layout/not_found_data_layout"
+            android:background="@color/home_background" />
     </RelativeLayout>
 
     <include

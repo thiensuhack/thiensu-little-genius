@@ -71,7 +71,7 @@ public class HomeFragment extends BaseFragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			getBaseActivity().switchView(true);
+			getBaseActivity().switchView(false,true,false);
 		}
 
 		@Override
@@ -113,12 +113,12 @@ public class HomeFragment extends BaseFragment {
 
 					String str_content = "<font color=\"#0181D8\" size=\"30px\">Classes are available from Thurdays to Sundays.</font>";
 					mScheduleTxt.setText(Html.fromHtml(str_content));
+					mBaseActivity.switchView(true,false,false);
+				}else{
+					mBaseActivity.switchView(false,false,true);
 				}
 			} catch (Exception e) {
 			}
-			
-			mBaseActivity.switchView(false);
-
 		}
 	}
 
