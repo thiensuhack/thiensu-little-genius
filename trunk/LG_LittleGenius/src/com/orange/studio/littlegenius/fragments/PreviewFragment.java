@@ -118,7 +118,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mBaseActivity.switchView(true);
+			mBaseActivity.switchView(false,true,false);
 		}
 		@Override
 		protected ResultData doInBackground(Void... params) {
@@ -137,10 +137,12 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 						}
 						mAdapter.updateFriendList(mList);
 					}
+					mBaseActivity.switchView(true,false,false);
+				}else{
+					mBaseActivity.switchView(false,false,true);
 				}
 			} catch (Exception e) {
 			}
-			mBaseActivity.switchView(false);
 		}
 	}
 	class HTTPRequest extends AsyncTask<String, Void, String> {

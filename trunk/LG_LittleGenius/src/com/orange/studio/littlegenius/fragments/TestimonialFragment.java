@@ -74,7 +74,7 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mBaseActivity.switchView(true);
+			mBaseActivity.switchView(false,true,false);
 		}
 		@Override
 		protected ResultData doInBackground(Void... params) {
@@ -98,10 +98,13 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 						}
 						mAdapter.updateData(mList);
 					}
+					mBaseActivity.switchView(true,false,false);
+				}else{
+					mBaseActivity.switchView(false,false,true);
 				}
 			} catch (Exception e) {
+				return;
 			}	
-			mBaseActivity.switchView(false);
 		}
 	}
 	@Override

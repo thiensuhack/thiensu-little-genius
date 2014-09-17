@@ -78,7 +78,7 @@ public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mBaseActivity.switchView(true);
+			mBaseActivity.switchView(false,true,false);
 		}
 		@Override
 		protected List<CourseKMSDTO> doInBackground(Void... params) {
@@ -91,10 +91,13 @@ public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 			try {
 				if(result!=null){
 					mAdapter.updateData(result);
-				}				
+					mBaseActivity.switchView(true,false,false);
+				}else{
+					mBaseActivity.switchView(false,false,true);
+				}
 			} catch (Exception e) {
+				return;
 			}	
-			mBaseActivity.switchView(false);
 		}
 	}
 	@Override

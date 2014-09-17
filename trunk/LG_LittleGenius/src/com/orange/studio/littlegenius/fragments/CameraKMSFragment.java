@@ -78,7 +78,7 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mBaseActivity.switchView(true);
+			mBaseActivity.switchView(false,true,false);
 		}
 
 		@Override
@@ -93,6 +93,9 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener,
 			try {
 				if (result != null && result.size() > 0) {
 					mAdapter.updateData(result);
+					mBaseActivity.switchView(true,false,false);
+				}else{
+					mBaseActivity.switchView(false,false,true);
 				}
 				// else{
 				// List<VideoKMSDTO> mList=new ArrayList<VideoKMSDTO>();
@@ -105,8 +108,8 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener,
 				// mAdapter.updateData(mList);
 				// }
 			} catch (Exception e) {
+				return;
 			}
-			mBaseActivity.switchView(false);
 		}
 	}
 

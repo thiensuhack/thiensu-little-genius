@@ -77,7 +77,7 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mBaseActivity.switchView(true);
+			mBaseActivity.switchView(false,true,false);
 		}
 
 		@Override
@@ -98,11 +98,13 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 							"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"
 									+ content + "</div>",
 							"text/html; charset=UTF-8", null);
+					mBaseActivity.switchView(true,false,false);
+				}else{
+					mBaseActivity.switchView(false,false,true);
 				}
 			} catch (Exception ex) {
 
 			}
-			mBaseActivity.switchView(false);
 		}
 	}
 
