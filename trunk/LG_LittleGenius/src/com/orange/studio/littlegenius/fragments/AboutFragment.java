@@ -41,7 +41,7 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 	@Override
 	public void initView() {
 //		/txt_content1 = (TextView)mView.findViewById(R.id.txt_content1);
-		
+		mBaseActivity=getBaseActivity();
 		webView = (WebView)mView.findViewById(R.id.webViewMainContent);
 		webView.setBackgroundColor(Color.parseColor(getActivity().getString(R.color.home_background)));
 	}
@@ -59,7 +59,7 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			getBaseActivity().switchView(true);
+			mBaseActivity.switchView(true);
 		}
 		@Override
 		protected ResultData doInBackground(Void... arg0) {			
@@ -83,7 +83,7 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 				}catch(Exception ex){
 					
 				}
-			getBaseActivity().switchView(false);
+			mBaseActivity.switchView(false);
 		}
 	}
 	@Override

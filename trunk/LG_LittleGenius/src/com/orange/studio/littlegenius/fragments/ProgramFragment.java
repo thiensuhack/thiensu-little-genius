@@ -42,6 +42,7 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 	}
 
 	public void initView() {
+		mBaseActivity=getBaseActivity();
 //		txt_content1 = (TextView) mView.findViewById(R.id.txt_content1);
 
 		webView = (WebView) mView.findViewById(R.id.webViewMainContent);
@@ -72,7 +73,7 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			getBaseActivity().switchView(true);
+			mBaseActivity.switchView(true);
 		}
 		@Override
 		protected ResultData doInBackground(Void... arg0) {			
@@ -95,7 +96,7 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 				}catch(Exception ex){
 					
 				}
-			getBaseActivity().switchView(false);
+			mBaseActivity.switchView(false);
 		}
 	}
 

@@ -20,13 +20,12 @@ import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class ContactFragment extends BaseFragment implements OnClickListener {
 
-	//private TextView txt_content1;
+	// private TextView txt_content1;
 	private WebView webView;
 	private LoadContactTask mLoadContactTask = null;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
 		if (mView == null) {
 			mView = inflater.inflate(R.layout.fragment_contact_layout,
 					container, false);
@@ -41,7 +40,8 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	public void initView() {
-		//txt_content1 = (TextView) mView.findViewById(R.id.txt_content1);
+		mBaseActivity=getBaseActivity();
+		// txt_content1 = (TextView) mView.findViewById(R.id.txt_content1);
 
 		webView = (WebView) mView.findViewById(R.id.webViewMainContent);
 		webView.getSettings().setJavaScriptEnabled(true);
@@ -77,8 +77,9 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			getBaseActivity().switchView(true);
+			mBaseActivity.switchView(true);
 		}
+
 		@Override
 		protected ResultData doInBackground(Void... arg0) {
 			return LG_CommonUtils.getDataFromServer(URLRequest.CONTACT_URL);
@@ -89,10 +90,10 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 			try {
 				if (result != null && result.result == 1) {
 					JSONObject jb = new JSONObject(result.data);
-//					String title = jb.optString("name");
+					// String title = jb.optString("name");
 					String content = jb.optString("content");
-//					txt_content1.setText(Html.fromHtml(title));
-//					txt_content1.setTextColor(Color.WHITE);
+					// txt_content1.setText(Html.fromHtml(title));
+					// txt_content1.setTextColor(Color.WHITE);
 					webView.loadData(
 							"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"
 									+ content + "</div>",
@@ -101,7 +102,7 @@ public class ContactFragment extends BaseFragment implements OnClickListener {
 			} catch (Exception ex) {
 
 			}
-			getBaseActivity().switchView(false);
+			mBaseActivity.switchView(false);
 		}
 	}
 

@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 
-public abstract class BaseFragment extends Fragment implements OnClickListener{
+public class BaseFragment extends Fragment implements OnClickListener{
 	protected View mView=null;
-	
+	protected BaseActivity mBaseActivity=null;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -21,13 +21,17 @@ public abstract class BaseFragment extends Fragment implements OnClickListener{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	public abstract void initView();
-	public abstract void initListener();
+	public void initView(){
+		
+	}
+	public void initListener(){
+		
+	}
 	@Override
 	public void onClick(View v) {
 		
 	}
-	public BaseActivity getBaseActivity(){
+	protected BaseActivity getBaseActivity(){
 		return (BaseActivity)getActivity();
 	}
 }

@@ -50,11 +50,12 @@ public class HomeFragment extends BaseFragment {
 
 	private LoadDataTask mLoadDataTask = null;
 	private LoadSlideBannerTask mLoadSlideBannerTask = null;
-
+	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
+		super.onCreateView(inflater, container, savedInstanceState);
 		if (mView == null) {
 			mView = inflater.inflate(R.layout.fragment_home_layout, container,
 					false);
@@ -115,7 +116,8 @@ public class HomeFragment extends BaseFragment {
 				}
 			} catch (Exception e) {
 			}
-			getBaseActivity().switchView(false);
+			
+			mBaseActivity.switchView(false);
 
 		}
 	}
@@ -149,9 +151,9 @@ public class HomeFragment extends BaseFragment {
 		case R.id.kmsBtn:
 			LG_CommonUtils.checkUserInfo();
 			if (AppConfig.mUser == null) {
-				getBaseActivity().showLoginDialog();
+				mBaseActivity.showLoginDialog();
 			} else {
-				getBaseActivity().mDoAction.Go2KMS();
+				mBaseActivity.mDoAction.Go2KMS();
 			}
 			break;
 		case R.id.contactBtn:
@@ -170,6 +172,8 @@ public class HomeFragment extends BaseFragment {
 	// }
 	@Override
 	public void initView() {
+		mBaseActivity=getBaseActivity();
+		
 		mData = new ArrayList<HomeSliderDTO>();
 		// mData.add(new SlideItemData(R.drawable.easing_slider_4, ""));
 		// mData.add(new SlideItemData(R.drawable.easing_slider_3, ""));
@@ -178,7 +182,7 @@ public class HomeFragment extends BaseFragment {
 		mCirclePageIndicator=(CirclePageIndicator)mView.findViewById(R.id.slideIndicator);
 		mViewPager = (ViewPager) mView.findViewById(R.id.slideViewPager);
 		mSlideAdapter = new MyFragmentAdapter(getChildFragmentManager(), mData,
-				getBaseActivity().mDoAction);
+				mBaseActivity.mDoAction);
 		mViewPager.setAdapter(mSlideAdapter);
 		mCirclePageIndicator.setViewPager(mViewPager);
 		mCirclePageIndicator.setVisibility(View.GONE);
@@ -201,6 +205,8 @@ public class HomeFragment extends BaseFragment {
 		mKmsBtn = (LinearLayout) mView.findViewById(R.id.kmsBtn);
 		mContactBtn = (LinearLayout) mView.findViewById(R.id.contactBtn);
 		mPreviewBtn = (LinearLayout) mView.findViewById(R.id.previewBtn);
+		
+		
 	}
 
 	@Override

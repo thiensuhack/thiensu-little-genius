@@ -69,6 +69,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
     }
 	@Override
 	public void initView() {
+		mBaseActivity=getBaseActivity();
 		mListTimer=(ListView)mView.findViewById(R.id.listViewRadio);
 		mAdapter=new ListRadioButtonAdapter(getActivity());
 		mListTimer.setAdapter(mAdapter);
@@ -117,7 +118,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			getBaseActivity().switchView(true);
+			mBaseActivity.switchView(true);
 		}
 		@Override
 		protected ResultData doInBackground(Void... params) {
@@ -139,7 +140,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 				}
 			} catch (Exception e) {
 			}
-			getBaseActivity().switchView(false);
+			mBaseActivity.switchView(false);
 		}
 	}
 	class HTTPRequest extends AsyncTask<String, Void, String> {

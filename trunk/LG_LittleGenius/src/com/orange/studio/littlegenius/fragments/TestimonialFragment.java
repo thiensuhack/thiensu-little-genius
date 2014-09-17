@@ -44,6 +44,7 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
     }
 	@Override
 	public void initView() {
+		mBaseActivity=getBaseActivity();
 		mAdapter=new TestimonialAdapter(getActivity());
 		mListView=(ListView)mView.findViewById(R.id.listViewTestimonial);	
 		mListView.setAdapter(mAdapter);
@@ -73,7 +74,7 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			getBaseActivity().switchView(true);
+			mBaseActivity.switchView(true);
 		}
 		@Override
 		protected ResultData doInBackground(Void... params) {
@@ -100,7 +101,7 @@ public class TestimonialFragment extends BaseFragment implements OnClickListener
 				}
 			} catch (Exception e) {
 			}	
-			getBaseActivity().switchView(false);
+			mBaseActivity.switchView(false);
 		}
 	}
 	@Override

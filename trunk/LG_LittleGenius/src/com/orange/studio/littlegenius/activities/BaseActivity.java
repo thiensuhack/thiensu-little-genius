@@ -3,10 +3,10 @@ package com.orange.studio.littlegenius.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -101,6 +101,8 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		mProgressView=(ProgressWheel)findViewById(R.id.progressWheel);
 		
 		switchView(false);
+		
+		selectItem(0,false);
 	}
 	private void initListener(){
 		mHomeMenuDrawer.setOnClickListener(this);
@@ -132,9 +134,14 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		mListViewMenu.setAdapter(mMenuAdapter);
 		mMenuAdapter.updateFriendList(mListItem);		
 	}
-	public void selectItem(int position, boolean isToggleMenu) {
+	public void selectItem(int position, boolean isToggleMenu) {		
+//		FragmentManager fragmentManager = getSupportFragmentManager();
+//		Fragment mFragment = fragmentManager.findFragmentById(R.id.mainFrameLayout);
+//		String fragmentName = "";
+//		if (mFragment != null) {
+//			fragmentName=mFragment.getClass().getName();
+//		}
 		Fragment fragment = null;
-		FragmentManager fragmentManager = getSupportFragmentManager();
 		String title="";
 		switch (position) {
 		case 0:
@@ -144,6 +151,9 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			break;
 		case 1:
 			title="CHƯƠNG TRÌNH";
+//			if(fragmentName!=null && fragmentName.length()>0 && fragmentName.equals(HomeFragment.class.getName())){
+//				
+//			}
 			fragment = ProgramFragment.instantiate(getApplicationContext(),
 					ProgramFragment.class.getName());
 			break;
@@ -159,8 +169,6 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			break;
 		case 4:
 			title="THÀNH VIÊN";
-//			fragment = KMSFragment.instantiate(getApplicationContext(),
-//					KMSFragment.class.getName());
 			LG_CommonUtils.checkUserInfo();
 			if(AppConfig.mUser==null){
 				if(isToggleMenu){
@@ -194,11 +202,30 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 			if(isToggleMenu){
 				toggle();
 			}
-			fragmentManager.beginTransaction()
-					.replace(R.id.mainFrameLayout, fragment).commit();
+//			fragmentManager.beginTransaction()
+//					.replace(R.id.mainFrameLayout, fragment).commit();
+			replaceFragment(fragment);
 		}
 	}
+	private void replaceFragment(Fragment fragment) {
+		if (fragment == null) {
+			return;
+		}
+		String backStateName = fragment.getClass().getName();
+		String fragmentTag = backStateName;
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		boolean fragmentPopped = fragmentManager.popBackStackImmediate(
+				backStateName, 0);
 
+		if (!fragmentPopped
+				&& fragmentManager.findFragmentByTag(fragmentTag) == null) {
+			FragmentTransaction ft = fragmentManager.beginTransaction();
+			ft.replace(R.id.mainFrameLayout, fragment, fragmentTag);
+			ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+			ft.addToBackStack(backStateName);
+			ft.commit();
+		}
+	}
 	public void showLoginDialog() {
 		LoginDialog mLoginDialog=new LoginDialog(this,mDoAction);
 		mLoginDialog.show();
@@ -288,8 +315,9 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements OnItemC
 		super.onResume();
 		if(getPushNotificationFlag()){
 			selectItem(1,false);
-		}else{
-			selectItem(0,false);
 		}
+//		else{
+//			selectItem(0,false);
+//		}
 	}
 }
