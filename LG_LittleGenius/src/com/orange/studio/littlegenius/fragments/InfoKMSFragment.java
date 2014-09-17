@@ -45,6 +45,7 @@ public class InfoKMSFragment extends BaseFragment implements OnClickListener{
 
 	@Override
 	public void initView() {
+		mBaseActivity=getBaseActivity();
 		mName=(TextView)mView.findViewById(R.id.userName);
 		mEmail=(TextView)mView.findViewById(R.id.userEmail);
 		mPassword=(TextView)mView.findViewById(R.id.userPassword);
@@ -133,7 +134,7 @@ public class InfoKMSFragment extends BaseFragment implements OnClickListener{
 				if(result.result==1){
 					LG_CommonUtils.showToast(getActivity().getString(R.string.update_success));
 					CommonModel.getInstance().clearUserInfo();
-					getBaseActivity().selectItem(0, false);
+					mBaseActivity.selectItem(0, false);
 				}
 				else{
 					LG_CommonUtils.showToast(getActivity().getString(R.string.update_failed));

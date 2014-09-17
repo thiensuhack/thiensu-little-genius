@@ -46,6 +46,7 @@ public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 
 	@Override
 	public void initView() {
+		mBaseActivity=getBaseActivity();
 		mListView=(ListView)mView.findViewById(R.id.listViewVideo);
 		mAdapter=new CourseKMSAdapter(getActivity());
 		mListView.setAdapter(mAdapter);
@@ -77,7 +78,7 @@ public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			getBaseActivity().switchView(true);
+			mBaseActivity.switchView(true);
 		}
 		@Override
 		protected List<CourseKMSDTO> doInBackground(Void... params) {
@@ -93,7 +94,7 @@ public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 				}				
 			} catch (Exception e) {
 			}	
-			getBaseActivity().switchView(false);
+			mBaseActivity.switchView(false);
 		}
 	}
 	@Override
