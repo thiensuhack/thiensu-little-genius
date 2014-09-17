@@ -107,7 +107,7 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements
 		mNotFoundDataView = (RelativeLayout) findViewById(R.id.notFoundDataView);
 		mProgressView = (ProgressWheel) findViewById(R.id.progressWheel);
 
-		switchView(false,true,false);
+		switchView(false, true, false);
 
 		selectItem(0, false);
 	}
@@ -326,9 +326,17 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements
 		}
 	}
 
+	// @Override
+	// public void onBackPressed() {
+	// showExitDialog();
+	// }
 	@Override
 	public void onBackPressed() {
-		showExitDialog();
+		if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+			showExitDialog();
+		} else {
+			super.onBackPressed();
+		}
 	}
 
 	private boolean getPushNotificationFlag() {
