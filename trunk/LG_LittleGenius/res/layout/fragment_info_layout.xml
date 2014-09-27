@@ -110,7 +110,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/brightRed"
                 android:textStyle="bold" />
-d
+
         </LinearLayout>
 
         <View
