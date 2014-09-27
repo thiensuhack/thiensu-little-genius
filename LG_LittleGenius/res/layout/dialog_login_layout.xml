@@ -64,7 +64,8 @@
                 android:hint="@string/password_hint"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:inputType="textPassword" />
         </LinearLayout>
 
         <LinearLayout
