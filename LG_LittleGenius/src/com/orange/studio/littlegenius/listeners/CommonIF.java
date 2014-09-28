@@ -13,7 +13,7 @@ public interface CommonIF {
 	public String getStore(String key);
 	public List<HomeSliderDTO> getHomeSlider();
 	public UserDTO userLogin(String url,String _data);
-	public UserDTO getUserInfo();
+	public UserDTO getUserInfo();	
 	public List<VideoKMSDTO> getListVideoFromServer(String url);
 	public List<CourseKMSDTO> getListCourseFromServer();
 	public void clearUserInfo();
