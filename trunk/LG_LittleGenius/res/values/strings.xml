@@ -18,8 +18,9 @@
     <string name="dialogTitleSelectDate">Chọn ngày sinh</string>
     <string name="empty_warning">Vui lòng nhập đầy đủ thông tin!</string>
     <string name="email_warning">Email không hợp lệ.</string>
+    <string name="password_warning">Mật khẩu không trùng khớp.</string>
     <string name="phone_warning">Số điện thoại không hợp lệ.</string>
-    <string name="kms_info_update_btn">Cập nhật\nthông tin</string>
+    <string name="kms_info_update_btn">Cập nhật thông tin</string>
     <string name="kms_info_change_password_btn">Đổi mật khẩu</string>
     <string name="exit_dialog_title">Thoát ứng dụng</string>
     <string name="exit_dialog_message">Bạn muốn thoát ứng dụng?</string>
@@ -35,8 +36,13 @@
     <string name="register_title">Đăng ký</string>
     <string name="username_label">Tên đăng nhập:</string>
     <string name="password_label">Mật khẩu:</string>
+    <string name="confirm_pass_label">Nhập lại mật khẩu</string>
     <string name="username_hint">Nhập họ tên</string>
     <string name="password_hint">Nhập mật khẩu</string>
+    
+    <string name="new_password_hint">Nhập mật khẩu mới</string>
+    <string name="confirm_new_password_hint">Nhập lại mật khẩu mới</string>
+    
     <string name="login_btn">Đăng nhập</string>
     <string name="register_btn">Đăng ký</string>
     <string name="name_label">Tên đăng nhập:</string>
@@ -50,7 +56,9 @@
     <string name="contact_infomation_label">Thông tin liên hệ</string>
     <string name="txt_user">Họ tên</string>
     <string name="txt_pass">Mật khẩu</string>
+    
     <string name="str_login">Đăng nhập</string>
+    <string name="str_logout">Đăng xuất</string>
     <string name="str_username">Họ tên(*)</string>
     <string name="str_email">Email(*)</string>
     <string name="str_phone">Điện thoại(*)</string>

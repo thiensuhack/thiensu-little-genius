@@ -3,7 +3,6 @@ package com.orange.studio.littlegenius.models;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -11,7 +10,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.os.Bundle;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -23,9 +21,9 @@ import com.orange.studio.littlegenius.objects.HomeSliderDTO;
 import com.orange.studio.littlegenius.objects.ResultData;
 import com.orange.studio.littlegenius.objects.UserDTO;
 import com.orange.studio.littlegenius.objects.VideoKMSDTO;
+import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.AppConfig.Cache;
 import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
-import com.orange.studio.littlegenius.utils.AppConfig;
 import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 import com.orange.studio.littlegenius.utils.LittleGeniusUtils;
 import com.zuzu.db.store.SimpleStoreIF;
@@ -176,9 +174,13 @@ public class CommonModel implements CommonIF {
 						mList.add(video);
 					}
 				}
+			}else{
+				if(data!=null && data.result!=1){
+					CommonModel.getInstance().clearUserInfo();
+				}				
 			}
 			return mList;
-	} catch (Exception e) {
+	} catch (Exception e) {		
 		return null;
 	}
 	}
@@ -211,7 +213,11 @@ public class CommonModel implements CommonIF {
 	}
 	@Override
 	public void clearUserInfo(){
-		this.getStoreAdapter().remove(Cache.USER_INFO_KEY);
+		try {
+			AppConfig.mUser=null;
+			this.getStoreAdapter().remove(Cache.USER_INFO_KEY);
+		} catch (Exception e) {
+		}
 	}
 	@Override
 	public UserDTO userLogin(String url, String data) {
