@@ -19,12 +19,12 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.orange.studio.littlegenius.R;
@@ -40,6 +40,7 @@ import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 public class PreviewFragment extends BaseFragment implements OnClickListener, OnFocusChangeListener{
 
 	//private TextView txt_content1;
+	private ScrollView mScrollView=null;	
 	private WebView mMainContent;
 	private EditText strUser;
 	private EditText strEmail;
@@ -47,13 +48,13 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	private EditText strBirthday;
 	private EditText strPreferredDate;
 	private RadioButton mHougang;
-	private RadioGroup mOptionGroup;
+//	private RadioGroup mOptionGroup;
 	
 	private View mSendDataBtn;
 	private ListView mListTimer;
 	private ListRadioButtonAdapter mAdapter;
 	private LoadListTimerTask mLoadListTimerTask=null;
-	private boolean isHougangChecked=false;
+//	private boolean isHougangChecked=false;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
     }
 	@Override
 	public void initView() {
+		mScrollView=(ScrollView)mView.findViewById(R.id.scrollView);
 		mBaseActivity=getBaseActivity();
 		mListTimer=(ListView)mView.findViewById(R.id.listViewRadio);
 		mAdapter=new ListRadioButtonAdapter(getActivity());
@@ -85,7 +87,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		strPreferredDate   =(EditText)mView.findViewById(R.id.str_preferredDate);
 		mHougang=(RadioButton)mView.findViewById(R.id.radioHougang);
 		
-		mSendDataBtn = (LinearLayout)mView.findViewById(R.id.sendDataBtn);		
+		mSendDataBtn = (Button)mView.findViewById(R.id.sendDataBtn);		
 	}
 
 	@Override
@@ -142,6 +144,9 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 					mBaseActivity.switchView(false,false,true);
 				}
 			} catch (Exception e) {
+			}
+			finally{
+				mScrollView.pageScroll(View.FOCUS_UP);
 			}
 		}
 	}
