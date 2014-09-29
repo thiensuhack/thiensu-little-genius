@@ -43,8 +43,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:orientation="vertical" >
 
                 <LinearLayout
@@ -67,9 +65,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
-                        android:background="@drawable/dialog_login_edittext_background"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false" />
+                        android:background="@drawable/dialog_login_edittext_background" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -92,8 +88,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:background="@drawable/dialog_login_edittext_background"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:inputType="textEmailAddress" />
                 </LinearLayout>
 
@@ -117,8 +111,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:background="@drawable/dialog_login_edittext_background"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:inputType="phone" />
                 </LinearLayout>
 
@@ -143,8 +135,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:background="@drawable/dialog_login_edittext_background"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:inputType="date" />
                 </LinearLayout>
 
@@ -168,8 +158,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:background="@drawable/dialog_login_edittext_background"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:inputType="date" />
                 </LinearLayout>
 
@@ -192,8 +180,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
                         android:text="@string/str_hougang"
                         android:textColor="@color/brightRed" />
                 </LinearLayout>
@@ -215,9 +201,7 @@
                     android:background="@color/home_background"
                     android:choiceMode="singleChoice"
                     android:divider="@android:color/transparent"
-                    android:dividerHeight="0dp"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false" />
+                    android:dividerHeight="0dp" />
             </LinearLayout>
 
             <Button
