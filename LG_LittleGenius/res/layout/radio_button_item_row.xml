@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/home_background"
-    android:focusable="false"
-    android:focusableInTouchMode="false"
     android:orientation="vertical" >
 
     <RadioButton
@@ -12,8 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:checked="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
         android:text=" 8:30 am"
         android:textColor="@color/brightRed" />
 
