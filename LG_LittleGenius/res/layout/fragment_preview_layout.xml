@@ -1,249 +1,235 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:background="@color/home_background"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/txt_content1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="@color/brightRed"
-        android:textSize="11pt"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:orientation="vertical" >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        <WebView
+            android:id="@+id/webViewMainContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical" >
 
-            <WebView
-                android:id="@+id/webViewMainContent"
-                android:layout_width="fill_parent"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_marginBottom="7dp"
+                android:background="@color/blue"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/contact_infomation_label"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:orientation="vertical" >
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/blue"
-                    android:gravity="center"
-                    android:padding="10dp" >
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/txt_user"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/contact_infomation_label"
-                        android:textColor="@color/white"
-                        android:textSize="17sp" />
+                        android:text="@string/str_username"
+                        android:textColor="@color/brightRed"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/str_user"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/dialog_login_edittext_background"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:orientation="vertical" >
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal" >
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:orientation="horizontal" >
+                        android:text="@string/str_email"
+                        android:textColor="@color/brightRed"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/txt_user"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str_username"
-                            android:textColor="@color/brightRed"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/str_user"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
-                            android:background="@drawable/dialog_login_edittext_background" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <EditText
+                        android:id="@+id/str_email"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str_email"
-                            android:textColor="@color/brightRed"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/str_email"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
-                            android:background="@drawable/dialog_login_edittext_background"
-                            android:inputType="textEmailAddress" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str_phone"
-                            android:textColor="@color/brightRed"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/str_phone"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
-                            android:background="@drawable/dialog_login_edittext_background"
-                            android:inputType="phone" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str_birthday"
-                            android:textColor="@color/brightRed"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/str_birthday"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
-                            android:background="@drawable/dialog_login_edittext_background"
-                            android:inputType="date" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str_preferred_date"
-                            android:textColor="@color/brightRed"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/str_preferredDate"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
-                            android:background="@drawable/dialog_login_edittext_background"
-                            android:inputType="date" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:orientation="horizontal"
-                        android:visibility="gone" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str_preferred_outlet"
-                            android:textColor="@color/brightRed"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <RadioButton
-                            android:id="@+id/radioHougang"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checked="false"
-                            android:text="@string/str_hougang"
-                            android:textColor="@color/brightRed" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="3dp"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/str_preferred_timing"
-                            android:textColor="@color/brightRed"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <ListView
-                            android:id="@+id/listViewRadio"
-                            android:layout_width="match_parent"
-                            android:layout_height="220dp"
-                            android:layout_gravity="start"
-                            android:background="@color/home_background"
-                            android:choiceMode="singleChoice"
-                            android:divider="@android:color/transparent"
-                            android:dividerHeight="0dp" />
-                    </LinearLayout>
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/dialog_login_edittext_background"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="textEmailAddress" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/sendDataBtn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/base_button_blue"
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_phone"
+                        android:textColor="@color/brightRed"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/str_phone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/dialog_login_edittext_background"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="phone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="40dp"
-                    android:paddingRight="40dp" >
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_birthday"
+                        android:textColor="@color/brightRed"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/str_birthday"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/dialog_login_edittext_background"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="date" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_preferred_date"
+                        android:textColor="@color/brightRed"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/str_preferredDate"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/dialog_login_edittext_background"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="date" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/str_send"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+                        android:text="@string/str_preferred_outlet"
+                        android:textColor="@color/brightRed"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-</LinearLayout>
+                    <RadioButton
+                        android:id="@+id/radioHougang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:text="@string/str_hougang"
+                        android:textColor="@color/brightRed" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/str_preferred_timing"
+                    android:textColor="@color/brightRed"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <ListView
+                    android:id="@+id/listViewRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_gravity="start"
+                    android:background="@color/home_background"
+                    android:choiceMode="singleChoice"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="0dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/sendDataBtn"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/base_button_blue"
+                android:text="@string/str_send"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
