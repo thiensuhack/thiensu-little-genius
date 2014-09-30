@@ -162,7 +162,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 			String content = LG_CommonUtils.getContent();
 //			String title = LG_CommonUtils.getTitle();
 //			txt_content1.setText(Html.fromHtml(title));		
-			mMainContent.loadData("<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"+content+"</div>","text/html; charset=UTF-8", null);
+			mMainContent.loadData("<body style=\'background-color:transparent;padding: 5px ;color:#EF5535;text-align: justify;'>"+content+"</body>","text/html; charset=UTF-8", null);
 		}
 	}
 
