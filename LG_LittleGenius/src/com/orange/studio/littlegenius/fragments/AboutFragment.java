@@ -76,8 +76,8 @@ public class AboutFragment extends BaseFragment implements OnClickListener{
 						//txt_content1.setText(Html.fromHtml(title));
 						//txt_content1.setTextColor(Color.WHITE);
 						webView.loadData(
-								"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"
-										+ content + "</div>", "text/html; charset=UTF-8",
+								"<body style=\'background-color:transparent;padding: 5px ;color:#EF5535;text-align: justify;'>"
+										+ content + "</body>", "text/html; charset=UTF-8",
 								null);
 						mBaseActivity.switchView(true,false,false);
 					}else{
