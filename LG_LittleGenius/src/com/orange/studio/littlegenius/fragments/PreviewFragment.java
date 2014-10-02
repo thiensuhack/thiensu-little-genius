@@ -85,7 +85,6 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		strPhone = (EditText)mView.findViewById(R.id.str_phone);
 		strBirthday   =(EditText)mView.findViewById(R.id.str_birthday);
 		strPreferredDate   =(EditText)mView.findViewById(R.id.str_preferredDate);
-		mHougang=(RadioButton)mView.findViewById(R.id.radioHougang);
 		
 		mSendDataBtn = (Button)mView.findViewById(R.id.sendDataBtn);		
 	}
