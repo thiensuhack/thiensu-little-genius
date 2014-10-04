@@ -88,6 +88,8 @@ public class ProgramFragment extends BaseFragment implements OnClickListener,
 //						String title=jb.optString("name");
 						String content=jb.optString("content");
 //						txt_content1.setText(Html.fromHtml(title));
+						content=content.replace(getActivity().getString(R.string.replace_data_one), "");
+						content=content.replace(getActivity().getString(R.string.replace_data_two), "");
 						webView.loadData(
 								"<div style=\'background-color:transparent;padding: 5px ;color:#EF5535'>"
 										+ content + "</div>", "text/html; charset=UTF-8",

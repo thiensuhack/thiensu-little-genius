@@ -82,5 +82,7 @@
     <!-- menu home bar -->
     <string name="home_menu_about_btn">GIỚI THIỆU</string>
     <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    <string name="replace_data_one">Tải cẩm nang giới thiệu về chương trình My Little Genius ở đây</string>
+    <string name="replace_data_two">Đọc thêm</string>
 
 </resources>
