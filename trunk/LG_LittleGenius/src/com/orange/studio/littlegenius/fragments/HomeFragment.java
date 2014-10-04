@@ -95,7 +95,7 @@ public class HomeFragment extends BaseFragment {
 					// str_content +=
 					// "</ul><font color=\"#0181D8\" size=\"30px\">Classes are available from Thurdays to Sundays.</font>";
 
-					String str_content1 = "<b><font color=\"#0181D8\" size=\"35px\">Class Schedule : </font></b><br>";
+					String str_content1 = "<b><font color=\"#0181D8\" size=\"35px\">Lịch học : </font></b><br>";
 					for (int i = 0; i < (content.size() / 2); i++) {
 						str_content1 += "<font color=\"#0181D8\" size=\"30px\">"
 								+ content.get(i) + "</font>";
@@ -111,7 +111,7 @@ public class HomeFragment extends BaseFragment {
 					str_content2 += "";
 					mScheduleTxt2.setText(Html.fromHtml(str_content2));
 
-					String str_content = "<font color=\"#0181D8\" size=\"30px\">Classes are available from Thurdays to Sundays.</font>";
+					String str_content = "<font color=\"#0181D8\" size=\"30px\">Lớp học được mở từ thứ 5 đến chủ nhật.</font>";
 					mScheduleTxt.setText(Html.fromHtml(str_content));
 					mBaseActivity.switchView(true,false,false);
 				}else{
