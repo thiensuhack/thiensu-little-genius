@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -47,14 +46,11 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	private EditText strPhone;
 	private EditText strBirthday;
 	private EditText strPreferredDate;
-	private RadioButton mHougang;
-//	private RadioGroup mOptionGroup;
 	
 	private View mSendDataBtn;
 	private ListView mListTimer;
 	private ListRadioButtonAdapter mAdapter;
 	private LoadListTimerTask mLoadListTimerTask=null;
-//	private boolean isHougangChecked=false;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
@@ -174,7 +170,6 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 			String email=strEmail.getText().toString();
 			String phone=strPhone.getText().toString();
 			String birthday=strBirthday.getText().toString();
-			boolean isHougang=mHougang.isSelected();
 			
 			if(name==null || name.trim().length()<1){
 				Toast.makeText(getActivity(), getActivity().getString(R.string.empty_warning), Toast.LENGTH_LONG).show();
