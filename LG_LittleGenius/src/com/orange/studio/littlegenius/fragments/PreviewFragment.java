@@ -7,6 +7,7 @@ import java.util.List;
 import org.json.JSONArray;
 
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -51,6 +52,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 	private ListView mListTimer;
 	private ListRadioButtonAdapter mAdapter;
 	private LoadListTimerTask mLoadListTimerTask=null;
+	private ProgressDialog mProgress=null;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
@@ -66,6 +68,8 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
     }
 	@Override
 	public void initView() {
+		mProgress=new ProgressDialog(getActivity());
+		mProgress.setMessage(getActivity().getString(R.string.please_waitting));
 		mScrollView=(ScrollView)mView.findViewById(R.id.scrollView);
 		mBaseActivity=getBaseActivity();
 		mListTimer=(ListView)mView.findViewById(R.id.listViewRadio);
@@ -327,6 +331,13 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 			data=_data;						
 		}
 		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			if(!mProgress.isShowing()){
+				mProgress.show();
+			}
+		}
+		@Override
 		protected ResultData doInBackground(Void... params) {
 			try {
 //				Gson gs=new Gson();
@@ -355,6 +366,9 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 				}
 			}else{
 				Toast.makeText(getActivity(), getActivity().getString(R.string.sending_failed), Toast.LENGTH_LONG).show();
+			}
+			if(mProgress.isShowing()){
+				mProgress.dismiss();
 			}
 		}
 	}
