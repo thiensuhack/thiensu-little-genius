@@ -37,7 +37,17 @@ public class LG_DatePickerDialog extends DatePickerDialog {
 		this.maxMonth = maxMonth;
 		this.maxYear = maxYear;
 	}
-
+	public LG_DatePickerDialog(Context context, OnDateSetListener callBack,
+			int minYear, int minMonth, int minDay, int maxYear, int maxMonth,
+			int maxDay,boolean isMinDate) {
+		super(context, callBack, minYear, minMonth, minDay);
+		this.minDay = minDay;
+		this.minMonth = minMonth;
+		this.minYear = minYear;
+		this.maxDay = maxDay;
+		this.maxMonth = maxMonth;
+		this.maxYear = maxYear;
+	}
 	@Override
 	public void onDateChanged(DatePicker view, int year, int monthOfYear,
 			int dayOfMonth) {

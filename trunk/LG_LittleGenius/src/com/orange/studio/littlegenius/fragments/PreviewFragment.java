@@ -280,7 +280,7 @@ public class PreviewFragment extends BaseFragment implements OnClickListener, On
 		Bundle args = new Bundle();
 		args.putInt("year", mYear);
 		args.putInt("month", mMonth);
-		args.putInt("day", mDay);
+		args.putInt("day", mDay+1);
 		date.setArguments(args);
 		date.setCallBack(onPreferredDate);
 		date.show(getChildFragmentManager(), getActivity()
