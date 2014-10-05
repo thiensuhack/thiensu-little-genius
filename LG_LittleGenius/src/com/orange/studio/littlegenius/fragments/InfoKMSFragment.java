@@ -25,7 +25,6 @@ public class InfoKMSFragment extends BaseFragment implements OnClickListener {
 	private TextView mEmail;
 	private TextView mPassword;
 	private TextView mConfirmPassword;
-	private TextView mAddress;
 	private Button mUpdateInfoBtn;
 	private Button mLogOutBtn;
 
@@ -50,7 +49,6 @@ public class InfoKMSFragment extends BaseFragment implements OnClickListener {
 		mEmail = (TextView) mView.findViewById(R.id.userEmail);
 		mPassword = (TextView) mView.findViewById(R.id.userPassword);
 		mConfirmPassword = (TextView) mView.findViewById(R.id.confirmPassword);
-		mAddress = (TextView) mView.findViewById(R.id.userAddress);
 		mUpdateInfoBtn = (Button) mView.findViewById(R.id.updateInfoBtn);
 		mLogOutBtn = (Button) mView.findViewById(R.id.logoutBtn);
 
