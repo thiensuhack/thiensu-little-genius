@@ -29,7 +29,7 @@ public class LG_DatePickerNoLimitMaxDateFragment extends DialogFragment {
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		mDatePickerDialog = new LG_DatePickerDialog(getActivity(), ondateSet,
-				year, month, day,2025,11,31);
+				year, month, day,2025,11,31,true);
 		return mDatePickerDialog;
 	}
 }
