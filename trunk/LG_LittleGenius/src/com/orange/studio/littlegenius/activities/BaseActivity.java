@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -125,13 +126,13 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements
 	private void createMenuLeft() {
 		mListViewMenu = (ListView) sm.findViewById(R.id.menuList);
 		List<SlidingMenuItem> mListItem = new ArrayList<SlidingMenuItem>();
-		SlidingMenuItem menuHome = new SlidingMenuItem(111, "Trang chủ");
-		SlidingMenuItem menuProgram = new SlidingMenuItem(112, "Chương trình");
-		SlidingMenuItem menuTestimonials = new SlidingMenuItem(113, "Nhận xét");
-		SlidingMenuItem menuPreview = new SlidingMenuItem(114, "Liên hệ");
-		SlidingMenuItem menuKms = new SlidingMenuItem(115, "Thành viên");
-		SlidingMenuItem menuContact = new SlidingMenuItem(116, "Địa chỉ");
-		SlidingMenuItem menuAbout = new SlidingMenuItem(117, "Giới thiệu");
+		SlidingMenuItem menuHome = new SlidingMenuItem(111, getString(R.string.menu_home_title));
+		SlidingMenuItem menuProgram = new SlidingMenuItem(112, getString(R.string.menu_programe_title));
+		SlidingMenuItem menuTestimonials = new SlidingMenuItem(113, getString(R.string.menu_testimonial_title));
+		SlidingMenuItem menuPreview = new SlidingMenuItem(114, getString(R.string.menu_preview_title));
+		SlidingMenuItem menuKms = new SlidingMenuItem(115, getString(R.string.menu_kms_title));
+		SlidingMenuItem menuContact = new SlidingMenuItem(116, getString(R.string.menu_contact_title));
+		SlidingMenuItem menuAbout = new SlidingMenuItem(117, getString(R.string.menu_about_title));
 
 		mListItem.add(menuHome);
 		mListItem.add(menuProgram);
@@ -144,8 +145,60 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements
 		mMenuAdapter = new MenuSlidingAdapter(this);
 		mListViewMenu.setAdapter(mMenuAdapter);
 		mMenuAdapter.updateFriendList(mListItem);
-	}
+		
+		getSupportFragmentManager().addOnBackStackChangedListener(
+				new OnBackStackChangedListener() {
 
+					@Override
+					public void onBackStackChanged() {
+						Fragment f = getSupportFragmentManager()
+								.findFragmentById(R.id.mainFrameLayout);
+						if (f != null) {
+							updateTitleAndDrawer(f);
+						}
+
+					}
+				});
+	}
+	private void updateTitleAndDrawer(Fragment fragment) {
+		String mFragmentClassName = fragment.getClass().getName();
+		String title = "LITTLE GENIUS";
+		if(mFragmentClassName.equals(HomeFragment.class.getName())){
+			title = getString(R.string.fragment_home_title);
+			setViewTitle(title);
+			return;
+		}
+		if(mFragmentClassName.equals(ProgramFragment.class.getName())){
+			title = getString(R.string.fragment_programe_title);
+			setViewTitle(title);
+			return;
+		}
+		if(mFragmentClassName.equals(TestimonialFragment.class.getName())){
+			title = getString(R.string.fragment_testimonial_title);
+			setViewTitle(title);
+			return;
+		}
+		if(mFragmentClassName.equals(PreviewFragment.class.getName())){
+			title = getString(R.string.fragment_preview_title);
+			setViewTitle(title);
+			return;
+		}
+		if(mFragmentClassName.equals(KMSFragment.class.getName())){
+			title = getString(R.string.fragment_kms_title);
+			setViewTitle(title);
+			return;
+		}
+		if(mFragmentClassName.equals(ContactFragment.class.getName())){
+			title = getString(R.string.fragment_contact_title);
+			setViewTitle(title);
+			return;
+		}
+		if(mFragmentClassName.equals(AboutFragment.class.getName())){
+			title = getString(R.string.fragment_about_title);
+			setViewTitle(title);
+			return;
+		}
+	}
 	public void selectItem(int position, boolean isToggleMenu) {
 		// FragmentManager fragmentManager = getSupportFragmentManager();
 		// Fragment mFragment =
@@ -158,12 +211,12 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements
 		String title = "";
 		switch (position) {
 		case 0:
-			title = "TRANG CHỦ";
+			title = getString(R.string.fragment_home_title);
 			fragment = HomeFragment.instantiate(getApplicationContext(),
 					HomeFragment.class.getName());
 			break;
 		case 1:
-			title = "CHƯƠNG TRÌNH";
+			title = getString(R.string.fragment_programe_title);
 			// if(fragmentName!=null && fragmentName.length()>0 &&
 			// fragmentName.equals(HomeFragment.class.getName())){
 			//
@@ -172,17 +225,17 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements
 					ProgramFragment.class.getName());
 			break;
 		case 2:
-			title = "NHẬN XÉT";
+			title = getString(R.string.fragment_testimonial_title);
 			fragment = TestimonialFragment.instantiate(getApplicationContext(),
 					TestimonialFragment.class.getName());
 			break;
 		case 3:
-			title = "LIÊN HỆ";
+			title = getString(R.string.fragment_preview_title);
 			fragment = PreviewFragment.instantiate(getApplicationContext(),
 					PreviewFragment.class.getName());
 			break;
 		case 4:
-			title = "THÀNH VIÊN";
+			title = getString(R.string.fragment_kms_title);
 			LG_CommonUtils.checkUserInfo();
 			if (AppConfig.mUser == null) {
 				if (isToggleMenu) {
@@ -190,19 +243,19 @@ public class BaseActivity extends MetaSlidingFragmentActivity implements
 				}
 				showLoginDialog();
 			} else {
-				title = "THÀNH VIÊN";
+				title = getString(R.string.fragment_kms_title);
 				fragment = KMSFragment.instantiate(getApplicationContext(),
 						KMSFragment.class.getName());
 			}
 
 			break;
 		case 5:
-			title = "ĐỊA CHỈ";
+			title = getString(R.string.fragment_contact_title);
 			fragment = ContactFragment.instantiate(getApplicationContext(),
 					ContactFragment.class.getName());
 			break;
 		case 6:
-			title = "GIỚI THIỆU";
+			title = getString(R.string.fragment_about_title);
 			fragment = AboutFragment.instantiate(getApplicationContext(),
 					AboutFragment.class.getName());
 			break;

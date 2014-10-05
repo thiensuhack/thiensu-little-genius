@@ -79,6 +79,21 @@
     <string name="home_menu_kms_btn">THÀNH VIÊN</string>
     <string name="home_menu_contact_btn">ĐỊA CHỈ</string>
 
+    <string name="fragment_home_title">TRANG CHỦ</string>
+    <string name="fragment_programe_title">CHƯƠNG TRÌNH</string>
+    <string name="fragment_testimonial_title">NHẬN XÉT</string>
+    <string name="fragment_preview_title">LIÊN HỆ</string>
+    <string name="fragment_kms_title">THÀNH VIÊN</string>
+    <string name="fragment_contact_title">ĐỊA CHỈ</string>
+    <string name="fragment_about_title">GIỚI THIỆU</string>
+    
+    <string name="menu_home_title">Trang chủ</string>
+    <string name="menu_programe_title">Chương trình</string>
+    <string name="menu_testimonial_title">Nhận xét</string>
+    <string name="menu_preview_title">Liên hệ</string>
+    <string name="menu_kms_title">Thành viên</string>
+    <string name="menu_contact_title">Địa chỉ</string>
+    <string name="menu_about_title">Giới thiệu</string>
     <!-- menu home bar -->
     <string name="home_menu_about_btn">GIỚI THIỆU</string>
     <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
