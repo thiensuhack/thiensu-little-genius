@@ -137,7 +137,7 @@ public class RegisterDialog extends BaseDialog {
 				}
 				LG_CommonUtils.showToast(result.msg);
 			}else{
-				LG_CommonUtils.showToast(mContext.getString(R.string.update_failed));
+				LG_CommonUtils.showToast(mContext.getString(R.string.register_failed));
 			}
 			setEnableView(true);
 		}

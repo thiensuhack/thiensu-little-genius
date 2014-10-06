@@ -34,6 +34,7 @@
     <string name="login_failed_message">Đăng nhập không thành công.</string>
     <string name="login_title">Đăng nhập</string>
     <string name="register_title">Đăng ký</string>
+    <string name="register_failed">Đăng ký không thành công.</string>
     <string name="username_label">Tên đăng nhập:</string>
     <string name="password_label">Mật khẩu:</string>
     <string name="confirm_pass_label">Nhập lại mật khẩu</string>
