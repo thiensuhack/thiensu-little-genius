@@ -1,6 +1,7 @@
 package com.orange.studio.littlegenius.fragments;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.AsyncTask;
@@ -42,6 +43,7 @@ public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 		mListView=(ListView)mView.findViewById(R.id.listViewVideo);
 		mAdapter=new CourseKMSAdapter(getActivity());
 		mListView.setAdapter(mAdapter);
+		mParentFragment=(KMSFragment)getParentFragment();
 	}
 
 	@Override
@@ -70,7 +72,7 @@ public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mBaseActivity.switchView(false,true,false);
+			switchView(false,true,false);
 		}
 		@Override
 		protected List<CourseKMSDTO> doInBackground(Void... params) {
@@ -81,11 +83,24 @@ public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 		protected void onPostExecute(List<CourseKMSDTO> result) {
 			super.onPostExecute(result);
 			try {
+//				result=new ArrayList<CourseKMSDTO>();
+//				CourseKMSDTO item=new CourseKMSDTO();
+//				item.courseName="hello";
+//				item.id="1";
+//				item.date="20/12/2014";
+//				item.notice="123";
+//				item.status="Done";
+//				item.term="";
+//				result.add(item);
+//				result.add(item);
+//				result.add(item);
+//				result.add(item);
+//				result.add(item);
 				if(result!=null){
 					mAdapter.updateData(result);
-					mBaseActivity.switchView(true,false,false);
+					switchView(true,false,false);
 				}else{
-					mBaseActivity.switchView(false,false,true);
+					switchView(false,false,true);
 				}
 			} catch (Exception e) {
 				return;

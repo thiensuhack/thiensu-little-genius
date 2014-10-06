@@ -57,6 +57,8 @@ public class InfoKMSFragment extends BaseFragment implements OnClickListener {
 			mName.setText(AppConfig.mUser.user_nicename);
 			mEmail.setText(AppConfig.mUser.user_email);
 		}
+		mParentFragment=(KMSFragment)getParentFragment();
+		switchView(true, false, false);
 	}
 
 	@Override
@@ -179,5 +181,10 @@ public class InfoKMSFragment extends BaseFragment implements OnClickListener {
 						Toast.LENGTH_LONG).show();
 			}
 		}
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		switchView(true, false, false);
 	}
 }

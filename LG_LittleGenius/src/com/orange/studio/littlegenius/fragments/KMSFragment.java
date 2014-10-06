@@ -7,10 +7,13 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orange.studio.littlegenius.R;
+import com.todddavies.components.progressbar.ProgressWheel;
 
 public class KMSFragment extends BaseFragment {
 	private View mCameraBtn;
@@ -21,6 +24,12 @@ public class KMSFragment extends BaseFragment {
 	private TextView mVideoTv;
 	private TextView mCourseTv;
 	private TextView mInfoTv;
+	
+	private View mContainerView = null;
+	private View mLoadingView = null;
+	private View mNotFoundDataView = null;
+	private ProgressWheel mProgressView = null;
+	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
@@ -37,6 +46,13 @@ public class KMSFragment extends BaseFragment {
     }
 	@Override
 	public void initView() {
+		mContainerView = (FrameLayout) mView.findViewById(R.id.kmsMainFrameLayout);
+		mLoadingView = (LinearLayout) mView.findViewById(R.id.loadingViewKMS);
+		mNotFoundDataView = (RelativeLayout) mView.findViewById(R.id.notFoundDataViewKMS);
+		mProgressView = (ProgressWheel) mView.findViewById(R.id.progressWheel);
+
+		switchView(true, false, false);
+		
 		mCameraBtn=(LinearLayout)mView.findViewById(R.id.cameraBtn);
 		mVideoBtn=(LinearLayout)mView.findViewById(R.id.videoBtn);
 		mCourseBtn=(LinearLayout)mView.findViewById(R.id.courseBtn);
@@ -48,7 +64,25 @@ public class KMSFragment extends BaseFragment {
 		mInfoTv=(TextView)mView.findViewById(R.id.infoTxt);
 		selectItem(0);
 	}
+	public void switchView(boolean isShowMainView, boolean isShowLoadingView,
+			boolean isNotFound) {
+		try {
+			mLoadingView.setVisibility(isShowLoadingView ? View.VISIBLE
+					: View.GONE);
+			if (isShowLoadingView) {
+				mProgressView.spin();
+			} else {
+				mProgressView.stopSpinning();
+			}
+			mNotFoundDataView.setVisibility(isNotFound ? View.VISIBLE
+					: View.GONE);
+			mContainerView.setVisibility(isShowMainView ? View.VISIBLE
+					: View.INVISIBLE);
+		} catch (Exception e) {
 
+		}
+
+	}
 	@Override
 	public void initListener() {
 		mCameraBtn.setOnClickListener(this);

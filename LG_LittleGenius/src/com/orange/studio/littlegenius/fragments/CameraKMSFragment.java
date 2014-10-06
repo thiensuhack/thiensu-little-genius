@@ -1,5 +1,6 @@
 package com.orange.studio.littlegenius.fragments;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.AsyncTask;
@@ -26,7 +27,8 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener,
 	private ListView mListView;
 	private VideoKMSAdapter mAdapter;
 	private LoadVideoKMSTask mLoadVideoKMSTask = null;
-
+	
+	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		if (mView == null) {
@@ -46,6 +48,7 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener,
 		mListView = (ListView) mView.findViewById(R.id.listViewVideo);
 		mAdapter = new VideoKMSAdapter(getActivity());
 		mListView.setAdapter(mAdapter);
+		mParentFragment=(KMSFragment)getParentFragment();
 	}
 
 	@Override
@@ -78,7 +81,7 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mBaseActivity.switchView(false,true,false);
+			switchView(false,true,false);
 		}
 
 		@Override
@@ -91,11 +94,20 @@ public class CameraKMSFragment extends BaseFragment implements OnClickListener,
 		protected void onPostExecute(List<VideoKMSDTO> result) {
 			super.onPostExecute(result);
 			try {
+//				result=new ArrayList<VideoKMSDTO>();
+//				 for (int i = 0; i < 12; i++) {
+//				 String id=String.valueOf(i);
+//				 result.add(new VideoKMSDTO(id, "Video " + id,
+//				 "http://www.youtube.com/watch?v=tjnA7thSKPY",
+//				 "http://l.f31.img.vnecdn.net/2014/06/29/1_1404011636_1404015283_490x294.jpg"));
+//				 }
+//				 mAdapter.updateData(mList);
+				 
 				if (result != null && result.size() > 0) {
 					mAdapter.updateData(result);
-					mBaseActivity.switchView(true,false,false);
+					switchView(true,false,false);
 				}else{
-					mBaseActivity.switchView(false,false,true);
+					switchView(false,false,true);
 				}
 				// else{
 				// List<VideoKMSDTO> mList=new ArrayList<VideoKMSDTO>();

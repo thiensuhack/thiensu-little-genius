@@ -5,12 +5,31 @@
     android:background="@color/home_background"
     android:orientation="vertical" >
 
-    <FrameLayout
-        android:id="@+id/kmsMainFrameLayout"
-        android:layout_width="fill_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >
-    </FrameLayout>
+
+        <include
+            android:id="@+id/loadingViewKMS"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            layout="@layout/loading_layout"
+            android:background="@color/home_background" />
+
+        <include
+            android:id="@+id/notFoundDataViewKMS"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            layout="@layout/not_found_data_layout"
+            android:background="@color/home_background" />
+
+        <FrameLayout
+            android:id="@+id/kmsMainFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </FrameLayout>
+    </RelativeLayout>
 
     <include
         android:layout_width="fill_parent"

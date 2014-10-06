@@ -1,7 +1,6 @@
 package com.orange.studio.littlegenius.fragments;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.os.AsyncTask;
@@ -47,6 +46,7 @@ public class VideoKMSFragment extends BaseFragment implements OnClickListener, O
 		mListView=(ListView)mView.findViewById(R.id.listViewVideo);
 		mAdapter=new VideoKMSAdapter(getActivity());
 		mListView.setAdapter(mAdapter);
+		mParentFragment=(KMSFragment)getParentFragment();
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class VideoKMSFragment extends BaseFragment implements OnClickListener, O
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			mBaseActivity.switchView(false,true,false);
+			switchView(false,true,false);
 		}
 		@Override
 		protected List<VideoKMSDTO> doInBackground(Void... params) {
@@ -88,9 +88,9 @@ public class VideoKMSFragment extends BaseFragment implements OnClickListener, O
 			try {
 				if(result!=null && result.size()>0){
 					mAdapter.updateData(result);
-					mBaseActivity.switchView(true,false,false);
+					switchView(true,false,false);
 				}else{
-					mBaseActivity.switchView(false,false,true);
+					switchView(false,false,true);
 				}
 //				else{
 //					List<VideoKMSDTO> mList=new ArrayList<VideoKMSDTO>();
