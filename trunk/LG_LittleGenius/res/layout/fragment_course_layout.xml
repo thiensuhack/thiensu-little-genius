@@ -23,11 +23,17 @@
             android:textSize="17sp"
             android:textStyle="bold" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/home_background"
+            android:visibility="gone" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:background="@color/bright_orange_2"
+            android:background="@color/green"
             android:gravity="center"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
