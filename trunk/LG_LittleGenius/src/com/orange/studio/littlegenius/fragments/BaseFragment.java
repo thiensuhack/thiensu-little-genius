@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 public class BaseFragment extends Fragment implements OnClickListener{
 	protected View mView=null;
 	protected BaseActivity mBaseActivity=null;
+	protected KMSFragment mParentFragment=null;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -33,5 +34,11 @@ public class BaseFragment extends Fragment implements OnClickListener{
 	}
 	protected BaseActivity getBaseActivity(){
 		return (BaseActivity)getActivity();
+	}
+	protected void switchView(boolean isShowMainView, boolean isShowLoadingView,
+			boolean isNotFound){
+		if(mParentFragment!=null){
+			mParentFragment.switchView(isShowMainView, isShowLoadingView, isNotFound);
+		}
 	}
 }
