@@ -1,12 +1,7 @@
 package com.orange.studio.littlegenius.fragments;
 
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.os.AsyncTask.Status;
@@ -21,9 +16,6 @@ import com.orange.studio.littlegenius.R;
 import com.orange.studio.littlegenius.adapters.CourseKMSAdapter;
 import com.orange.studio.littlegenius.models.CommonModel;
 import com.orange.studio.littlegenius.objects.CourseKMSDTO;
-import com.orange.studio.littlegenius.objects.ResultData;
-import com.orange.studio.littlegenius.utils.AppConfig.URLRequest;
-import com.orange.studio.littlegenius.utils.LG_CommonUtils;
 
 public class CourseKMSFragment extends BaseFragment implements OnClickListener{
 
